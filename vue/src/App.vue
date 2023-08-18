@@ -1,6 +1,9 @@
 <template>
 	<Header></Header>
-	<Main></Main>
+	<!-- <Main></Main> -->
+	<div>
+		{{ title }}
+	</div>
 	<Footer></Footer>
 </template>
 
@@ -8,11 +11,15 @@
 import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
-import axios from 'axios';
-import { computed } from 'vue';
-import StateInterface from './Store/Modules/Authorization/StateInterface';
+
+interface PropsInterface {
+	title?: string,
+}
+
+const props = withDefaults(defineProps<PropsInterface>(), {
+	title: '',
+})
+
 </script>
 
 <style>

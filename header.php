@@ -10,7 +10,9 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> id="app">
+<body <?php body_class(); ?> id="app"
+	title="<?php echo '123123'; ?>"
+>
 	<div class="wrapper">
 		<header class="header" role="banner">
 
