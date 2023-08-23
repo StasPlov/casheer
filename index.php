@@ -1,5 +1,3 @@
 <?php get_header(); ?>
-
-<div></div>
-
+<!-- home page -->
 <?php get_footer(); ?>

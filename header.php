@@ -8,10 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php bloginfo('description'); ?>">
 	<?php wp_head(); ?>
+	<?php wp_footer(); ?>
 </head>
 <body <?php body_class(); ?> 
 	id="app"
-	data-ajax-url="<?php echo 'test home page description'; ?>"
+	data-ajax-url="<?php echo admin_url('admin-ajax.php'); ?>"
 	data-page-id="<?php echo get_the_ID(); ?>"
 >
-	<header></header>

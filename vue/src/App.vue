@@ -26,7 +26,10 @@ const props = withDefaults(defineProps<PropsInterface>(), {
 	ajaxUrl: '',
 })
 
-
+/* 
+	тут будует опрделяться какой шаблон(страницу) отрисовывать
+	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
+*/
 const routes = {
 	1: Home,
 	2: Setup
