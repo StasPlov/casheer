@@ -1,9 +1,8 @@
 <template>
 	<Header></Header>
-	<!-- <Main></Main> -->
-	<div>
-		{{ title }}
-	</div>
+	<Main>
+		<component :is="currentPage"></component>
+	</Main>
 	<Footer></Footer>
 </template>
 
@@ -12,14 +11,32 @@ import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
 
+/* Pages */
+import Home from './Pages/Home.vue';
+import Setup from './Pages/Setup.vue';
+import { computed } from 'vue';
+
 interface PropsInterface {
-	title?: string,
+	pageId?: number,
+	ajaxUrl: string,
 }
 
 const props = withDefaults(defineProps<PropsInterface>(), {
-	title: '',
+	pageId: 1,
+	ajaxUrl: '',
 })
 
+
+const routes = {
+	1: Home,
+	2: Setup
+}
+
+const currentPage = computed(() => {
+	return routes[props.pageId] || null;
+})
+
+console.log(props);
 </script>
 
 <style>

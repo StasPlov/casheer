@@ -9,19 +9,9 @@
 	<meta name="description" content="<?php bloginfo('description'); ?>">
 	<?php wp_head(); ?>
 </head>
-
-<body <?php body_class(); ?> id="app"
-	title="<?php echo '123123'; ?>"
+<body <?php body_class(); ?> 
+	id="app"
+	data-ajax-url="<?php echo 'test home page description'; ?>"
+	data-page-id="<?php echo get_the_ID(); ?>"
 >
-	<div class="wrapper">
-		<header class="header" role="banner">
-
-			<div class="logo">
-				<?php the_custom_logo(); ?>
-			</div>
-
-			<nav class="navigation" role="navigation">
-				<?php wp_nav_menu() ?>
-			</nav>
-
-		</header>
+	<header></header>

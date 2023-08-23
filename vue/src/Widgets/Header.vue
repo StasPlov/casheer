@@ -1,14 +1,6 @@
 <template>
 	<header class="flex">
-		<div>
-			
-		</div>
-
-		<ul class="">
-			<li>
-
-			</li>
-		</ul>
+		<slot>Header</slot>
 	</header>
 </template>
 

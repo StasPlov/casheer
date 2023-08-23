@@ -1,12 +1,5 @@
 <?php get_header(); ?>
 
-<main role="main" aria-label="Content">
-	<section>
-		<h1><?php _e('Latest posts', 'wp-blank'); ?></h1>
-		<?php get_template_part('loop'); ?>
-		<?php get_template_part('pagination'); ?>
-	</section>
-</main>
+<div></div>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

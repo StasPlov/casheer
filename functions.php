@@ -62,9 +62,13 @@ add_action('wp_enqueue_scripts', 'wp_blank_load_scripts');
 function enqueue_style_custom() {
 	$script_directory = get_template_directory() . '/vue/dist/css/'; // Укажите путь к директории со стилями
 	$script_url = get_template_directory_uri() . '/vue/dist/css/'; // Укажите URL-адрес директории со стилями
+	
+	if(!is_dir($script_directory)) {
+		return;
+	}
 
 	$scripts = scandir($script_directory); // Получить список файлов в директории со стилями
-
+	
 	foreach ($scripts as $script) {
 		$extension = pathinfo($script, PATHINFO_EXTENSION);
 

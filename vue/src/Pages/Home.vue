@@ -1,7 +1,5 @@
 <template>
-    <div class="flex flex-col">
-		This is home page 
-    </div>
+    <span class="text-2xl text-black/50">This is home page</span>
 </template>
 
 <script setup lang="ts">

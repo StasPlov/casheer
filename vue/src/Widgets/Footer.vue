@@ -1,5 +1,6 @@
 <template>
 	<footer class="flex flex-col">
+		<slot>footer</slot>
 	</footer>
 </template>
 
