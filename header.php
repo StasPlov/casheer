@@ -14,4 +14,5 @@
 	id="app"
 	data-ajax-url="<?php echo admin_url('admin-ajax.php'); ?>"
 	data-page-id="<?php echo get_the_ID(); ?>"
+	data-page-name="<?php echo urldecode(get_post_field('post_name', get_the_ID()))?>"
 >

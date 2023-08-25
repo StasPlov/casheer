@@ -26,34 +26,39 @@ import NotFound from './Pages/404.vue';
 
 interface PropsInterface {
 	pageId?: number,
-	ajaxUrl: string
+	ajaxUrl: string,
+	pageName: string
 }
 
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1,
-	ajaxUrl: ''
+	ajaxUrl: '',
+	pageName: ''
 });
 
 /* 
 	тут будет определяться какой шаблон(страницу) отрисовывать
 	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
 */
+/* eslint-disable */
 const routes = {
-	1: Home,
-	2: About,
-	3: Invoice,
-	4: Checkout,
-	5: TouchTap,
-	6: WalletCards,
-	7: News,
-	8: NewsSingle,
-	9: PricingOnboarding,
-	10: NotFound
+	'привет-мир': Home,
+	'about-us': About,
+	'invoice': Invoice,
+	'checkout': Checkout,
+	'touch-tap': TouchTap,
+	'wallet-cards': WalletCards,
+	'news': News,
+	'news-single': NewsSingle,
+	'pricing-onboarding': PricingOnboarding,
+	'not-found': NotFound
 }
 
 const currentPage = computed(() => {
-	return routes[props.pageId] || null;
+	return routes[props.pageName] || null;
 });
+console.log(props);
+
 </script>
 
 <style>
