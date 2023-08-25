@@ -10,42 +10,54 @@
 import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
+import { computed } from 'vue';
 
 /* Pages */
 import Home from './Pages/Home.vue';
-import Setup from './Pages/Setup.vue';
-import { computed } from 'vue';
+import About from './Pages/About.vue';
+import Invoice from './Pages/Invoice.vue';
+import Checkout from './Pages/Checkout.vue';
+import TouchTap from './Pages/TouchTap.vue';
+import WalletCards from './Pages/WalletCards.vue';
+import News from './Pages/News.vue';
+import NewsSingle from './Pages/NewsSingle.vue';
+import PricingOnboarding from './Pages/PricingOnboarding.vue';
+import NotFound from './Pages/404.vue';
 
 interface PropsInterface {
 	pageId?: number,
-	ajaxUrl: string,
+	ajaxUrl: string
 }
 
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1,
-	ajaxUrl: '',
-})
+	ajaxUrl: ''
+});
 
 /* 
-	тут будует опрделяться какой шаблон(страницу) отрисовывать
+	тут будет определяться какой шаблон(страницу) отрисовывать
 	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
 */
 const routes = {
 	1: Home,
-	2: Setup
+	2: About,
+	3: Invoice,
+	4: Checkout,
+	5: TouchTap,
+	6: WalletCards,
+	7: News,
+	8: NewsSingle,
+	9: PricingOnboarding,
+	10: NotFound
 }
 
 const currentPage = computed(() => {
 	return routes[props.pageId] || null;
-})
-
-console.log(props);
+});
 </script>
 
 <style>
-@import './Assets/Fonts/Lato/stylesheet.css';
-@import './Assets/Fonts/Montserrat/stylesheet.css';
-@import './Assets/Fonts/OpenSans/stylesheet.css';
+@import './Assets/Fonts/Mont/stylesheet.css';
 @import './Assets/Fonts/Roboto/stylesheet.css';
 @import url('https://use.fontawesome.com/releases/v6.2.0/css/all.css');
 
@@ -54,23 +66,13 @@ console.log(props);
 @tailwind utilities;
 
 :root {
-	--color-silver1: #f2f2f2;
-	--color-silver2: #6c7aa0;
-	--color-silver3: #65646a;
-	--color-silver4: #d9d9d9;
-	--color-silver5: #68676e;
+	--color-black1: #1B1B1B;
+	--color-violet1: #7D00E2;
+	--color-green1: #00FF70;
+}
 
-	--color-pink1: #fcc5c5;
-	--color-red1: #dc3546;
-	--color-green1: #4acb67;
-	--color-green2: #50ba23;
-	--color-white1: #f9d62c;
-	--color-blue1: #6097ea;
-	
-	--color-violet1: #b966ff;
-	--color-violet2: #6f4ff2;
-
-	--color-black1: #263238;
+p:not(:last-child) { /* Каждый эелмент кроме послеженго, есил у нас больше 1 параграфа, то будет отступ */
+	margin-bottom: 1.5625rem;
 }
 
 /* default transition anim */
@@ -85,6 +87,7 @@ console.log(props);
 	opacity: 0;
 }
 
+/* popup trasnition */
 .popup-enter-active, 
 .popup-leave-active {
 	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -95,5 +98,18 @@ console.log(props);
 .popup-leave-to {
 	opacity: 0;
 	transform: translateY(5px);
+}
+
+/* trasnition fade top */
+.fade-top-enter-active, 
+.fade-top-leave-active {
+	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 450ms;
+}
+.fade-top-enter-from, 
+.fade-top-leave-to {
+	opacity: 0;
+	transform: translateY(-10px);
 }
 </style>

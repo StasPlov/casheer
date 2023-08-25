@@ -18,19 +18,6 @@ module.exports = {
 			'2xl': '1536px',
 		},
 		supports: {},
-		extend: {
-			colors: {
-				stone: {
-					125: '#f2f2f2'
-				}
-			},
-			backgroundImage: {
-				'chat-pattern': "url('https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/pattern-23.svg'), linear-gradient(0deg, #4a9b9a, #85a2ca)"
-			},
-			gridTemplateColumns: {
-				'techsup': 'min-content  repeat(6, minmax(0, 1fr)) min-content'
-			}
-		},
 		colors: ({ colors }) => ({
 			inherit: colors.inherit,
 			current: colors.current,
@@ -167,6 +154,9 @@ module.exports = {
 			'gradient-to-bl': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
 			'gradient-to-l': 'linear-gradient(to left, var(--tw-gradient-stops))',
 			'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
+			'gradient-casheer-to-b': 'linear-gradient(179deg, #1CF4FF 0%, #00FF71 25.31%, #FFF 53.96%, rgba(255, 255, 255, 0.50) 79.48%, rgba(255, 255, 255, 0.04) 100%)',
+			'gradient-casheer-title-to-b': 'linear-gradient(126deg, #7D00E2 0%, #1CF4FF 55.52%, #18FE6A 100%)'
+
 		},
 		backgroundOpacity: ({ theme }) => theme('opacity'),
 		backgroundPosition: {
@@ -383,11 +373,8 @@ module.exports = {
 			roboto: [
 				'Roboto'
 			],
-			lato: [
-				'Lato'
-			],
-			montserrat: [
-				'Montserrat'
+			mont: [
+				'Mont'
 			],
 			sans: [
 				'Open Sans',

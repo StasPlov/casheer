@@ -1,5 +1,5 @@
 <template>
-    <main class="flex min-h-screen bg-gray-100">
+    <main class="flex flex-col min-h-screen bg-white">
 		<slot>main</slot>
     </main>
 </template>

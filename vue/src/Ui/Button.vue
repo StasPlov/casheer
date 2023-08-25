@@ -1,5 +1,5 @@
 <template>
-	<button class="bg-[#DC3546] flex items-center justify-center p-5 pt-[0.625rem] pb-[0.625rem] rounded-xl text-white hover:filter hover:brightness-[115%] transition" 
+	<button class="bg-[var(--color-violet1)] flex items-center justify-center p-5 pt-[0.625rem] pb-[0.625rem] rounded-xl text-white hover:filter hover:brightness-[115%] transition" 
 		:class="[{ 
 			'bg-opacity-100':(!isActive && !isLock)
 		}, {

@@ -1,6 +1,8 @@
 <template>
 	<header class="flex">
-		<slot>Header</slot>
+		<slot>
+			
+		</slot>
 	</header>
 </template>
 
