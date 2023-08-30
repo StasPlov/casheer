@@ -44,7 +44,7 @@
 
 			<div class="flex-1 flex justify-center">
 				<Transition>
-					<img :src="backgroundWallet" alt="" class="w-[26.875rem] h-[42.4375rem]" v-if="backgroundWallet">
+					<img :src="backgroundWallet" alt="" class="w-[26.875rem] h-[42.4375rem] select-none" v-if="backgroundWallet" ref="phoneImage" draggable="false">
 				</Transition>
 			</div>
 		</div>
@@ -60,7 +60,12 @@ import ButtonImage from "@/Assets/Icons/ButtonImage.svg";
 import Dropdown from "@/Ui/Dropdown.vue";
 import Button from "@/Ui/Button.vue";
 import PaymentsInterface from "./Entity/PaymentsInterface";
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+const phoneImage = ref(null);
 
 const itemList = computed(() => [
 	{
@@ -83,4 +88,33 @@ const itemList = computed(() => [
 		description: 'Manage your Casheer Cards and financials, accept payments, and transfer funds with ease.',
 		url: ''
 	}] as Array<PaymentsInterface>);
+
+function animatePhone() {
+	gsap.fromTo(
+		phoneImage.value,
+		{
+			opacity: 0,
+			autoAlpha: 0,
+			scale: 1.2,
+		},
+		{
+			opacity: 1,
+			autoAlpha: 1,
+			delay: 0.5,
+			duration: 3,
+			scale: 1,
+			ease: 'power4.out',
+			scrollTrigger: {
+				trigger: phoneImage.value,
+				start: 'top 50%',
+				end: 'bottom bottom',
+				toggleActions: "play none none reset",
+			},
+		}
+	);
+}
+
+onMounted(() => {
+	animatePhone();
+});
 </script>

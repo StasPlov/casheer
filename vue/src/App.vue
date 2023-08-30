@@ -33,7 +33,7 @@ interface PropsInterface {
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1,
 	ajaxUrl: '',
-	pageName: ''
+	pageName: 'привет-мир'
 });
 
 /* 
