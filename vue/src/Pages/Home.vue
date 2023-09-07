@@ -15,6 +15,9 @@
 	<Always></Always>
 	<Man></Man>
 	<Welcome></Welcome>
+	<Trust></Trust>
+	<Download></Download>
+	<TrustedBy></TrustedBy>
 </template>
 
 <script setup lang="ts">
@@ -26,6 +29,9 @@ import Payments from "../Widgets/Home/Payments.vue";
 import Always from "../Widgets/Home/Always.vue";
 import Man from "../Widgets/Home/Man.vue";
 import Welcome from "../Widgets/Home/Welcome.vue";
+import Trust from "../Widgets/Home/Trust.vue";
+import Download from "../Widgets/Home/Download.vue";
+import TrustedBy from "../Widgets/Home/TrustedBy.vue";
 import InfoInterface from "../Widgets/Home/Entity/InfoInterface";
 
 const itemList = computed(() => [

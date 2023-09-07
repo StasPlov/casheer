@@ -1,6 +1,5 @@
 <template>
 	<div class="w-full min-h-screen bg-[var(--color-black1)] relative">
-
 		<div class="flex py-[5vw]">
 			<div class="flex-1 flex items-center justify-end">
 				<div class="flex flex-col gap-16">
