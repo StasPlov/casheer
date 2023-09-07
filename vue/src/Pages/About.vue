@@ -1,10 +1,14 @@
 <template>
     <Header></Header>
+	<Planet></Planet>
+	<Take></Take>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import Header from "../Widgets/AboutUs/Header.vue";
+import Planet from "../Widgets/AboutUs/Planet.vue";
+import Take from "../Widgets/AboutUs/Take.vue";
 /* 
 const itemList = computed(() => [
 	{

@@ -1,42 +1,25 @@
 <template>
-	<div class="flex flex-col w-full min-h-screen bg-[var(--color-black1)] relative justify-center items-start">
-		<img :src="background" alt="" class="absolute w-full max-phoneX:hidden animate-pulse">
+	<div class="flex flex-col bg-[var(--color-black1)] relative">
+		<img :src="backgroundGradient" alt="" class="absolute left-0 top-0 z-10 select-none" draggable="false">
 
-		<!-- <div class="flex flex-col gap-28 px-[7vw] z-0 max-phoneX:justify-between max-phoneX:h-full max-phoneX:pt-[25vh] max-phoneX:pb-[5vh]">
-			<div class="flex flex-col gap-9">
-				<img :src="logo" alt="" class="w-[23.125rem]">
+		<div class="relative w-full flex items-center justify-center">
+			<img :src="background" alt="" class="w-full select-none -z-0" draggable="false">
+			<h1 class="text-white text-9xl font-bold font-mont absolute bottom-0 select-none py-4 z-20">This is Our Story</h1>
+		</div>
 
-				<div class="max-w-[43.125rem] text-5xl max-phoneX:text-3xl">
-					<span class="text-white font-bold leading-tight font-mont"><b>Smarter</b> payment solutions for the enterprise of <big>now.</big></span>
-				</div>
-			</div>
-
-			<div class="flex flex-col gap-5">
-				<div class="flex gap-10 mb-9">
-					<Button>
-						Get Started Now
-					</Button>
-
-					<Button class="bg-transparent underline underline-offset-4 hover:text-opacity-80">
-						Explore >
-					</Button>
-				</div>
-
-				<hr class="max-w-[70%] max-phoneX:max-w-full">
-
-				<div class="flex flex-col gap-1">
-					<span class="text-white text-sm font-normal">Proudly Licensed by the Bank of Kuwait</span>
-					<span class="text-white text-sm font-normal">Proudly Licensed by Central Bank of Bahrain</span>
-				</div>
-			</div>
-		</div> -->
-
+		<div class="px-[7vw] py-[20vh] z-20">
+			<span class="text-white text-3xl font-normal font-[Arial]">
+				<p>Precise merchant solutions are the true face of the business. Casheer understands that.</p>
+				<p>Today, customers demand holistic approaches, greater convenience, and a personalised buying experience. 
+					These next-gen commercial instruments reinforce a business’s relationship which grows, 
+					develops mutual trust - and above all - reclaims the holistic experience for digitally-centric end users.
+				</p>
+			</span>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import logo from "@/Assets/Images/logo.png";
-import background from "@/Assets/Images/casheer image team.png";
-
-import Button from "../../Ui/Button.vue";
+import background from "@/Assets/Images/casheer image team.jpg";
+import backgroundGradient from "@/Assets/Icons/casheer about us gradient.svg";
 </script>

@@ -77,6 +77,10 @@ console.log(props);
 	--color-green1: #00FF70;
 }
 
+img {
+	content-visibility: auto;
+}
+
 p:not(:last-child) { /* Каждый эелмент кроме послеженго, есил у нас больше 1 параграфа, то будет отступ */
 	margin-bottom: 1.5625rem;
 }
