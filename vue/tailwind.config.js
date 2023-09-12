@@ -146,6 +146,7 @@ module.exports = {
 		backgroundColor: ({ theme }) => theme('colors'),
 		backgroundImage: {
 			none: 'none',
+			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
 			'gradient-to-tr': 'linear-gradient(to top right, var(--tw-gradient-stops))',
 			'gradient-to-r': 'linear-gradient(to right, var(--tw-gradient-stops))',
@@ -156,8 +157,9 @@ module.exports = {
 			'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
 			'gradient-casheer-to-b': 'linear-gradient(179deg, #1CF4FF 0%, #00FF71 25.31%, #FFF 53.96%, rgba(255, 255, 255, 0.50) 79.48%, rgba(255, 255, 255, 0.04) 100%)',
 			'gradient-casheer-title-to-b': 'linear-gradient(126deg, #7D00E2 0%, #1CF4FF 55.52%, #18FE6A 100%)',
-			'gradient-casheer-dowload-to-b': 'linear-gradient(180deg, #8800ED 0%, #8800ED 0%, #4032E6 100%)'
-
+			'gradient-casheer-dowload-to-b': 'linear-gradient(180deg, #8800ED 0%, #8800ED 0%, #4032E6 100%)',
+			'gradient-casheer-invoice-text-center': 'linear-gradient(91deg, #7D00E2 0.37%, #FFF 49.52%, #7D00E2 101.19%)',
+			'gradient-casheer-checkout-text-center': 'linear-gradient(91deg, #5066F6 0.37%, #FFF 49.52%, #5066F6 101.19%)',
 		},
 		backgroundOpacity: ({ theme }) => theme('opacity'),
 		backgroundPosition: {

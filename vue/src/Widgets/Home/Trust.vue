@@ -32,7 +32,7 @@
 				</div>
 
 				<div class="self-center">
-					<ul class="grid grid-rows-4 grid-flow-col gap-8 gap-x-40">
+					<ul class="grid grid-rows-4 grid-flow-col gap-8 gap-x-40 max-phoneX:flex max-phoneX:flex-col">
 						<li v-for="partner in partnerList" :key="partner" class="flex gap-5 items-center">
 							<img :src="partner.img" alt="" class="select-none w-20" draggable="false">
 							<span class="text-black text-xl font-normal font-[Arial] flex-[3]">{{ partner.title }}</span>

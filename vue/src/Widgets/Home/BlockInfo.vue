@@ -1,8 +1,8 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)] relative justify-center items-start">
 
-		<div class="flex py-[5vw]" :class="{ 'flex-row-reverse':isReverse }">
-			<div class="flex-[2] flex items-center" :class="{ 'justify-center text-center':!image }">
+		<div class="flex py-[5vw] max-phoneX:flex-col max-phoneX:gap-8" :class="{ 'flex-row-reverse':isReverse }">
+			<div class="flex-[2] flex items-center max-phoneX:block" :class="{ 'justify-center text-center':!image }">
 				<div class="flex flex-col gap-8 px-[7vw]">
 					<h2 class="text-8xl font-semibold text-transparent bg-clip-text bg-gradient-casheer-title-to-b font-mont">{{ title }}</h2>
 					<span class="text-xl font-normal text-white max-w-[27.3125rem] font-[Arial]" v-html="description"></span>

@@ -2,6 +2,8 @@
     <Header></Header>
 	<Planet></Planet>
 	<Take></Take>
+	<Promise></Promise>
+	<LetsTalke></LetsTalke>
 </template>
 
 <script setup lang="ts">
@@ -9,6 +11,8 @@ import { computed } from "vue";
 import Header from "../Widgets/AboutUs/Header.vue";
 import Planet from "../Widgets/AboutUs/Planet.vue";
 import Take from "../Widgets/AboutUs/Take.vue";
+import Promise from "../Widgets/AboutUs/Promise.vue";
+import LetsTalke from "../Widgets/AboutUs/LetsTalke.vue";
 /* 
 const itemList = computed(() => [
 	{

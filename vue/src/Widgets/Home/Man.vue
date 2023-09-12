@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-import backgroundMan from "@/Assets/Images/backgroundMan.png";
+import backgroundMan from "@/Assets/Images/casheer home_s6 (1).svg";
 </script>

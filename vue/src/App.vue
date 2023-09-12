@@ -33,7 +33,7 @@ interface PropsInterface {
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1, 
 	ajaxUrl: '',
-	pageName: 'about-us' // помнеять на проде на "привет-мир"
+	pageName: 'привет-мир' // помнеять на проде на "привет-мир"
 });
 
 /* 
@@ -75,10 +75,57 @@ console.log(props);
 	--color-silver1: #959595;
 	--color-violet1: #7D00E2;
 	--color-green1: #00FF70;
+	--color-blue1: #5066F6;
+	--color-arcic1: #1CF4FF;
 }
 
-img {
+/* @media (min-width: 320px) {
+    .container {
+        max-width: 320px;
+    }
+}
+@media (min-width: 375px) {
+    .container {
+        max-width: 375px;
+    }
+} */
+@media (max-width: 425px) {
+	html {
+       font-size: 10px!important;
+    }
+}
+@media (max-width: 640px) {
+    html {
+       font-size: 10px!important;
+    }
+}
+@media (max-width: 768px) {
+    html {
+       font-size: 12px!important;
+    }
+}
+@media (max-width: 1024px) {
+    html {
+       font-size: 14px!important;
+    }
+}
+@media (max-width: 1280px) {
+    html {
+       font-size: 15px!important;
+    }
+}
+@media (max-width: 1536px) {
+    html {
+       font-size: 16px!important;
+    }
+}
+
+/* img {
 	content-visibility: auto;
+} */
+
+big {
+	font-weight: bold;
 }
 
 p:not(:last-child) { /* Каждый эелмент кроме послеженго, есил у нас больше 1 параграфа, то будет отступ */
@@ -91,10 +138,12 @@ p:not(:last-child) { /* Каждый эелмент кроме послежен�
 	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 350ms;
+	height: min-content;
 }
 .v-enter-from, 
 .v-leave-to {
 	opacity: 0;
+	height: 0;
 }
 
 /* popup trasnition */
