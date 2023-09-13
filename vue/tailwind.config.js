@@ -619,6 +619,16 @@ module.exports = {
 					animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
 				},
 			},
+			top: {
+				'0%, 100%': {
+					transform: 'translateY(-3%)',
+					animationTimingFunction: 'ease-in',
+				},
+				'50%': {
+					transform: 'none',
+					animationTimingFunction: 'ease-in',
+				},
+			},
 		},
 		letterSpacing: {
 			tighter: '-0.05em',

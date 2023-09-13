@@ -17,7 +17,7 @@
 
 					<Input class="border-[0.1875rem] border-white !rounded-[6.25rem] !bg-transparent max-w-[48.125rem] py-2 pl-8 text-[var(--color-silver1)] text-xl font-[Arial]" placeholder="Your email address">
 						<template #content-after>
-							<Button class="!rounded-full h-10 w-10 p-2">
+							<Button class="!rounded-full h-10 w-10 !p-2">
 								<img :src="sendIcon" alt="" class="h-5">
 							</Button>
 						</template>
@@ -26,13 +26,23 @@
 			</div>
 
 			<div class="px-[7vw] py-[10vh] border-t-[3px] border-white w-full">
-				
+				<div>
+					<div>
+						<img :src="logo" alt="" class="w-[10rem]">
+					</div>
+					
+				</div>
+
+				<div>
+					
+				</div>
 			</div>
 		</slot>
 	</footer>
 </template>
 
 <script setup lang="ts">
+import logo from "@/Assets/casheer logo.png";
 import Button from "@/Ui/Button.vue";
 import Input from "@/Ui/Input.vue";
 import iconCollIcon from "@/Assets/Icons/icon_coll.svg";

@@ -1,10 +1,10 @@
 <template>
 	<div class="w-full min-h-screen bg-[var(--color-black1)] relative">
-		<div class="py-[5vw] px-[7vw] grid grid-cols-2 items-center max-phoneX:grid-cols-1">
+		<div class="py-[5vw] px-[7vw] grid grid-cols-2 items-center max-phoneX:flex max-phoneX:flex-col-reverse max-phoneX:gap-20">
 
-			<div class="flex justify-end">
+			<div class="flex justify-end max-phoneX:self-start">
 				<div class="flex flex-col gap-16">
-					<h2 class="text-white text-6xl font-normal leading-tight">Payments need to <br><strong>be easy.</strong></h2>
+					<h2 class="text-white text-6xl font-normal leading-tight max-phoneX:hidden">Payments need to <br><strong>be easy.</strong></h2>
 
 					<div class="flex flex-col gap-8">
 						<template v-for="item in list" :key="item">
@@ -39,6 +39,8 @@
 				<img :src="itemSelect?.style?.image" alt="" class="w-[26.875rem] h-min select-none z-10" v-if="itemSelect?.style?.image" ref="phoneImage" draggable="false">
 				<img :src="itemSelect?.style?.backgroundImage" alt="" class="absolute select-none right-0 bottom-0 animate-pulse" v-if="itemSelect?.style?.backgroundImage" ref="phoneImageBackground" draggable="false">
 			</div>
+
+			<h2 class="text-white text-6xl font-normal leading-tight hidden max-phoneX:block">Payments need to <br><strong>be easy.</strong></h2>
 		</div>
 	</div>
 </template>

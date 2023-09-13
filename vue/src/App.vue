@@ -79,42 +79,42 @@ console.log(props);
 	--color-arcic1: #1CF4FF;
 }
 
-/* @media (min-width: 320px) {
-    .container {
-        max-width: 320px;
+@media (min-width: 320px) {
+    html {
+       font-size: 9px!important;
     }
 }
-@media (min-width: 375px) {
-    .container {
-        max-width: 375px;
+@media (min-width: 390px) {
+    html {
+       font-size: 10px!important;
     }
-} */
-@media (max-width: 425px) {
+}
+@media (min-width: 425px) {
 	html {
        font-size: 10px!important;
     }
 }
-@media (max-width: 640px) {
+@media (min-width: 640px) {
     html {
        font-size: 10px!important;
     }
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     html {
        font-size: 12px!important;
     }
 }
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
     html {
        font-size: 14px!important;
     }
 }
-@media (max-width: 1280px) {
+@media (min-width: 1280px) {
     html {
        font-size: 15px!important;
     }
 }
-@media (max-width: 1536px) {
+@media (min-width: 1536px) {
     html {
        font-size: 16px!important;
     }
