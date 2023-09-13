@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-white">
-		<div class="px-[7vw] py-[32vh]">
+		<div class="px-[7vw] py-[8vw]">
 			<div class="flex flex-col gap-14">
 				<h2 class="text-black text-2xl font-bold font-mont text-center">Lets talk</h2>
 			

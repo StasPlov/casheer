@@ -2,7 +2,7 @@
 	<div class="flex flex-col bg-white relative">
 		<img :src="backgroundGradient" alt="" class="absolute left-0 top-0 select-none z-0" draggable="false">
 
-		<div class="px-[7vw] py-[52vh] pb-[20vh] z-10">
+		<div class="px-[7vw] py-[52vw] pb-[20vh] z-10">
 			<div class="flex gap-32 pb-[15vw] justify-around max-phoneX:flex-col">
 				<div class="box-graident rounded-[1.4375rem] relative h-[32rem]  max-w-[29rem] w-full">
 					<img :src="backgroundMohammed" alt="" class="absolute bottom-0 -right-16 select-none z-10 rounded-br-[1.4375rem]" draggable="false">	
