@@ -2,14 +2,18 @@
 	<div class="flex flex-col bg-white relative">
 		<img :src="backgroundGradient" alt="" class="absolute left-0 top-0 select-none z-0" draggable="false">
 
-		<div class="px-[7vw] py-[52vw] pb-[20vh] z-10">
+		<div class="px-[7vw] py-[20vw] pb-0 z-10">
 			<div class="flex gap-32 pb-[15vw] justify-around max-phoneX:flex-col">
+				<div class="hidden max-phoneX:block pb-[20vw]">
+					<h2 class="text-black text-6xl font-bold font-mont text-center leading-tight">Our promise <br> to you</h2>
+				</div>
+
 				<div class="box-graident rounded-[1.4375rem] relative h-[32rem]  max-w-[29rem] w-full">
 					<img :src="backgroundMohammed" alt="" class="absolute bottom-0 -right-16 select-none z-10 rounded-br-[1.4375rem]" draggable="false">	
 				</div>
 
 				<div class="flex flex-col gap-10">
-					<h2 class="text-black text-5xl font-bold font-mont">Our promise to you</h2>
+					<h2 class="text-black text-5xl font-bold font-mont max-phoneX:hidden">Our promise to you</h2>
 
 					<span class="text-black text-xl font-normal font-[Arial] max-w-[35.625rem]">
 						<p>“Casheer strives to share the knowledge and experience that would be held by your next best employee. Connecting with simplicity and convenience is our commitment, which is why we’re proud to offer Casheer at a value that celebrates your return on investment.”</p>
