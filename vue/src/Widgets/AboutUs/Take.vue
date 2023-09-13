@@ -21,5 +21,5 @@
 
 <script setup lang="ts">
 import backgroundGradient from "@/Assets/Icons/casheer about us gradient2.svg";
-import backgroundGif from "@/Assets/Images/a9f6a47b6412fb2c3c7d3e2530d2caf5.gif";
+import backgroundGif from "@/Assets/Images/644f2b16487d2196638996432083498e.gif";
 </script>
