@@ -1,21 +1,68 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start overflow-hidden">
 
-		<div class="px-[7vw] py-[25vh] w-full min-h-screen">
-			<div class="grid grid-cols-2">
+		<div class="px-[7vw] py-[13vw] w-full min-h-screen">
+			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
 	
-				<div class="flex flex-col gap-16">
+				<div class="flex flex-col gap-16 order-1 max-md:order-none max-md:pb-20">
+					<span class="text-white text-2xl font-normal text-[Arial]">
+						<p>Upgrade your Android device to a full-functioning <br>
+						contactless POS. Casheer Touch app accepts Visa & <br>
+						Mastercard with multiple payment options. Merchant <br>
+						infrastructure is now at your fingertips</p>
+					</span>
+
+					<ul class="flex flex-col gap-5 max-md:hidden">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:w-4 before:h-4 before:rounded-full before:bg-[var(--color-arctic1)]"
+							v-for="text in textList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-semibold">{{ text }}</span>
+						</li>
+					</ul>
+
+					<ul class="flex gap-6">
+						<li v-for="item in logoList" :key="item">
+							<img :src="item.image" alt="" class="max-h-11">
+						</li>
+					</ul>
+				</div>
+
+				<div class="flex justify-start">
+					<div class="relative top-[-3.125rem]">
+						<img :src="background01" alt="" class="w-[33.8125rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
+						<img :src="background02" alt="" class="w-[24.3125rem] absolute select-none top-[12.5rem] right-[7.5rem] z-10" draggable="false" ref="waletImage">
+						<img :src="background03" alt="" class="w-[17.875rem] absolute select-none top-0 right-0 z-10 " draggable="false" ref="waletImage">
+					</div>	
+				</div>
+
+				<div class="hidden flex-col gap-16 max-md:flex">
+					<ul class="flex flex-col gap-5">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:w-4 before:h-4 before:rounded-full before:bg-[var(--color-arctic1)]"
+							v-for="text in textList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-semibold">{{ text }}</span>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		
+		<div class="px-[7vw] py-[13vw] w-full min-h-screen">
+			<div class="grid grid-cols-2 max-md:grid-cols-1">
+	
+				<div class="flex flex-col gap-16 max-md:pb-20">
 					<div class="flex flex-col gap-0">
 						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center">Flexibility</h1>
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">and accessible e-receipts</span>
 					</div>
 					
-					<span class="text-white text-2xl font-normal text-[Arial]">
+					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden">
 						<p>Enhance the customer experience with transparent and comprehensive transaction reports. Share and process paperless e-receipts instantly via email or mobile.</p>
 					</span>
 				</div>
 
-				<div class="flex justify-start">
+				<div class="flex justify-start max-md:pb-96">
 					<div class="relative top-[-3.125rem]">
 						<img :src="background1" alt="" class="w-[35.5rem] relative select-none z-10" draggable="false" ref="waletImage">
 						<img :src="background2" alt="" class="w-[34.8125rem] absolute select-none top-0 -right-52 z-10" draggable="false" ref="waletImage">
@@ -23,10 +70,16 @@
 					</div>	
 				</div>
 
+				<div class="hidden flex-col max-md:flex">
+					<span class="text-white text-2xl font-normal text-[Arial]">
+						<p>Enhance the customer experience with transparent and comprehensive transaction reports. Share and process paperless e-receipts instantly via email or mobile.</p>
+					</span>
+				</div>
+
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vh] w-full min-h-screen">
+		<div class="px-[7vw] py-[13vw] w-full min-h-screen">
 			<div class="grid grid-cols-2">
 	
 				<div class="flex flex-col gap-16 order-1">
@@ -51,7 +104,7 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vh] flex flex-col gap-20 w-full min-h-screen">
+		<div class="px-[7vw] py-[13vw] flex flex-col gap-20 w-full min-h-screen">
 			<div class="grid grid-cols-2 gap-32">
 				<div class="flex flex-col gap-0">
 					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center">Convenience</h1>
@@ -80,6 +133,10 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
+
+import background01 from "@/Assets/Images/Group 498.svg";
+import background02 from "@/Assets/Images/casheer card (1).png";
+import background03 from "@/Assets/Images/2300zdfgh 1.png";
 
 import background1 from "@/Assets/Images/Group 501.svg";
 import background2 from "@/Assets/Images/phone.png";
@@ -114,6 +171,24 @@ const phoneImage = ref(null);
 const phoneImage2 = ref(null);
 const arrowImage = ref(null);
 const itemsListAnim = ref([]);
+
+const logoList = computed<Array<any>>(() => [
+	{
+		image: require('@/Assets/Icons/samsung pay logo.png')
+	},
+	{
+		image: require('@/Assets/Icons/samsung pay logo.png')
+	},
+	{
+		image: require('@/Assets/Icons/samsung pay logo.png')
+	},
+]);
+
+const textList = computed<Array<string>>(() => [
+	'Tap & Go - contactless credit card support.',
+	'Smart Link – email, SMS, social media.',
+	'Smart device superapp - no additional hardware.'
+]);
 
 const infoList = computed<Array<InfoBlockInterface>>(() => [
 	{

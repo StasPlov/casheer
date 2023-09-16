@@ -33,7 +33,7 @@ interface PropsInterface {
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1, 
 	ajaxUrl: '',
-	pageName: 'привет-мир' // помнеять на проде на "привет-мир"
+	pageName: 'touch-tap' // помнеять на проде на "привет-мир"
 });
 
 /* 

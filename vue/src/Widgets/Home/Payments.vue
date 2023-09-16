@@ -37,7 +37,7 @@
 
 			<div class="flex justify-center">
 				<img :src="itemSelect?.style?.image" alt="" class="w-[26.875rem] h-min select-none z-10" v-if="itemSelect?.style?.image" ref="phoneImage" draggable="false">
-				<img :src="itemSelect?.style?.backgroundImage" alt="" class="absolute select-none right-0 bottom-0 animate-pulse" v-if="itemSelect?.style?.backgroundImage" ref="phoneImageBackground" draggable="false">
+				<img :src="itemSelect?.style?.backgroundImage" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" v-if="itemSelect?.style?.backgroundImage" ref="phoneImageBackground" draggable="false">
 			</div>
 
 			<h2 class="text-white text-6xl font-normal leading-tight hidden max-phoneX:block">Payments need to <br><strong>be easy.</strong></h2>
@@ -60,8 +60,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ItemInterface from "../../Ui/Dropdown/Type/ItemInterface";
 gsap.registerPlugin(ScrollTrigger);
 
-const phoneImage = ref(null);
-const phoneImageBackground = ref(null);
+let phoneImage = ref(null);
+let phoneImageBackground = ref(null);
 
 let list = ref<Array<ItemInterface>>([]);
 let listIsInit = ref(false);
@@ -124,8 +124,6 @@ onMounted(() => {
 	if(!listIsInit.value) {
 		initList();
 	}
-
-	animatePhone();
 });
 
 function initList(active: PaymentsInterface | undefined) {
@@ -139,6 +137,8 @@ function initList(active: PaymentsInterface | undefined) {
 
 	itemSelect.value = list.value.find(i => i.isActive);
 	listIsInit.value = true;
+
+	animatePhone();
 }
 
 function setSelectItem(item: ItemInterface) {

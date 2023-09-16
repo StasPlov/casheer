@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col w-full bg-white relative justify-center items-center">
+	<div class="flex flex-col w-full bg-white relative justify-center items-center overflow-hidden">
 		<img :src="background" alt="" class="w-full" draggable="false">
 
 		<div class="absolute px-[7vw] flex flex-col z-0 items-center mt-[10.625rem]">
