@@ -5,8 +5,8 @@
 				<h1 class="text-[var(--color-black1)] text-3xl font-mont uppercase font-bold text-center">Grow our business with our products</h1>
 
 				<!-- <Carousel :items-to-show="3" :wrap-around="true" :transition="300"> -->
-					<div class="flex justify-around max-phoneX:flex-col gap-32">
-							<template v-for="item in list" :key="item">
+					<div class="flex justify-around max-md:flex-col max-md:items-center gap-32">
+						<template v-for="item in list" :key="item">
 							<div ref="itemsListAnim" class="flex flex-col gap-10 items-start our-bussines-item px-5 py-8 rounded-[1.6875rem] min-h-[27.4375rem] max-w-[23.125rem] mr-8 relative" :style="`--our-bussines-product-them-color: ${item.themColor}`">
 								<div class="flex gap-5">
 									<img :src="item.icon" alt="" draggable="false" class="select-none w-[5.3125rem] h-[5.3125rem]">
@@ -79,17 +79,13 @@ function animateItemList() {
 	gsap.utils.toArray<any>(itemsListAnim.value).forEach((element, i) => {
 		gsap.fromTo(element, {
 			opacity: 0,
-			x: '-50%',
 			y: '20%',
-			rotate: '35deg'
 		},{
 			opacity: 1,
 			autoAlpha: 1,
-			delay: i * 0.5,
+			delay: i * 0.25,
 			duration: 2,
-			x: 0,
 			y: 0,
-			rotate: 0,
 			ease: 'power4.out',
 			scrollTrigger: {
 				trigger: element,

@@ -33,7 +33,7 @@ interface PropsInterface {
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1, 
 	ajaxUrl: '',
-	pageName: 'about-us' // помнеять на проде на "привет-мир"
+	pageName: 'привет-мир' // помнеять на проде на "привет-мир"
 });
 
 /* 
@@ -76,7 +76,7 @@ console.log(props);
 	--color-violet1: #7D00E2;
 	--color-green1: #00FF70;
 	--color-blue1: #5066F6;
-	--color-arcic1: #1CF4FF;
+	--color-arctic1: #1CF4FF;
 }
 
 @media (min-width: 320px) {

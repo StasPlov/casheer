@@ -1,7 +1,11 @@
 <template>
     <Header></Header>
 	<Technology></Technology>
-	<Access></Access>
+
+	<InfoListBlock
+		:list="infoListBlock"
+	></InfoListBlock>
+
 	<Info></Info>
 
 	<LetsLaunch
@@ -17,11 +21,13 @@
 import { ref } from "vue";
 import Header from "@/Widgets/Checkout/Header.vue";
 import Technology from "@/Widgets/Checkout/Technology.vue";
-import Access from "@/Widgets/Checkout/Access.vue";
 import Info from "@/Widgets/Checkout/Info.vue";
 import LetsLaunch from "../Widgets/LetsLaunch/LetsLaunch.vue";
 import LetsLaunchItemInterface from "../Widgets/LetsLaunch/Type/LetsLaunchItemInterface";
-import OurBussinesProduct from "../Widgets/OurBussinesProduct.vue";
+import OurBussinesProduct from "../Widgets/OurBussinesProduct/OurBussinesProduct.vue";
+
+import InfoInterface from "../Widgets/InfoListBlock/Type/InfoInterface";
+import InfoListBlock from "../Widgets/InfoListBlock/InfoListBlock.vue";
 
 const launchList = ref<Array<LetsLaunchItemInterface>>([
 	{
@@ -38,6 +44,33 @@ const launchList = ref<Array<LetsLaunchItemInterface>>([
 		num: '3',
 		title: 'Grow',
 		subTitle: 'Expand and realise your complete business potential.'
+	},
+]);
+
+const infoListBlock = ref<Array<InfoInterface>>([
+	{
+		image: require('@/Assets/Icons/casheer invoice icon info.svg'),
+		description: 'Realtime reporting',
+	},
+	{
+		image: require('@/Assets/Icons/casheer invoice icon.svg'),
+		description: 'Readymade integration tools',
+	},
+	{
+		image: require('@/Assets/Icons/casheer invoice icon (1).svg'),
+		description: 'Recurring payments',
+	},
+	{
+		image: require('@/Assets/Icons/casheer invoice icon (2).svg'),
+		description: 'Mobile SDK',
+	},
+	{
+		image: require('@/Assets/Icons/casheer invoice icon (1).svg'),
+		description: 'Faster and more responsive checkout',
+	},
+	{
+		image: require('@/Assets/Icons/casheer invoice icon (2).svg'),
+		description: 'Merchant Dashboard',
 	},
 ]);
 </script>

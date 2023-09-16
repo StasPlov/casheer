@@ -1,15 +1,16 @@
 <template>
-	<div class="w-full min-h-screen bg-[var(--color-black1)] flex items-center relative">
+	<div class="w-full min-h-screen bg-[var(--color-black1)] flex items-center relative overflow-hidden">
 		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none" draggable="false">
 		
 		<div class="grid grid-cols-2 pl-[7vw] w-full max-md:grid-cols-1">
 			<div class="flex flex-col justify-center gap-28  z-0">
 				<div class="flex flex-col gap-9">
-					<h1 class="font-mont text-white text-7xl font-bold">Casheer Checkout</h1>
+					<h1 class="font-mont text-white text-7xl font-bold">Casheer Tap & Go</h1>
 
 					<div class="text-5xl max-phoneX:text-3xl">
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">
-							<p>Your complete payments hub is ready to use. <br><big>Rapid, Powerful, Intuitive.</big> <br>Process payments quickly.</p>
+							<p><font size="5">Hello contactless POS. Goodbye hardware.</font></p>
+							<p>Unlimited in-app payments & easy <br>transactions forever.</p>
 						</span>
 					</div>
 				</div>
@@ -17,16 +18,16 @@
 				<div class="flex gap-10 items-center mb-9">
 					<img :src="logo" alt="">
 
-					<Button class="border-[var(--color-blue1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
-						<span class="text-white text-base font-bold font-[Arial]">Get insights</span>
+					<Button class="border-[var(--color-arctic1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-2">
+						<span class="text-white text-base font-bold font-[Arial]">Discover how</span>
 					</Button>
 				</div>
 			</div>
 
-			<div class="flex justify-end">
-				<div class="relative h-full">
-					<img :src="backgroundDashboard" alt="" class="select-none" draggable="false" ref="waletImage">
-					<img :src="backgroundMobile" alt="" class="absolute left-[-6.875rem] top-[11.875rem] select-none jh" draggable="false" ref="waletImage2">
+			<div class="flex justify-center">
+				<div class="relative top-[-3.125rem]">
+					<img :src="backgroundMobile" alt="" class="w-[16.5rem] select-none" draggable="false" ref="waletImage">
+					<img :src="backgroundDashboard" alt="" class="absolute left-[-14.5rem] top-[23.75rem] max-w-none w-[25.625rem] select-none" draggable="false" ref="waletImage2">
 				</div>	
 			</div>
 		</div>
@@ -35,10 +36,10 @@
 </template>
 
 <script setup lang="ts">
-import background from "@/Assets/Images/uhflbtyn 1.png";
-import logo from "@/Assets/Icons/checkout.png";
-import backgroundMobile from "@/Assets/Images/checkoutreceipt.svg";
-import backgroundDashboard from "@/Assets/Images/checkoutDasboard.svg";
+import background from "@/Assets/Images/casheer touch & tap background.png";
+import logo from "@/Assets/Icons/casheer touch & tap icon.png";
+import backgroundMobile from "@/Assets/Images/casheer touch & tap graphics.png";
+import backgroundDashboard from "@/Assets/Images/casheer touch & tap graphics (1).png";
 import Button from "@/Ui/Button.vue";
 
 import gsap from "gsap";

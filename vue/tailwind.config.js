@@ -160,6 +160,7 @@ module.exports = {
 			'gradient-casheer-dowload-to-b': 'linear-gradient(180deg, #8800ED 0%, #8800ED 0%, #4032E6 100%)',
 			'gradient-casheer-invoice-text-center': 'linear-gradient(91deg, #7D00E2 0.37%, #FFF 49.52%, #7D00E2 101.19%)',
 			'gradient-casheer-checkout-text-center': 'linear-gradient(91deg, #5066F6 0.37%, #FFF 49.52%, #5066F6 101.19%)',
+			'gradient-casheer-TapAndGo-text-center': 'linear-gradient(91deg, #1CF4FF 0.37%, #FFF 49.52%, #1CF4FF 101.19%)',
 		},
 		backgroundOpacity: ({ theme }) => theme('opacity'),
 		backgroundPosition: {

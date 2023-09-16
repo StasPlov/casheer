@@ -4,7 +4,7 @@
 			<div class="flex flex-col gap-24 items-center z-10">
 				<h1 class="text-[var(--data-bg-color)] text-3xl font-mont uppercase font-bold text-center">Let’s Launch Casheer Now</h1>
 				
-				<ul class="flex flex-wrap gap-0 gap-y-8 max-phoneX:flex-col max-phoneX:items-center max-phoneX:gap-24">
+				<ul class="flex flex-wrap gap-0 gap-y-8 max-md:flex-col max-md:items-center max-md:gap-24">
 					<template v-for="(item, index) in list" :key="index">
 						<li class="flex flex-col gap-11 text-center" ref="itemsListAnim">
 							<span class="text-black text-6xl font-[Arial] font-bold">{{ item.num }}</span>
@@ -12,7 +12,7 @@
 							<span class="text-black text-xl font-normal font-[Arial] max-w-[14.625rem]" v-html="item.subTitle"></span>
 						</li>
 						<li v-if="index !== (list.length - 1)" ref="itemsListAnim">
-							<img :src="arrowIcon" alt="" class="mt-10 max-phoneX:rotate-90 max-phoneX:max-h-3" draggable="false">
+							<img :src="arrowIcon" alt="" class="mt-10 max-md:rotate-90 max-md:max-h-3" draggable="false">
 						</li>
 					</template>
 				</ul>

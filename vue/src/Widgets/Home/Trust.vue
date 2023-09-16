@@ -5,7 +5,12 @@
 			<div class="flex flex-col gap-5">
 				<h2 class="text-black text-center font-mont text-3xl font-bold">Payment Methods</h2>
 
-				<Carousel :items-to-show="10" :wrap-around="true" :transition="300">
+				<Carousel 
+					:items-to-show="countItemsToShow" 
+					:wrap-around="true" 
+					:transition="300"
+					:snapAlign="'start'"
+				>
 					<Slide v-for="icon in iconList" :key="icon">
 						<img :src="icon.img" alt="" draggable="false" class="select-none">
 					</Slide>
@@ -49,6 +54,36 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { computed, ref } from "vue";
+
+let curentRectWidth = ref(document.querySelector('html').clientWidth as number);
+
+const isMobile = computed(() => curentRectWidth.value < 425);
+const isTablet = computed(() => curentRectWidth.value < 768);
+const isTabletBig = computed(() => curentRectWidth.value < 1024);
+
+window.addEventListener('resize', () => {
+	resize();
+});
+
+const countItemsToShow = computed(() => {
+	if(isMobile.value) {
+		return 2;
+	}
+
+	if(isTablet.value) {
+		return 3;
+	}
+
+	if(isTabletBig.value) {
+		return 5;
+	}
+
+	return 9;
+});
+
+function resize() {
+	curentRectWidth.value = document.querySelector('html').clientWidth as number;
+}
 
 const iconList = computed(() => [
 	{

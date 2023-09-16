@@ -96,7 +96,7 @@ const itemList = computed<Array<PaymentsInterface>>(() => [
 		buttonText: 'Discover how',
 		url: '',
 		style: {
-			color: 'var(--color-arcic1)',
+			color: 'var(--color-arctic1)',
 			image: require('@/Assets/Images/Wallet dasboard black.png'),
 			backgroundImage: require('@/Assets/Images/casheer_desktop wallpaper-10 1.png')
 		}
