@@ -46,6 +46,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { onMounted, ref } from "vue";
 
 gsap.registerPlugin(ScrollTrigger);
+
 const waletImage = ref(null);
 const waletImage2 = ref(null);
 
