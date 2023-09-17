@@ -1,9 +1,9 @@
 <template>
-	<div class="flex flex-col w-full min-h-screen bg-[var(--color-black1)] relative justify-center items-start">
+	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
 		<img :src="background" alt="" class="absolute w-full max-phoneX:hidden animate-pulse select-none" draggable="false">
 		<img :src="backgroundMob" alt="" class="absolute w-full hidden max-phoneX:block select-none" draggable="false">
 
-		<div class="flex flex-col gap-28 px-[7vw] z-0 max-phoneX:justify-between max-phoneX:h-full max-phoneX:pt-[25vh] max-phoneX:pb-[5vh]">
+		<div class="flex flex-col gap-28 px-[7vw] py-[10vw] z-0 max-phoneX:justify-between max-phoneX:h-full max-phoneX:pt-[25vh] max-phoneX:pb-[5vh]">
 			<div class="flex flex-col gap-9">
 				<img :src="logo" alt="" class="w-[23.125rem] select-none" draggable="false">
 

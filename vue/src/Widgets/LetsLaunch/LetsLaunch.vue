@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full bg-white relative launch overflow-hidden" :style="`--data-bg-color: ${themColor ?? 'transparent'}`">
-		<div class="flex flex-col gap-28 px-[7vw] py-[15vh] z-0">
+		<div class="flex flex-col gap-28 px-[7vw] py-[5vw] z-0">
 			<div class="flex flex-col gap-24 items-center z-10">
 				<h1 class="text-[var(--data-bg-color)] text-3xl font-mont uppercase font-bold text-center">Let’s Launch Casheer Now</h1>
 				

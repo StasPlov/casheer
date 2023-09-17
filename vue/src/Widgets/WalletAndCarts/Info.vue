@@ -1,101 +1,178 @@
 <template>
-	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
-		<div class="px-[7vw] py-[25vh] pr-0 z-0 w-full">
-			<div class="grid grid-cols-2">
+	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start overflow-hidden">
+
+		<div class="px-[7vw] py-[13vw] w-full">
+			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
 	
-				<div class="flex flex-col gap-16">
+				<div class="flex flex-col gap-16  max-md:pb-20">
 					<div class="flex flex-col gap-0">
-						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-checkout-text-center">Onboarding</h1>
-						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">in real time</span>
+						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center">Designed</h1>
+						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">for rapid operations</span>
 					</div>
-					
-					<span class="text-white text-2xl font-normal text-[Arial]">
-						<p>Accept payments immediately and experience a <br>simplified launch, thanks to online orientation and <br>intuitive documentation optimised for larger online <br>stores to start-ups.</p>
-					</span>
+
+					<ul class="flex flex-col gap-5 max-md:hidden">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+							v-for="text in textList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-normal">{{ text }}</span>
+						</li>
+					</ul>
 				</div>
 
-				<div class="relative flex items-center justify-center">
-					<img :src="backgroundNotebook" alt="" class="absolute elect-none right-0" draggable="false">
+				<div class="flex justify-start">
+					<div class="relative top-[-3.125rem]">
+						<img :src="background01" alt="" class="w-[49.4375rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
+						<!-- <img :src="background02" alt="" class="w-[24.3125rem] absolute select-none top-[12.5rem] right-[7.5rem] z-10" draggable="false" ref="waletImage">
+						<img :src="background03" alt="" class="w-[17.875rem] absolute select-none top-0 right-0 z-10 " draggable="false" ref="waletImage"> -->
+					</div>	
+				</div>
+
+				<div class="hidden flex-col gap-16 max-md:flex">
+					<ul class="flex flex-col gap-5">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:w-4 before:h-4 before:rounded-full before:bg-[var(--color-green1)]"
+							v-for="text in textList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-semibold">{{ text }}</span>
+						</li>
+					</ul>
 				</div>
 
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vh] z-0 w-full flex flex-col gap-20">
-			<div class="grid grid-cols-2 gap-32">
+		<Supported></Supported>
+
+		<div class="px-[7vw] py-[13vw] flex flex-col gap-20 w-full">
+			<div class="grid grid-cols-[max-content_auto] gap-32 max-md:grid-cols-1">
 				<div class="flex flex-col gap-0">
-					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-checkout-text-center">Dashboard</h1>
-					<span class="text-white text-4xl font-normal leading-tight font-[Arial]">insights in an instant</span>
+					<h1 class="text-[5.625rem] font-mont font-bold text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center leading-none">Client-centric</h1>
+					<span class="text-white text-4xl font-normal leading-tight font-[Arial]">and accessible</span>
 				</div>
 
-				<div class="mt-10">
-					<span class="text-white text-2xl font-normal text-[Arial]">
-						<p>Track payments and transactions from any device, <br>no matter the time of day.</p>
-						<p>Explore a range of extensive merchant benefits <br>designed for the online and offline businesses of <br>tomorrow.</p>
-					</span>
+				<div class="mt-10 max-md:hidden">
+					<ul class="flex flex-col gap-5 max-md:hidden">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+							v-for="text in textClientList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-normal">{{ text }}</span>
+						</li>
+					</ul>
 				</div>
 			</div>
 
-			<div class="flex justify-center">
-				<img :src="backgroundDasboard" alt="">
+			<div class="flex">
+				<div class="relative max-md:hidden w-full mt-[-3.125rem]">
+					<img :src="background24" alt="" class="w-[65.6875rem] relative select-none z-10" draggable="false">
+					<img :src="background22" alt="" class="w-[35rem] absolute select-none top-[-18.75rem] left-[-7vw] z-10" draggable="false">
+					<img :src="background21" alt="" class="w-[35rem] absolute select-none top-[0.625rem] right-[-7vw] z-10" draggable="false">
+				</div>
+			</div>
+
+			<div class="hidden mt-10 max-md:flex">
+				<span class="text-white text-2xl font-normal text-[Arial] max-w-[29.375rem]">
+					<p>Accept digital payments, virtual and <br>physical cards through the fast and <br>intuitive Casheer Tap & Go POS. <br>Leverage any payment option <br>instantly, at any time, on any device.</p>
+				</span>
 			</div>
 		</div>
-
-		<div class="px-[7vw] py-[25vh] z-0 w-full">
-			<div class="grid grid-cols-2">
+		
+		<div class="px-[7vw] py-[13vw] w-full">
+			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
 	
-				<div class="flex flex-col gap-16">
+				<div class="flex flex-col gap-16  max-md:pb-20">
 					<div class="flex flex-col gap-0">
-						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-checkout-text-center">Experience</h1>
-						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">the fastest returns</span>
+						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center">Empowered</h1>
+						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">and ready</span>
 					</div>
-					
-					<span class="text-white text-2xl font-normal text-[Arial]">
-						<p>Instant payment processing offers <br>advantages to even the most emerging <br>business and empowers them with the <br>capital and cashflow to scale.</p>
-					</span>
+
+					<ul class="flex flex-col gap-5 max-md:hidden">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+							v-for="text in textEmpoweredList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-normal">{{ text }}</span>
+						</li>
+					</ul>
 				</div>
 
-				<div class="relative flex items-center justify-center">
-					<img :src="backgroundPhone1" alt="" class="absolute select-none left-[12.5rem]" draggable="false" ref="phoneImage2">
-					<img :src="backgroundPhone2" alt="" class="absolute select-none" draggable="false" ref="phoneImage">
-					<img :src="backgroundArrow4" alt="" class="absolute select-none animate-pulse" draggable="false" ref="arrowImage">
+				<div class="flex justify-center">
+					<div class="relative">
+						<img :src="background41" alt="" class="w-[21.875rem] relative select-none z-10" draggable="false" ref="waletImage">
+						<img :src="background42" alt="" class="w-[18.5rem] absolute select-none bottom-0 left-[11.75rem]" draggable="false" ref="waletImage">
+						<img :src="background43" alt="" class="w-[17.5rem] absolute select-none z-10 top-[13.125rem] left-[-6.875rem]" draggable="false" ref="waletImage">
+					</div>	
+				</div>
+
+				<div class="hidden flex-col gap-16 max-md:flex">
+					<ul class="flex flex-col gap-5">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+							v-for="text in textList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-semibold">{{ text }}</span>
+						</li>
+					</ul>
 				</div>
 
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vh] pt-[10vh] w-full">
-			<div class="grid grid-cols-2 grid-flow-row gap-8 gap-y-11 max-md:grid-cols-1">
-				<template v-for="item in infoList" :key="item">
-					<InfoBlock
-						:title="item.title"
-						:description="item.description"
-						:image="item.image"
-					></InfoBlock>
-				</template>
+		<div class="px-[7vw] py-[13vw] w-full">
+			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
+	
+				<div class="flex flex-col gap-16 order-1 max-md:order-none ">
+					<div class="flex flex-col gap-0">
+						<h1 class="text-4xl font-mont font-bold leading-normal text-white">Apply for your <br>Casheer Card Now</h1>
+						
+						<span class="text-white text-2xl font-normal leading-tight font-[Arial]">
+							<p>Use Casheer Cards to gain complete control over finances, bills, and receivable funds. Begin with a seamless digital onboarding and KYC process.</p>
+						</span>
+					</div>
+
+					<ul class="flex flex-col gap-5 max-md:hidden">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+							v-for="text in textEmpoweredList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-normal">{{ text }}</span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="flex justify-start max-md:order-1">
+					<div class="relative top-[-3.125rem]">
+						<img :src="background3" alt="" class="w-[49.4375rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
+					</div>	
+				</div>
+
+				<div class="hidden flex-col gap-16 max-md:flex">
+					<ul class="flex flex-col gap-5">
+						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+							v-for="text in textEmpoweredList" :key="text"
+						>
+							<span class="text-white text-2xl font-[Arial] font-semibold">{{ text }}</span>
+						</li>
+					</ul>
+				</div>
+
 			</div>
 		</div>
+
 	</div>
 </template>
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 
-import backgroundGraphics from "@/Assets/Images/InvoiceDev/graphics.svg";
-import backgroundPhone from "@/Assets/Images/InvoiceDev/casheer graphics 16.png";
-import backgroundMonitor from "@/Assets/Images/InvoiceDev/casheer graphics 18.png";
-import backgroundHend from "@/Assets/Images/InvoiceDev/casheer graphics 15.png";
-import backgroundMap from "@/Assets/Images/InvoiceDev/map.svg";
+import background01 from "@/Assets/Images/casheer wallet graphics.svg";
 
-import backgroundDasboard from "@/Assets/Images/casheer checkout dashboard.svg";
-import backgroundNotebook from "@/Assets/Images/OPTY430 1.png";
+import background41 from "@/Assets/Images/casheer wallet graphics (2).png";
+import background42 from "@/Assets/Images/casheer wallet graphics (3).png";
+import background43 from "@/Assets/Images/sign in.svg";
 
-import backgroundPhone1 from "@/Assets/Images/iphone mochup front touch and tap 1.png";
-import backgroundPhone2 from "@/Assets/Images/iphone mochup front touch and tap 2.png";
-import backgroundArrow4 from "@/Assets/Images/Group 494.svg";
+import background3 from "@/Assets/Images/casheer cards.png";
 
-import InfoBlock from "./InfoBlog/InfoBlock.vue";
-import InfoBlockInterface from "./InfoBlog/Type/InfoBlockInterface";
+import background21 from "@/Assets/Images/Rectangle 228.png";
+import background22 from "@/Assets/Images/coinview-app-h7a6g0ua6LM-unsplash 1.png";
+import background24 from "@/Assets/Images/graphics line.svg";
+
+import Supported from './Supported.vue';
 
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -107,27 +184,37 @@ const phoneImage2 = ref(null);
 const arrowImage = ref(null);
 const itemsListAnim = ref([]);
 
-const infoList = computed<Array<InfoBlockInterface>>(() => [
-	{
-		title: 'Direct integration',
-		description: 'From instant synchronisation with card networks and banks to browser-based checkout flows, we operate and serve at every level of the financial stack.',
-		image: require('@/Assets/Icons/Mask group.png')
-	},
-	{
-		title: 'Data-hardened',
-		description: 'Platform models respond to macro-insights to drive revenue streams across conversion, fraud, revenue recovery, and more.',
-		image: require('@/Assets/Icons/Mask group (3).svg')
-	},
-	{
-		title: 'Fastest-improving platform',
-		description: 'Stay ahead and secure of industry shifts, with continuous updates and optimizations.',
-		image: require('@/Assets/Icons/Mask group (4).svg')
-	},
-	{
-		title: 'Gold standard operability',
-		description: 'Our systems uphold unlimited uptime to ensure consistent scalability and compliance.',
-		image: require('@/Assets/Icons/Mask group (5).svg')
-	}
+onMounted(() => {
+	animatePhone();
+	animatePhone2();
+	animateArrow();
+	animateItemList();
+});
+
+const textList = computed<Array<string>>(() => [
+	'Join the virtual banking space using your ID and selfie-cam verification. ',
+	'Explore a world of cashback benefits and offers. ',
+	'Freeze, unfreeze, and suspend cards in an instant.',
+	'Fund your account using your existing bank card, Benefit Pay, or Fawri and Fawri+ accounts. '
+]);
+
+const textClientList = computed<Array<string>>(() => [
+	'At your service 24-7.',
+	'Connect bank accounts, execute billings, or issue transfers in one comprehensive solution that’s both transparent and secure.',
+	'Casheer grants you control through open, democratized financials in a complete and compliant solution.'
+]);
+
+const textEmpoweredList = computed<Array<string>>(() => [
+	'Register with ease and simplicity to launch your Casheer virtual card using your connected mobile device.',
+	'Your new financial superpower costs no fees or hidden charges. ',
+	'Manage your accounts with no minimum salary or balance.'
+]);
+
+const textCardList = computed<Array<string>>(() => [
+	'Digital Banking App – Virtual IBAN*',
+	'Wallet Account',
+	'Casheer MasterCard',
+	'Virtual & Physical Branded Cards'
 ]);
 
 function animatePhone() {
@@ -229,11 +316,4 @@ function animateItemList() {
 		});
 	});
 }
-
-onMounted(() => {
-	animatePhone();
-	animatePhone2();
-	animateArrow();
-	animateItemList();
-});
 </script>

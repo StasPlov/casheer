@@ -1,35 +1,45 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
-		<div class="px-[7vw] py-[25vh] pr-0 z-0 w-full">
-			<div class="grid grid-cols-2">
+
+		<div class="px-[7vw] py-[13vw] pr-0 w-full">
+			<div class="grid grid-cols-2 max-md:grid-cols-1">
 	
-				<div class="flex flex-col gap-16">
+				<div class="flex flex-col gap-16 max-md:pb-20">
 					<div class="flex flex-col gap-0">
 						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-checkout-text-center">Onboarding</h1>
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">in real time</span>
 					</div>
 					
+					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden">
+						<p>Accept payments immediately and experience a <br>simplified launch, thanks to online orientation and <br>intuitive documentation optimised for larger online <br>stores to start-ups.</p>
+					</span>
+				</div>
+
+				<div class="flex justify-end max-md:pb-96">
+					<div class="relative top-[-3.125rem]">
+						<img :src="background01" alt="" class="w-[52.6875rem] relative select-none z-10" draggable="false" ref="waletImage">
+						<img :src="background02" alt="" class="w-[16.25rem] absolute select-none top-[7.875rem] right-[7.9375rem] z-10" draggable="false" ref="waletImage">
+					</div>	
+				</div>
+
+				<div class="hidden flex-col max-md:flex">
 					<span class="text-white text-2xl font-normal text-[Arial]">
 						<p>Accept payments immediately and experience a <br>simplified launch, thanks to online orientation and <br>intuitive documentation optimised for larger online <br>stores to start-ups.</p>
 					</span>
 				</div>
 
-				<div class="relative flex items-center justify-center">
-					<img :src="backgroundNotebook" alt="" class="absolute elect-none right-0" draggable="false">
-				</div>
-
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vh] z-0 w-full flex flex-col gap-20">
-			<div class="grid grid-cols-2 gap-32">
+		<div class="px-[7vw] py-[13vw] flex flex-col gap-20 w-full">
+			<div class="grid grid-cols-2 gap-32 max-md:grid-cols-1">
 				<div class="flex flex-col gap-0">
 					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-checkout-text-center">Dashboard</h1>
 					<span class="text-white text-4xl font-normal leading-tight font-[Arial]">insights in an instant</span>
 				</div>
 
-				<div class="mt-10">
-					<span class="text-white text-2xl font-normal text-[Arial]">
+				<div class="mt-10 max-md:hidden">
+					<span class="text-white text-2xl font-normal text-[Arial] max-w-[29.375rem]">
 						<p>Track payments and transactions from any device, <br>no matter the time of day.</p>
 						<p>Explore a range of extensive merchant benefits <br>designed for the online and offline businesses of <br>tomorrow.</p>
 					</span>
@@ -37,41 +47,64 @@
 			</div>
 
 			<div class="flex justify-center">
-				<img :src="backgroundDasboard" alt="">
+				<div class="relative max-md:hidden">
+					<img :src="backgroundDasboard" alt="" class="w-[39.25rem] relative select-none z-10" draggable="false">
+				</div>
+
+				<div class="relative hidden max-md:flex">
+					<img :src="backgroundDasboard" alt="" class="w-[39.25rem] relative select-none z-10" draggable="false">
+				</div>
+			</div>
+
+			<div class="hidden mt-10 max-md:flex">
+				<span class="text-white text-2xl font-normal text-[Arial] max-w-[29.375rem]">
+					<p>Track payments and transactions from any device, <br>no matter the time of day.</p>
+					<p>Explore a range of extensive merchant benefits <br>designed for the online and offline businesses of <br>tomorrow.</p>
+				</span>
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vh] z-0 w-full">
-			<div class="grid grid-cols-2">
+		<div class="px-[7vw] py-[13vw] pr-0 w-full">
+			<div class="grid grid-cols-2 max-md:grid-cols-1">
 	
-				<div class="flex flex-col gap-16">
+				<div class="flex flex-col gap-16 max-md:pb-20">
 					<div class="flex flex-col gap-0">
 						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-checkout-text-center">Experience</h1>
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">the fastest returns</span>
 					</div>
 					
+					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden">
+						<p>Instant payment processing offers <br>advantages to even the most emerging <br>business and empowers them with the <br>capital and cashflow to scale.</p>
+					</span>
+				</div>
+
+				<div class="flex justify-center max-md:pb-10">
+					<div class="relative">
+						<img :src="backgroundPhone2" alt="" class="w-[14.1875rem] absolute select-none z-0 top-16 left-[-3.125rem]" draggable="false" ref="phoneImage2">
+						<img :src="backgroundPhone1" alt="" class="w-[19rem] select-none z-10" draggable="false" ref="phoneImage">
+						<img :src="backgroundArrow4" alt="" class="w-[35.625rem] min-w-[35.625rem] top-0 right-[-7.5rem] absolute select-none animate-pulse" draggable="false" ref="arrowImage">
+					</div>	
+				</div>
+
+				<div class="hidden flex-col max-md:flex">
 					<span class="text-white text-2xl font-normal text-[Arial]">
 						<p>Instant payment processing offers <br>advantages to even the most emerging <br>business and empowers them with the <br>capital and cashflow to scale.</p>
 					</span>
 				</div>
 
-				<div class="relative flex items-center justify-center">
-					<img :src="backgroundPhone1" alt="" class="absolute select-none left-[12.5rem]" draggable="false" ref="phoneImage2">
-					<img :src="backgroundPhone2" alt="" class="absolute select-none" draggable="false" ref="phoneImage">
-					<img :src="backgroundArrow4" alt="" class="absolute select-none animate-pulse" draggable="false" ref="arrowImage">
-				</div>
-
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vh] pt-[10vh] w-full">
+		<div class="px-[7vw] py-[25vw] pt-[10vw] w-full">
 			<div class="grid grid-cols-2 grid-flow-row gap-8 gap-y-11 max-md:grid-cols-1">
 				<template v-for="item in infoList" :key="item">
-					<InfoBlock
-						:title="item.title"
-						:description="item.description"
-						:image="item.image"
-					></InfoBlock>
+					<div ref="itemsListAnim">
+						<InfoBlock
+							:title="item.title"
+							:description="item.description"
+							:image="item.image"
+						></InfoBlock>
+					</div>
 				</template>
 			</div>
 		</div>
@@ -81,14 +114,17 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 
-import backgroundGraphics from "@/Assets/Images/InvoiceDev/graphics.svg";
+/* import backgroundGraphics from "@/Assets/Images/InvoiceDev/graphics.svg";
 import backgroundPhone from "@/Assets/Images/InvoiceDev/casheer graphics 16.png";
 import backgroundMonitor from "@/Assets/Images/InvoiceDev/casheer graphics 18.png";
 import backgroundHend from "@/Assets/Images/InvoiceDev/casheer graphics 15.png";
-import backgroundMap from "@/Assets/Images/InvoiceDev/map.svg";
+import backgroundMap from "@/Assets/Images/InvoiceDev/map.svg"; */
 
 import backgroundDasboard from "@/Assets/Images/casheer checkout dashboard.svg";
-import backgroundNotebook from "@/Assets/Images/OPTY430 1.png";
+
+import background01 from "@/Assets/Images/OPTY430 1.png";
+import background02 from "@/Assets/Images/checkout sign in.svg";
+
 
 import backgroundPhone1 from "@/Assets/Images/iphone mochup front touch and tap 1.png";
 import backgroundPhone2 from "@/Assets/Images/iphone mochup front touch and tap 2.png";
@@ -208,17 +244,13 @@ function animateItemList() {
 	gsap.utils.toArray<any>(itemsListAnim.value).forEach((element, i) => {
 		gsap.fromTo(element, {
 			opacity: 0,
-			x: '-50%',
 			y: '20%',
-			rotate: '35deg'
 		},{
 			opacity: 1,
 			autoAlpha: 1,
-			delay: i * 0.5,
+			delay: i * 0.25,
 			duration: 2,
-			x: 0,
 			y: 0,
-			rotate: 0,
 			ease: 'power4.out',
 			scrollTrigger: {
 				trigger: element,
@@ -229,6 +261,7 @@ function animateItemList() {
 		});
 	});
 }
+
 
 onMounted(() => {
 	animatePhone();

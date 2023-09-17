@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full min-h-screen bg-[var(--color-black1)] relative">
-		<div class="py-[5vw] px-[7vw] grid grid-cols-2 items-center max-phoneX:flex max-phoneX:flex-col-reverse max-phoneX:gap-20">
+		<div class="py-[5vw] px-[7vw] grid grid-cols-2 items-center max-phoneX:items-start max-phoneX:flex max-phoneX:flex-col-reverse max-phoneX:gap-20">
 
 			<div class="flex justify-end max-phoneX:self-start">
 				<div class="flex flex-col gap-16">

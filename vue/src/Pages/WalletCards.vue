@@ -1,25 +1,29 @@
 <template>
     <Header></Header>
+	<Technology></Technology>
 
 	<InfoListBlock
 		:list="infoListBlock"
 	></InfoListBlock>
 
-	<!-- <Info></Info> -->
-
+	<Info></Info>
+	
 	<LetsLaunch
 		:img="require('@/Assets/Images/casheer image 6.png')"
-		:themColor="'#5066F6'"
+		:themColor="'var(--color-green1)'"
 		:itemList="launchList"
 	></LetsLaunch>
-
+	
 	<OurBussinesProduct></OurBussinesProduct>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Header from "@/Widgets/TouchAndTap/Header.vue";
+import Header from "@/Widgets/WalletAndCarts/Header.vue";
 import LetsLaunch from "../Widgets/LetsLaunch/LetsLaunch.vue";
+import Technology from "../Widgets/WalletAndCarts/Technology.vue";
+import Info from "../Widgets/WalletAndCarts/Info.vue";
+
 import LetsLaunchItemInterface from "../Widgets/LetsLaunch/Type/LetsLaunchItemInterface";
 import OurBussinesProduct from "../Widgets/OurBussinesProduct/OurBussinesProduct.vue";
 
@@ -47,27 +51,27 @@ const launchList = ref<Array<LetsLaunchItemInterface>>([
 const infoListBlock = ref<Array<InfoInterface>>([
 	{
 		image: require('@/Assets/Icons/casheer invoice icon info.svg'),
-		description: 'Realtime reporting',
+		description: 'Make fast, compliant wallet payments for goods and services.',
 	},
 	{
 		image: require('@/Assets/Icons/casheer invoice icon.svg'),
-		description: 'Readymade integration tools',
+		description: 'Enjoy added multi-tier digital KYC verification.',
 	},
 	{
 		image: require('@/Assets/Icons/casheer invoice icon (1).svg'),
-		description: 'Recurring payments',
+		description: 'Receive PayMe credits using any payment gateway.',
 	},
 	{
 		image: require('@/Assets/Icons/casheer invoice icon (2).svg'),
-		description: 'Mobile SDK',
+		description: 'Transfer direct to local banks, or via wallet-to-wallet.',
 	},
 	{
 		image: require('@/Assets/Icons/casheer invoice icon (1).svg'),
-		description: 'Faster and more responsive checkout',
+		description: 'Use QR ‘Scan & Pay’ options for merchant transactions.',
 	},
 	{
 		image: require('@/Assets/Icons/casheer invoice icon (2).svg'),
-		description: 'Merchant Dashboard',
+		description: 'Credit your account with easy card payments.',
 	},
 ]);
 </script>

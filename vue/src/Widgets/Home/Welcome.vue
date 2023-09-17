@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full min-h-screen bg-[var(--color-black1)] rounded-[2.875rem] max-phoneX:overflow-hidden">
+	<div class="w-full bg-[var(--color-black1)] rounded-[2.875rem] max-phoneX:overflow-hidden">
 		<div class="px-[7vw] py-[7vw] max-phoneX:py-[15vw] flex flex-col max-phoneX:gap-12">
 			
 			<div class="hidden max-phoneX:flex justify-center">

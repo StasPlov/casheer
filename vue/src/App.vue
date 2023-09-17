@@ -10,7 +10,7 @@
 import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 /* Pages */
 import Home from './Pages/Home.vue';
@@ -33,13 +33,14 @@ interface PropsInterface {
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1, 
 	ajaxUrl: '',
-	pageName: 'touch-tap' // помнеять на проде на "привет-мир"
+	pageName: 'привет-мир' // помнеять на проде на "привет-мир"
 });
 
 /* 
 	тут будет определяться какой шаблон(страницу) отрисовывать
 	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
 */
+
 /* eslint-disable */
 const routes = {
 	'привет-мир': Home,
@@ -54,11 +55,20 @@ const routes = {
 	'not-found': NotFound
 }
 
-const currentPage = computed(() => {
+/* const currentPage = computed(() => {
 	return routes[props.pageName] || null;
-});
-console.log(props);
+}); */
 
+const currentPath = ref(window.location.pathname)
+
+window.addEventListener('change', () => {
+  	currentPath.value = window.location.pathname
+})
+
+const currentPage = computed(() => {
+	const n = currentPath.value.slice(1) || 'привет-мир';
+	return routes[n as never] || routes['привет-мир'];
+})
 </script>
 
 <style>

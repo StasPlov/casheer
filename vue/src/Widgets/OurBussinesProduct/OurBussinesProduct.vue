@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full bg-white relative overflow-hidden">
-		<div class="flex flex-col gap-28 px-[7vw] py-[20vh] pb-[35vh]">
+		<div class="flex flex-col gap-28 px-[7vw] py-[7vw] pb-[18vw]">
 			<div class="flex flex-col gap-24 justify-center">
 				<h1 class="text-[var(--color-black1)] text-3xl font-mont uppercase font-bold text-center">Grow our business with our products</h1>
 

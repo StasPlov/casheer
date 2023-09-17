@@ -1,7 +1,7 @@
 <template>
-    <main class="flex flex-col min-h-screen bg-white fir">
+	<main class="flex flex-col min-h-screen bg-white fir overflow-hidden">
 		<slot>main</slot>
-    </main>
+	</main>
 </template>
 
 <script setup lang="ts">
@@ -9,6 +9,6 @@
 
 <style>
 main div {
-	margin-top: -1px;
+  margin-top: -1px;
 }
 </style>

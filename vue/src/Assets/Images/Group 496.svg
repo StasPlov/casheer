@@ -1,0 +1,17 @@
+<svg width="357" height="357" viewBox="0 0 357 357" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_470_135)">
+<circle cx="178.5" cy="178.5" r="145.5" stroke="#1CF4FF" stroke-width="18"/>
+</g>
+<circle cx="173.5" cy="181.5" r="148" stroke="white" stroke-width="3" stroke-dasharray="6 6"/>
+<circle cx="140.251" cy="39.2505" r="9.5" transform="rotate(168.132 140.251 39.2505)" fill="white"/>
+<circle cx="321.251" cy="190.25" r="9.5" transform="rotate(168.132 321.251 190.25)" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M292 81V65C292 58.9249 287.075 54 281 54C274.925 54 270 58.9249 270 65V81C270 87.0751 274.925 92 281 92C287.075 92 292 87.0751 292 81ZM281 51C273.268 51 267 57.268 267 65V81C267 88.732 273.268 95 281 95C288.732 95 295 88.732 295 81V65C295 57.268 288.732 51 281 51Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M268 66.3335C263.582 66.3335 260 69.9152 260 74.3335V89.0002C260 93.4184 263.582 97.0002 268 97.0002H294.167C298.585 97.0002 302.167 93.4184 302.167 89.0002V74.3335C302.167 69.9152 298.585 66.3335 294.167 66.3335H268ZM286.066 78.6002C286.066 80.937 284.572 82.925 282.488 83.6616V87.9421C282.488 88.9301 281.687 89.731 280.699 89.731C279.711 89.731 278.91 88.9301 278.91 87.9421V83.6613C276.826 82.9244 275.333 80.9367 275.333 78.6002C275.333 75.6362 277.735 73.2335 280.699 73.2335C283.663 73.2335 286.066 75.6362 286.066 78.6002Z" fill="white"/>
+<defs>
+<filter id="filter0_f_470_135" x="0" y="0" width="357" height="357" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="12" result="effect1_foregroundBlur_470_135"/>
+</filter>
+</defs>
+</svg>

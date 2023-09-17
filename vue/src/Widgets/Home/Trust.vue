@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full bg-white relative">
-		<div class="px-[7vw] py-[15vh] flex flex-col gap-32">
+		<div class="px-[7vw] py-[9vw] flex flex-col gap-32">
 
 			<div class="flex flex-col gap-5">
 				<h2 class="text-black text-center font-mont text-3xl font-bold">Payment Methods</h2>

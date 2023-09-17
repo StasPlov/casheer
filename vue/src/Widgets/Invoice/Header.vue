@@ -1,35 +1,12 @@
 <template>
-	<!-- <div class="flex flex-col w-full min-h-screen bg-[var(--color-black1)] relative justify-center items-start">
-		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none" draggable="false">
-		<img :src="backgroundDashboadrd" alt="" class="absolute right-0 select-none" draggable="false">
-		<img :src="backgroundMobile" alt="" class="absolute right-[26%] top-[19%] select-none" draggable="false">
+	<div class="w-full bg-[var(--color-black1)] flex items-center relative overflow-hidden">
+		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-2.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain" draggable="false">
 
-		<div class="flex flex-col gap-28 px-[7vw] z-0">
-			<div class="flex flex-col gap-9">
-				<h1 class="font-mont text-white text-7xl font-bold">Casheer Invoice</h1>
+		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
 
-				<div class="max-w-[43.125rem] text-5xl max-phoneX:text-3xl">
-					<span class="text-white text-4xl font-normal leading-tight font-[Arial]">Make merchant payment information <br><big>Fast, Organised, Reliable.</big> <br>All in one place.</span>
-				</div>
-			</div>
-
-			<div class="flex gap-10 mb-9">
-				<img :src="logoInvoce" alt="">
-
-				<Button class="border-[var(--color-violet1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
-					<span class="text-white text-base font-bold font-[Arial]">Get insights</span>
-				</Button>
-			</div>
-		</div>
-	</div> -->
-
-	<div class="w-full min-h-screen bg-[var(--color-black1)] flex items-center relative overflow-hidden">
-		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none" draggable="false">
-		
-		<div class="grid grid-cols-2 pl-[7vw] w-full max-md:grid-cols-1">
-			<div class="flex flex-col justify-center gap-28  z-0">
+			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
 				<div class="flex flex-col gap-9">
-					<h1 class="font-mont text-white text-7xl font-bold">Casheer Invoicet</h1>
+					<h1 class="font-mont text-white text-7xl font-bold">Casheer Invoice</h1>
 
 					<div class="text-5xl max-phoneX:text-3xl">
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">
@@ -48,11 +25,12 @@
 			</div>
 
 			<div class="flex justify-end">
-				<div class="relative h-full">
-					<img :src="backgroundDashboard" alt="" class="w-[65.9375rem] select-none" draggable="false" ref="waletImage">
-					<img :src="backgroundMobile" alt="" class="w-[15.4375rem] absolute left-[-6.875rem] top-[11.875rem] select-none jh" draggable="false" ref="waletImage2">
+				<div class="relative">
+					<img :src="backgroundDashboard" alt="" class="w-[40rem] select-none" draggable="false" ref="waletImage">
+					<img :src="backgroundMobile" alt="" class="w-[15.4375rem] absolute left-[-0.875rem] top-[10.25rem] select-none" draggable="false" ref="waletImage2">
 				</div>	
 			</div>
+
 		</div>
 
 	</div>
