@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full bg-[var(--color-black1)] relative pb-28">
+	<div class="w-full bg-[var(--color-black1)] relative">
 		<div class="flex flex-col px-[7vw]">
 			<div class="py-9">
 				<h2 class="text-white text-center font-mont text-4xl font-bold">Supported payment methods:</h2>			

@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
 
-		<div class="px-[7vw] py-[13vw] pr-0 w-full">
+		<div class="px-[7vw] py-[13vw] pr-0 pb-0 w-full">
 			<div class="grid grid-cols-2 max-md:grid-cols-1">
 	
 				<div class="flex flex-col gap-16 max-md:pb-20">
@@ -15,10 +15,14 @@
 					</span>
 				</div>
 
-				<div class="flex justify-end max-md:pb-96">
+				<div class="flex justify-end">
 					<div class="relative top-[-3.125rem]">
-						<img :src="background01" alt="" class="w-[52.6875rem] relative select-none z-10" draggable="false" ref="waletImage">
-						<img :src="background02" alt="" class="w-[16.25rem] absolute select-none top-[7.875rem] right-[7.9375rem] z-10" draggable="false" ref="waletImage">
+						<img :src="background01" alt="" class="w-[52.6875rem] relative select-none z-0 max-md:min-w-[130%] max-md:right-[8.125rem]" draggable="false" ref="animateMonit01">
+
+						<div class="absolute w-[18.75rem] top-[5rem] right-[6.25rem] max-md:top-[5.625rem] max-md:left-0 z-0" ref="animatePhone01">
+							<img :src="background03" alt="" class="relative select-none" draggable="false" ref="waletImage">
+							<img :src="background02" alt="" class="w-[87%] absolute select-none top-7 left-5" draggable="false" ref="waletImage">
+						</div>
 					</div>	
 				</div>
 
@@ -31,7 +35,7 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[13vw] flex flex-col gap-20 w-full">
+		<div class="px-[7vw] py-[13vw] pb-0 flex flex-col gap-20 w-full">
 			<div class="grid grid-cols-2 gap-32 max-md:grid-cols-1">
 				<div class="flex flex-col gap-0">
 					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-checkout-text-center">Dashboard</h1>
@@ -64,7 +68,7 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[13vw] pr-0 w-full">
+		<div class="px-[7vw] py-[13vw] pb-0 pr-0 w-full">
 			<div class="grid grid-cols-2 max-md:grid-cols-1">
 	
 				<div class="flex flex-col gap-16 max-md:pb-20">
@@ -95,7 +99,7 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[25vw] pt-[10vw] w-full">
+		<div class="px-[7vw] py-[13vw] pt-[10vw] w-full">
 			<div class="grid grid-cols-2 grid-flow-row gap-8 gap-y-11 max-md:grid-cols-1">
 				<template v-for="item in infoList" :key="item">
 					<div ref="itemsListAnim">
@@ -124,7 +128,7 @@ import backgroundDasboard from "@/Assets/Images/casheer checkout dashboard.svg";
 
 import background01 from "@/Assets/Images/OPTY430 1.png";
 import background02 from "@/Assets/Images/checkout sign in.svg";
-
+import background03 from "@/Assets/Images/Group 492.svg";
 
 import backgroundPhone1 from "@/Assets/Images/iphone mochup front touch and tap 1.png";
 import backgroundPhone2 from "@/Assets/Images/iphone mochup front touch and tap 2.png";
@@ -262,11 +266,59 @@ function animateItemList() {
 	});
 }
 
+let animatePhone01 = ref(null);
+let animateMonit01 = ref(null);
+
+function animatePhone01_() {
+	gsap.fromTo(animatePhone01.value, {
+		opacity: 0,
+		y: '150px',
+		x: '-25px'
+	},{
+		opacity: 1,
+		autoAlpha: 1,
+		delay: 0.1,
+		duration: 4,
+		y: 0,
+		x: 0,
+		ease: 'power4.out',
+		scrollTrigger: {
+			trigger: animatePhone01.value,
+			start: 'top 100%',
+			end: 'bottom bottom',
+			toggleActions: "play none none reset",
+		},
+	});
+}
+function animateMonit01_() {
+	gsap.fromTo(animateMonit01.value, {
+		opacity: 0,
+		y: '180px',
+		x: '50px'
+	},{
+		opacity: 1,
+		autoAlpha: 1,
+		duration: 2.5,
+		y: 0,
+		x: 0,
+		ease: 'power4.out',
+		scrollTrigger: {
+			trigger: animateMonit01.value,
+			start: 'top 100%',
+			end: 'bottom bottom',
+			toggleActions: "play none none reset",
+		},
+	});
+}
+
 
 onMounted(() => {
 	animatePhone();
 	animatePhone2();
 	animateArrow();
 	animateItemList();
+	
+	animateMonit01_();
+	animatePhone01_();
 });
 </script>

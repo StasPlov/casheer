@@ -1,9 +1,10 @@
 <template>
-	<div class="w-full min-h-screen bg-[var(--color-black1)] flex items-center relative overflow-hidden max-phoneX:min-h-0">
-		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none" draggable="false">
+	<div class="w-full bg-[var(--color-black1)] flex items-center relative">
+		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-4.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain z-10" draggable="false">
 		
-		<div class="grid grid-cols-2 pl-[7vw] w-full max-md:grid-cols-1">
-			<div class="flex flex-col justify-center gap-28  z-0">
+		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
+
+			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
 				<div class="flex flex-col gap-9">
 					<h1 class="font-mont text-white text-7xl font-bold">Casheer Wallet</h1>
 
@@ -18,17 +19,18 @@
 				<div class="flex gap-10 items-center mb-9">
 					<img :src="logo" alt="">
 
-					<Button class="border-[var(--color-green1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-2">
+					<Button class="border-[var(--color-green1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
 						<span class="text-white text-base font-bold font-[Arial]">Open yours</span>
 					</Button>
 				</div>
 			</div>
 
-			<div class="flex justify-center">
-				<div class="relative">
+			<div class="flex justify-center z-10">
+				<div class="relative h-full">
 					<img :src="backgroundMobile" alt="" class="w-[28.25rem] select-none" draggable="false" ref="animElement">
-				</div>	
+				</div>
 			</div>
+			
 		</div>
 
 	</div>

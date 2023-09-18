@@ -1,6 +1,9 @@
 <template>
-    <span class="text-2xl text-black/50">This is news single page</span>
+    <Header></Header>
+    <Content></Content>
 </template>
 
 <script setup lang="ts">
+import Header from "../Widgets/NewsPost/Header.vue";
+import Content from "../Widgets/NewsPost/Content.vue";
 </script>

@@ -94,29 +94,6 @@ function animateItemList() {
 	});
 }
 
-
-/* gsap.fromTo(
-	imageAnim.value,
-	{
-		opacity: 0,
-		autoAlpha: 0,
-		y: '200px',
-	},
-	{
-		opacity: 1,
-		autoAlpha: 1,
-		duration: 3,
-		y: '0px',
-		ease: 'power4.out',
-		scrollTrigger: {
-			trigger: imageAnim.value,
-			start: 'top 100%',
-			end: 'bottom bottom',
-			toggleActions: "play none none reset",
-		},
-	}
-); */
-
 onMounted(() => {
 	animateImage();
 	animateItemList();

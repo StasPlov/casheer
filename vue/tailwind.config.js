@@ -155,7 +155,7 @@ module.exports = {
 			'gradient-to-bl': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
 			'gradient-to-l': 'linear-gradient(to left, var(--tw-gradient-stops))',
 			'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
-			'gradient-casheer-to-b': 'linear-gradient(179deg, #1CF4FF 0%, #00FF71 25.31%, #FFF 53.96%, rgba(255, 255, 255, 0.50) 79.48%, rgba(255, 255, 255, 0.04) 100%)',
+			'gradient-casheer-to-b': 'linear-gradient(165deg, #7d00e200 10.24%, #7D00E2 21.24%, #5066F6 33.54%, #1CF4FF 55.78%, #18FE6A 68.07%, #FFF 81.29%, #7d00e200 99.24%)',
 			'gradient-casheer-title-to-b': 'linear-gradient(126deg, #7D00E2 0%, #1CF4FF 55.52%, #18FE6A 100%)',
 			'gradient-casheer-dowload-to-b': 'linear-gradient(180deg, #8800ED 0%, #8800ED 0%, #4032E6 100%)',
 			'gradient-casheer-invoice-text-center': 'linear-gradient(91deg, #7D00E2 0.37%, #FFF 49.52%, #7D00E2 101.19%)',

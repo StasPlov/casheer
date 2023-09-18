@@ -1,9 +1,10 @@
 <template>
-	<div class="w-full min-h-screen bg-[var(--color-black1)] flex items-center relative overflow-hidden">
-		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none" draggable="false">
+	<div class="w-full bg-[var(--color-black1)] flex items-center relative">
+		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-16.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain z-10" draggable="false">
 		
-		<div class="grid grid-cols-2 pl-[7vw] w-full max-md:grid-cols-1">
-			<div class="flex flex-col justify-center gap-28  z-0">
+		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
+			
+			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
 				<div class="flex flex-col gap-9">
 					<h1 class="font-mont text-white text-7xl font-bold">Casheer Tap & Go</h1>
 
@@ -24,8 +25,8 @@
 				</div>
 			</div>
 
-			<div class="flex justify-center">
-				<div class="relative top-[-3.125rem]">
+			<div class="flex justify-center z-10">
+				<div class="relative top-[-3.125rem] max-md:right-[-4.375rem]">
 					<img :src="backgroundMobile" alt="" class="w-[16.5rem] select-none" draggable="false" ref="waletImage">
 					<img :src="backgroundDashboard" alt="" class="absolute left-[-14.5rem] top-[23.75rem] max-w-none w-[25.625rem] select-none" draggable="false" ref="waletImage2">
 				</div>	

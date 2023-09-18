@@ -9,7 +9,7 @@
 				</h2>
 
 				<ul class="grid grid-cols-[repeat(2,_auto)] justify-around gap-14 gap-x-32 max-md:grid-cols-[repeat(1,_auto)]">
-					<li v-for="item in list" :key="item" class="flex gap-11 items-center">
+					<li v-for="item in list" :key="item" ref="itemsListAnim" class="flex gap-11 items-center">
 						<img :src="item.image" alt="" class="w-12">
 						<span class="text-white text-3xl font-normal font-[Arial] max-w-[23.75rem]" v-html="item.description"></span>
 					</li>
@@ -20,14 +20,45 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
 import InfoInterface from "./Type/InfoInterface";
+
+import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps<{
 	list: Array<InfoInterface>
 }>();
 
 const list = computed<typeof props.list>(() => props.list);
+const itemsListAnim = ref([]);
+
+function animateItemList() {
+	gsap.utils.toArray<any>(itemsListAnim.value).forEach((element, i) => {
+		gsap.fromTo(element, {
+			opacity: 0,
+			x: '-50%',
+		},{
+			opacity: 1,
+			autoAlpha: 1,
+			delay: i * 0.25,
+			duration: 2,
+			x: '0',
+			ease: 'power4.out',
+			scrollTrigger: {
+				trigger: element,
+				start: 'top 100%',
+				end: 'bottom bottom',
+				toggleActions: "play none none reset",
+			},
+		});
+	});
+}
+
+onMounted(() => {
+	animateItemList();
+});
 </script>
 
 <style scoped>

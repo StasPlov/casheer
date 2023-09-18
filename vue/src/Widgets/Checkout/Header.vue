@@ -25,9 +25,14 @@
 			</div>
 
 			<div class="flex justify-end">
-				<div class="relative h-full">
+				<div class="relative h-full max-md:hidden">
 					<img :src="backgroundDashboard" alt="" class="select-none" draggable="false" ref="waletImage">
-					<img :src="backgroundMobile" alt="" class="absolute left-[-6.875rem] top-[11.875rem] select-none jh max-md:hidden" draggable="false" ref="waletImage2">
+					<img :src="backgroundMobile" alt="" class="absolute left-[-6.875rem] top-[11.875rem] select-none" draggable="false" ref="waletImage2">
+				</div>
+
+				<div class="relative h-full hidden max-md:block">
+					<img :src="backgroundDashboardMod" alt="" class="relative select-none" draggable="false" ref="waletImage">
+					<img :src="backgroundMobileMod" alt="" class="w-[11.625rem] absolute left-[19.5rem] top-[11.875rem] select-none" draggable="false">
 				</div>	
 			</div>
 			
@@ -42,6 +47,9 @@ import logo from "@/Assets/Icons/checkout.png";
 import backgroundMobile from "@/Assets/Images/checkoutreceipt.svg";
 import backgroundDashboard from "@/Assets/Images/checkoutDasboard.svg";
 import Button from "@/Ui/Button.vue";
+
+import backgroundDashboardMod from "@/Assets/Images/casheer checkout graphics (2).png";
+import backgroundMobileMod from "@/Assets/Images/casheer checkout graphics (3).png";
 
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

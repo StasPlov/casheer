@@ -36,8 +36,8 @@
 			
 
 			<div class="flex justify-center">
-				<img :src="itemSelect?.style?.image" alt="" class="w-[26.875rem] h-min select-none z-10" v-if="itemSelect?.style?.image" ref="phoneImage" draggable="false">
-				<img :src="itemSelect?.style?.backgroundImage" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" v-if="itemSelect?.style?.backgroundImage" ref="phoneImageBackground" draggable="false">
+				<img v-if="imageSelect" :src="imageSelect" alt="" class="w-[26.875rem] h-min select-none z-10" ref="phoneImage" draggable="false">
+				<img v-if="imageBgSelecet" :src="imageBgSelecet" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" ref="phoneImageBackground" draggable="false">
 			</div>
 
 			<h2 class="text-white text-6xl font-normal leading-tight hidden max-phoneX:block">Payments need to <br><strong>be easy.</strong></h2>
@@ -66,6 +66,9 @@ let phoneImageBackground = ref(null);
 let list = ref<Array<ItemInterface>>([]);
 let listIsInit = ref(false);
 let itemSelect = ref<ItemInterface>(null);
+
+let imageSelect = ref(null);
+let imageBgSelecet = ref(null);
 
 const itemList = computed<Array<PaymentsInterface>>(() => [
 	{
@@ -120,10 +123,18 @@ watch(itemList.value, () => {
 	}
 });
 
+/* watch(itemSelect.value, () => {
+	imageSelect.value = itemSelect.value?.item?.style?.image;
+	imageBgSelecet.value = itemSelect.value?.item?.style?.backgroundImage;
+}); */
+
 onMounted(() => {
 	if(!listIsInit.value) {
 		initList();
 	}
+
+	phoneImage = ref(null);
+	phoneImageBackground = ref(null);
 });
 
 function initList(active: PaymentsInterface | undefined) {
@@ -138,6 +149,9 @@ function initList(active: PaymentsInterface | undefined) {
 	itemSelect.value = list.value.find(i => i.isActive);
 	listIsInit.value = true;
 
+	imageSelect.value = itemSelect.value.item?.style?.image;
+	imageBgSelecet.value = itemSelect.value.item?.style?.backgroundImage;
+
 	animatePhone();
 }
 
@@ -147,6 +161,9 @@ function setSelectItem(item: ItemInterface) {
 	list.value.forEach(i => {
 		if(i === item) {
 			itemSelect.value = i.item;
+			imageSelect.value = i.item?.style?.image;
+			imageBgSelecet.value = i.item?.style?.backgroundImage;
+
 			i.isActive = true;
 			return;
 		}

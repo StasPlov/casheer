@@ -5,7 +5,7 @@
 				<h1 class="text-[var(--color-black1)] text-3xl font-mont uppercase font-bold text-center">Grow our business with our products</h1>
 
 				<!-- <Carousel :items-to-show="3" :wrap-around="true" :transition="300"> -->
-					<div class="flex justify-around max-md:flex-col max-md:items-center gap-32">
+					<div class="flex justify-around max-md:flex-col max-md:items-center gap-4">
 						<template v-for="item in list" :key="item">
 							<div ref="itemsListAnim" class="flex flex-col gap-10 items-start our-bussines-item px-5 py-8 rounded-[1.6875rem] min-h-[27.4375rem] max-w-[23.125rem] mr-8 relative" :style="`--our-bussines-product-them-color: ${item.themColor}`">
 								<div class="flex gap-5">

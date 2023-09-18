@@ -25,9 +25,14 @@
 			</div>
 
 			<div class="flex justify-end">
-				<div class="relative">
+				<div class="relative max-md:hidden">
 					<img :src="backgroundDashboard" alt="" class="w-[40rem] select-none" draggable="false" ref="waletImage">
 					<img :src="backgroundMobile" alt="" class="w-[15.4375rem] absolute left-[-0.875rem] top-[10.25rem] select-none" draggable="false" ref="waletImage2">
+				</div>
+
+				<div class="relative hidden max-md:block max-md:max-h-[41.5rem]">
+					<img :src="backgroundDashboardMob" alt="" class="w-[40rem] select-none max-md:mt-[-9.25rem] max-md:ml-[-7vw] max-md:min-w-[130%]" draggable="false" ref="waletImage">
+					<img :src="backgroundMobile" alt="" class="w-[15.4375rem] absolute left-[20.125rem] top-[16.25rem] select-none" draggable="false" ref="waletImage2">
 				</div>	
 			</div>
 
@@ -39,8 +44,11 @@
 <script setup lang="ts">
 import background from "@/Assets/Images/casheer invoice background.png";
 import logo from "@/Assets/Images/casheer invoice icon.png";
+
 import backgroundMobile from "@/Assets/Images/casheer graphics 9.png";
 import backgroundDashboard from "@/Assets/Images/dashboard 1.png";
+import backgroundDashboardMob from "@/Assets/Images/casheer invoice graphics dash mob.jpg";
+
 import Button from "@/Ui/Button.vue";
 
 import gsap from "gsap";

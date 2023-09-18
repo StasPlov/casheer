@@ -30,8 +30,8 @@
 				<div class="flex justify-start">
 					<div class="relative top-[-3.125rem]">
 						<img :src="background01" alt="" class="w-[33.8125rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
-						<img :src="background02" alt="" class="w-[24.3125rem] absolute select-none top-[12.5rem] right-[7.5rem] z-10" draggable="false" ref="waletImage">
-						<img :src="background03" alt="" class="w-[17.875rem] absolute select-none top-0 right-0 z-10 " draggable="false" ref="waletImage">
+						<img :src="background02" alt="" class="w-[24.3125rem] absolute select-none top-[12.5rem] right-[7.5rem] z-10" draggable="false" ref="animatePhone1">
+						<img :src="background03" alt="" class="w-[17.875rem] absolute select-none top-0 right-0 z-10 " draggable="false" ref="animateMonit1">
 					</div>	
 				</div>
 
@@ -180,6 +180,8 @@ const phoneImage = ref(null);
 const phoneImage2 = ref(null);
 const arrowImage = ref(null);
 const itemsListAnim = ref([]);
+let animatePhone1 = ref(null);
+let animateMonit1 = ref(null);
 
 const logoList = computed<Array<any>>(() => [
 	{
@@ -322,10 +324,55 @@ function animateItemList() {
 	});
 }
 
+
+
+
+function animatePhone01_() {
+	gsap.fromTo(animatePhone1.value, {
+		opacity: 0,
+		x: '-25px'
+	},{
+		opacity: 1,
+		autoAlpha: 1,
+		delay: 0.1,
+		duration: 4,
+		x: 0,
+		ease: 'power4.out',
+		scrollTrigger: {
+			trigger: animatePhone1.value,
+			start: 'top 100%',
+			end: 'bottom bottom',
+			toggleActions: "play none none reset",
+		},
+	});
+}
+function animateMonit01_() {
+	gsap.fromTo(animateMonit1.value, {
+		opacity: 0,
+		y: '180px',
+	},{
+		opacity: 1,
+		autoAlpha: 1,
+		duration: 2.5,
+		y: 0,
+		ease: 'power4.out',
+		scrollTrigger: {
+			trigger: animateMonit1.value,
+			start: 'top 100%',
+			end: 'bottom bottom',
+			toggleActions: "play none none reset",
+		},
+	});
+}
+
+
 onMounted(() => {
 	animatePhone();
 	animatePhone2();
 	animateArrow();
 	animateItemList();
+
+	animateMonit01_();
+	animatePhone01_();
 });
 </script>
