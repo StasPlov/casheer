@@ -6,7 +6,7 @@
 		:list="infoListBlock"
 	></InfoListBlock>
 	
-	<Developed></Developed>
+	<Info></Info>
 
 	<LetsLaunch
 		:img="require('@/Assets/Images/casheer image 6.png')"
@@ -18,16 +18,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 import Header from "@/Widgets/Invoice/Header.vue";
 import Technology from "@/Widgets/Invoice/Technology.vue";
-import Developed from "@/Widgets/Invoice/Developed.vue";
+import Info from "@/Widgets/Invoice/Info.vue";
 
 import LetsLaunch from "../Widgets/LetsLaunch/LetsLaunch.vue";
 import LetsLaunchItemInterface from "../Widgets/LetsLaunch/Type/LetsLaunchItemInterface";
 import OurBussinesProduct from "../Widgets/OurBussinesProduct/OurBussinesProduct.vue";
 import InfoInterface from "../Widgets/InfoListBlock/Type/InfoInterface";
 import InfoListBlock from "../Widgets/InfoListBlock/InfoListBlock.vue";
+
+import { useStore } from "vuex";
+import { RootStateInterface } from "../Store";
+import StateInterface from "../Store/Modules/PageInfo/StateInterface";
+import PageDataStateInterface from "../Store/Modules/PageData/StateInterface";
+import InfoEntityInterface from "../Widgets/Home/Entity/InfoInterface";
+import ImageInterface from "../Entity/ImageInterface";
+
+const store = useStore<RootStateInterface>();
+const pageInfo = computed<StateInterface>(() => store.state.pageInfo);
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const data = computed(() => pageData.value.data?.info_list_block);
+
+const image = computed<ImageInterface>(() => data.value?.image);
+
+const infoListBlock = computed<Array<InfoInterface>>(() => data.value?.items);
+
+let isInitData = ref(false);
+
+watch(pageInfo.value, () => {
+	if(!isInitData.value) {
+		store.dispatch('pageData/getPageData', {
+			// eslint-disable-next-line
+			'action': 'getData',
+			'page-name': pageInfo.value.pageName,
+			'page-id': pageInfo.value.pageId
+		});
+
+		isInitData.value = true;
+	}
+});
 
 const launchList = ref<Array<LetsLaunchItemInterface>>([
 	{
@@ -44,25 +75,6 @@ const launchList = ref<Array<LetsLaunchItemInterface>>([
 		num: '3',
 		title: 'Grow',
 		subTitle: 'Expand and realise your complete business potential.'
-	},
-]);
-
-const infoListBlock = ref<Array<InfoInterface>>([
-	{
-		image: require('@/Assets/Icons/casheer invoice icon info.svg'),
-		description: 'Access your personalised <br>dashboard featuring real-time analytics and tracking orders.',
-	},
-	{
-		image: require('@/Assets/Icons/casheer invoice icon.svg'),
-		description: 'Share secure payment links with customers using WhatsApp and other major social platforms.',
-	},
-	{
-		image: require('@/Assets/Icons/casheer invoice icon (1).svg'),
-		description: 'Create, distribute, and issue payment links to customers in any language.',
-	},
-	{
-		image: require('@/Assets/Icons/casheer invoice icon (2).svg'),
-		description: 'Provide payment support with offline modes using POS terminals.',
 	},
 ]);
 </script>

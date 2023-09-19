@@ -21,8 +21,6 @@ import { useStore } from "vuex";
 
 const store = useStore<RootStateInterface>();
 const pageInfo = computed<StateInterface>(() => store.state.pageInfo);
-const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
-const itemList = computed<Array<InfoInterface>>(() => pageData.value.data?.info);
 
 let isInitData = ref(false);
 
