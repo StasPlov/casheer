@@ -1,5 +1,4 @@
 import Store from "@/Store";
-import StateInterface from "@/Store/Modules/Authorization/StateInterface";
 import axios, { AxiosRequestConfig, Method, RawAxiosRequestHeaders } from "axios";
 import { ResponseDataInterface } from "./ResponseDataInterface";
 
@@ -7,18 +6,21 @@ class Utils {
 	async fetchData<T = any>(
 		method: Method = 'GET',
 		state: string|null = 'get', 
-		target: string, 
+		target: string|null = null, 
 		payload: object = {},
 		url: string = process.env.VUE_APP_BACKEND_URL_API,
 		authHeaderToken: any|object|null = null
 	): Promise<ResponseDataInterface<T>> {
-		const _url: string = `${url}${state ? `/${state}` : '' }/${target}`;
+		let _url: string = `${url}${state ? `/${state}` : '' }/${target}`;
+		if(target == null) {
+			_url = url;
+		}
 		const _headers: Partial<RawAxiosRequestHeaders> = Object.assign({}, axios.defaults.headers.common); /// copy object without link to object
 
-		const authData = (Store.state.authorization as StateInterface);
-		const isLoggedIn = !!authData.token;
+		/* const authData = (Store.state.authorization as StateInterface);
+		const isLoggedIn = !!authData.token; */
 
-		if(isLoggedIn) {
+		/* if(isLoggedIn) {
 			if(authHeaderToken !== null) {
 				for (const key in authHeaderToken) {
 					if (Object.prototype.hasOwnProperty.call(authHeaderToken, key)) {
@@ -30,7 +32,7 @@ class Utils {
 			} else {
 				_headers.Authorization = `Bearer ${authData.token}`; // jwt token init request
 			}
-		}
+		} */
 
 		const setup: AxiosRequestConfig = {
 			method: method,

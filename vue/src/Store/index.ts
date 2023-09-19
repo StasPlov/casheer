@@ -1,18 +1,15 @@
 import { Store } from "vuex";
-import geo from "@/Store/Modules/Geo/index";
-import module from "@/Store/Modules/Module/index";
-import authorization from "@/Store/Modules/Authorization/index";
+import pageInfo from "@/Store/Modules/PageInfo/index";
+import pageData from "@/Store/Modules/PageData/index";
 
 export interface RootStateInterface {
-	geo: typeof import("./Modules/Geo/StateInterface");
-	module: typeof import("@/Store/Modules/Module/StateInterface");
-	authorization: typeof import("@/Store/Modules/Authorization/StateInterface");
+	pageInfo: typeof import("@/Store/Modules/PageInfo/StateInterface");
+	pageData: typeof import("@/Store/Modules/PageData/StateInterface");
 }
 
 export default new Store<RootStateInterface>({
 	modules: {
-		geo,
-		module,
-		authorization,
+		pageInfo,
+		pageData
 	}
 });

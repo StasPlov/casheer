@@ -4,12 +4,12 @@
 
 			<div class="flex justify-end max-phoneX:self-start">
 				<div class="flex flex-col gap-16">
-					<h2 class="text-white text-6xl font-normal leading-tight max-phoneX:hidden">Payments need to <br><strong>be easy.</strong></h2>
+					<h2 class="text-white text-6xl font-normal leading-tight max-phoneX:hidden" v-html="title"></h2>
 
-					<div class="flex flex-col gap-8">
+					<div class="flex flex-col gap-8 z-10" v-if="list.length">
 						<template v-for="item in list" :key="item">
 							<Dropdown class="gap-8 z-10"
-								:style="`--dropdown-color: ${item.item?.style?.color}`" 
+								:style="`--dropdown-color: ${item.item?.color}`" 
 								:classIsOpen="`!text-[var(--dropdown-color)] !font-bold`" 
 								:item="item"
 								@selectItem="setSelectItem"
@@ -22,10 +22,10 @@
 									<div class="flex flex-col gap-4 max-w-[16.875rem]">
 										<span class="text-white text-lg font-normal block select-none" v-html="item.item.description"></span>
 										
-										<div class="flex gap-2 self-end items-center" v-if="item.item.buttonText">
-											<span class="text-white text-[Arial] text-xl font-normal leading-none">{{ item.item.buttonText }}</span>
+										<a :href="item.item.button.link" v-if="item.item.button.is_active" class="flex gap-2 self-end items-center">
+											<span class="text-white text-[Arial] text-xl font-normal leading-none">{{ item.item.button.text }}</span>
 											<Button class="bg-transparent !p-0">></Button>
-										</div>
+										</a>
 									</div>
 								</template>
 							</Dropdown>
@@ -34,23 +34,22 @@
 				</div>
 			</div>
 			
-
 			<div class="flex justify-center">
-				<img v-if="imageSelect" :src="imageSelect" alt="" class="w-[26.875rem] h-min select-none z-10" ref="phoneImage" draggable="false">
-				<img v-if="imageBgSelecet" :src="imageBgSelecet" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" ref="phoneImageBackground" draggable="false">
+				<img v-if="imageSelect" :src="imageSelect.url" alt="" class="w-[26.875rem] h-min select-none z-10" ref="phoneImage" draggable="false">
+				<img v-if="imageBgSelecet" :src="imageBgSelecet.url" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" ref="phoneImageBackground" draggable="false">
 			</div>
 
-			<h2 class="text-white text-6xl font-normal leading-tight hidden max-phoneX:block">Payments need to <br><strong>be easy.</strong></h2>
+			<h2 class="text-white text-6xl font-normal leading-tight hidden max-phoneX:block" v-html="title"></h2>
 		</div>
 	</div>
 </template>
 
 
 <script setup lang="ts">
-import backgroundWallet from "@/Assets/Images/casheer_phone_wallet.png";
+/* import backgroundWallet from "@/Assets/Images/casheer_phone_wallet.png";
 import background from "@/Assets/Images/casheer_s1_background.png";
 import backgroundMob from "@/Assets/Images/casheer_background_mobile.png";
-import ButtonImage from "@/Assets/Icons/ButtonImage.svg";
+import ButtonImage from "@/Assets/Icons/ButtonImage.svg"; */
 import Dropdown from "@/Ui/Dropdown/Dropdown.vue";
 import Button from "@/Ui/Button.vue";
 import PaymentsInterface from "./Entity/PaymentsInterface";
@@ -58,6 +57,10 @@ import { computed, onMounted, ref, watch } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ItemInterface from "../../Ui/Dropdown/Type/ItemInterface";
+import { useStore } from "vuex";
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
+
 gsap.registerPlugin(ScrollTrigger);
 
 let phoneImage = ref(null);
@@ -70,72 +73,26 @@ let itemSelect = ref<ItemInterface>(null);
 let imageSelect = ref(null);
 let imageBgSelecet = ref(null);
 
-const itemList = computed<Array<PaymentsInterface>>(() => [
-	{
-		title: 'Casheer Invoice',
-		description: 'Unlock a world of valuable insights to give your business every advantage it needs.',
-		buttonText: 'Get insights',
-		url: '',
-		style: {
-			color: 'var(--color-violet1)',
-			image: require('@/Assets/Images/Wallet dasboard black vilet.png'),
-			backgroundImage: require('@/Assets/Images/Rectangle.png')
-		}
-	},
-	{
-		title: 'Casheer Checkout',
-		description: 'Maximise your ROI with the payment hub providing vital customer insights.',
-		buttonText: 'Explore now',
-		url: '',
-		style: {
-			color: 'var(--color-blue1)',
-			image: require('@/Assets/Images/Wallet dasboard black bleu.png'),
-			backgroundImage: require('@/Assets/Images/Rectangle (2).png')
-		}
-	},
-	{
-		title: 'Casheer Tap & Go',
-		description: 'Streamline your point of sale and increase customer engagement with peace-of-mind.',
-		buttonText: 'Discover how',
-		url: '',
-		style: {
-			color: 'var(--color-arctic1)',
-			image: require('@/Assets/Images/Wallet dasboard black.png'),
-			backgroundImage: require('@/Assets/Images/casheer_desktop wallpaper-10 1.png')
-		}
-	},
-	{
-		title: 'Casheer Wallet',
-		description: 'Manage your Casheer Cards and financials, accept payments, and transfer funds with ease.',
-		buttonText: 'Open yours',
-		url: '',
-		style: {
-			color: 'var(--color-green1)',
-			image: require('@/Assets/Images/casheer_phone_wallet.png'),
-			backgroundImage: require('@/Assets/Images/casher background wallet (1).png')
-		}
-	}]
-);
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const title = computed<string>(() => pageData.value.data?.payments_title);
+const itemList = computed<Array<PaymentsInterface>>(() => pageData.value.data?.payments);
 
-watch(itemList.value, () => {
+watch(pageData.value, () => {
 	if(!listIsInit.value) {
 		initList();
+		listIsInit.value = true;
 	}
 });
 
-/* watch(itemSelect.value, () => {
-	imageSelect.value = itemSelect.value?.item?.style?.image;
-	imageBgSelecet.value = itemSelect.value?.item?.style?.backgroundImage;
-}); */
-
-onMounted(() => {
+/* onMounted(() => {
 	if(!listIsInit.value) {
 		initList();
 	}
 
 	phoneImage = ref(null);
 	phoneImageBackground = ref(null);
-});
+}); */
 
 function initList(active: PaymentsInterface | undefined) {
 	list.value = itemList.value.map((element, i) => {
@@ -147,10 +104,9 @@ function initList(active: PaymentsInterface | undefined) {
 	});
 
 	itemSelect.value = list.value.find(i => i.isActive);
-	listIsInit.value = true;
 
-	imageSelect.value = itemSelect.value.item?.style?.image;
-	imageBgSelecet.value = itemSelect.value.item?.style?.backgroundImage;
+	imageSelect.value = itemSelect.value.item?.image;
+	imageBgSelecet.value = itemSelect.value.item?.background;
 
 	animatePhone();
 }
@@ -158,11 +114,12 @@ function initList(active: PaymentsInterface | undefined) {
 function setSelectItem(item: ItemInterface) {
 	animatePhone();
 	animatePhoneBg();
+
 	list.value.forEach(i => {
 		if(i === item) {
 			itemSelect.value = i.item;
-			imageSelect.value = i.item?.style?.image;
-			imageBgSelecet.value = i.item?.style?.backgroundImage;
+			imageSelect.value = i.item?.image;
+			imageBgSelecet.value = i.item?.background;
 
 			i.isActive = true;
 			return;
@@ -186,18 +143,6 @@ function animatePhone() {
 			y: 0,
 			duration: 3,
 			ease: 'power4.out'
-			/* opacity: 1,
-			autoAlpha: 1,
-			delay: 0.5,
-			duration: 3,
-			scale: 1,
-			ease: 'power4.out',
-			scrollTrigger: {
-				trigger: phoneImage.value,
-				start: 'top 50%',
-				end: 'bottom bottom',
-				toggleActions: "play none none reset",
-			}, */
 		}
 	);
 }

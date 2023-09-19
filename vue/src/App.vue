@@ -10,7 +10,9 @@
 import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { useStore } from 'vuex'
+import { RootStateInterface } from './Store/index';
 
 /* Pages */
 import Home from './Pages/Home.vue';
@@ -23,6 +25,8 @@ import News from './Pages/News.vue';
 import NewsSingle from './Pages/NewsSingle.vue';
 import PricingOnboarding from './Pages/PricingOnboarding.vue';
 import NotFound from './Pages/404.vue';
+
+const store = useStore<RootStateInterface>();
 
 interface PropsInterface {
 	pageId?: number,
@@ -55,11 +59,20 @@ const routes = {
 	'not-found': NotFound
 }
 
-/* const currentPage = computed(() => {
+const currentPage = computed(() => {
 	return routes[props.pageName] || null;
-}); */
+});
 
-const currentPath = ref(window.location.pathname)
+onMounted(() => {
+	store.commit('pageInfo/setPageName', props.pageName);
+	store.commit('pageInfo/setAjaxUrl', props.ajaxUrl);
+	store.commit('pageInfo/setPageId', props.pageId);
+});
+
+console.log(props);
+
+
+/* const currentPath = ref(window.location.pathname)
 
 window.addEventListener('change', () => {
   	currentPath.value = window.location.pathname
@@ -68,7 +81,7 @@ window.addEventListener('change', () => {
 const currentPage = computed(() => {
 	const n = currentPath.value.slice(1) || 'привет-мир';
 	return routes[n as never] || routes['привет-мир'];
-})
+}) */
 </script>
 
 <style>

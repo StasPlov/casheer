@@ -1,6 +1,8 @@
+import ImageInterface from "@/Entity/ImageInterface";
+
 export default interface InfoInterface {
-	image: string;
+	image: ImageInterface;
 	title: string;
 	description: string;
-	isReverse: boolean;
+	is_reverse: boolean;
 }

@@ -4,22 +4,30 @@
 
 		<div class="px-[7vw] py-[18vw]">
 			<div class="flex flex-col gap-10">
-				<h2 class="text-white text-6xl font-bold font-mont text-center max-phoneX:text-start leading-tight z-0">We Will  Take You There</h2>
+				<h2 class="text-white text-6xl font-bold font-mont text-center max-phoneX:text-start leading-tight z-0" v-html="title"></h2>
 
-				<span class="text-white text-4xl font-normal font-[Arial] text-center max-phoneX:text-start max-phoneX:text-2xl z-0">
-					<p>Casheer shares vital payment knowhow with you. </p>
-					<p>Our objective is to lead the industry in simplifying B2B and B2C transactions, 
-						conquering barriers to entry, and to be an advocate for positive change in the industry.
-					</p>
-				</span>
+				<span class="text-white text-4xl font-normal font-[Arial] text-center max-phoneX:text-start max-phoneX:text-2xl z-0" v-html="description"></span>
 			</div>
 		</div>
 
-		<img :src="backgroundGif" alt="" class="select-none" draggable="false">
+		<img v-if="image" :src="image.url" alt="" class="select-none" draggable="false">
 	</div>
 </template>
 
 <script setup lang="ts">
 import backgroundGradient from "@/Assets/Icons/casheer about us gradient2.svg";
-import backgroundGif from "@/Assets/Images/644f2b16487d2196638996432083498e.gif";
+
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
+import { computed } from "vue";
+import { useStore } from "vuex";
+import ImageInterface from "../../Entity/ImageInterface";
+
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const data = computed(() => pageData.value.data?.take);
+
+const image = computed<ImageInterface>(() => data.value?.image);
+const description = computed<string>(() => data.value?.description);
+const title = computed<string>(() => data.value?.title);
 </script>

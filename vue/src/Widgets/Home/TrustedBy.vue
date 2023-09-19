@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)] relative pb-28">
 		<div class="py-9">
-			<h2 class="text-white text-center font-mont text-4xl font-bold">Trusted by</h2>			
+			<h2 class="text-white text-center font-mont text-4xl font-bold" v-html="title"></h2>			
 		</div>
 
 		<div class="flex flex-col gap-5 bg-white py-16 w-full">
@@ -10,9 +10,15 @@
 				:wrap-around="true" 
 				:transition="300"
 				:snapAlign="'start'"
+				:pauseAutoplayOnHover="true"
+				:autoplay="5000"
 			>
-				<Slide v-for="icon in iconList" :key="icon">
-					<img :src="icon.img" alt="" draggable="false" class="select-none">
+				<Slide v-for="item in list" :key="item">
+					<a :href="item.link" v-if="item.link">
+						<img :src="item.image.url" alt="" draggable="false" class="select-none">
+					</a>
+
+					<img v-else :src="item.image.url" alt="" draggable="false" class="select-none">
 				</Slide>
 			</Carousel>	
 		</div>
@@ -23,12 +29,26 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { computed, ref } from "vue";
+import { useStore } from "vuex";
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
+import ImageInterface from '../../Entity/ImageInterface';
 
 let curentRectWidth = ref(document.querySelector('html').clientWidth as number);
 
 const isMobile = computed(() => curentRectWidth.value < 425);
 const isTablet = computed(() => curentRectWidth.value < 768);
 const isTabletBig = computed(() => curentRectWidth.value < 1024);
+
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const data = computed(() => pageData.value.data?.trusted_by);
+
+const title = computed<string>(() => data.value?.title);
+const list = computed<Array<{
+	image: ImageInterface;
+	link: string
+}>>(() => data.value?.list);
 
 window.addEventListener('resize', () => {
 	resize();
@@ -53,79 +73,4 @@ const countItemsToShow = computed(() => {
 function resize() {
 	curentRectWidth.value = document.querySelector('html').clientWidth as number;
 }
-
-const iconList = computed(() => [
-	{
-		img: require('@/Assets/Icons/logo_visa.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_spare.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_samsung pay.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_mastercard.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_knet.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_casheer wallet.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_benefit pay.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_apple pay.svg')
-	},
-	{
-		img: require('@/Assets/Icons/logo_american express.svg')
-	}
-]);
-
-const trustList = computed(() => [
-	{
-		img: require('@/Assets/Icons/casheer central bank of bahrain.svg')
-	},
-	{
-		img: require('@/Assets/Icons/casheer central bank of kuwait.svg')
-	}
-]);
-
-const partnerList = computed(() => [
-	{
-		title: 'PCI DSS',
-		img: require('@/Assets/Icons/PCI DSS.svg')
-	},
-	{
-		title: 'Microsoft Golden partner',
-		img: require('@/Assets/Icons/mask group.svg')
-	},
-	{
-		title: 'Mastercard Principal membership',
-		img: require('@/Assets/Icons/mastercard logo.svg')
-	},
-	{
-		title: 'Mastercard Platinum member',
-		img: require('@/Assets/Icons/mastercard logo.svg')
-	},
-	/* new column */
-	{
-		title: 'Arab Financials',
-		img: require('@/Assets/Icons/mask group (2).svg')
-	},
-	{
-		title: 'Eazy Financial',
-		img: require('@/Assets/Icons/mastercard logo.svg')
-	},
-	{
-		title: 'Kuwait Finance House ( Kuwait )',
-		img: require('@/Assets/Icons/casheer logo.svg')
-	},
-	{
-		title: 'Gulf Bank ( Kuwait )',
-		img: require('@/Assets/Icons/mask group (1).svg')
-	},
-]);
 </script>

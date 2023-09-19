@@ -103,4 +103,24 @@ function wp_blank_widgets_init() {
 }
 add_action( 'widgets_init', 'wp_blank_widgets_init' );
 
+
+function handle_getData() {
+	$pageName = (string)trim($_GET['page-name']);
+	$pageId = (int)trim($_GET['page-id']);
+
+	if ($pageName == 'привет-мир' || $pageId === 1) {
+		$pageName = 'home-setup';
+	}
+
+	$content = get_fields($pageName);
+	
+	if(empty($content)) {
+		$content = get_fields($pageId);
+	}
+
+	$result = json_decode( json_encode( $content ), true );
+	wp_send_json($result);
+}
+add_action('wp_ajax_getData', 'handle_getData');
+add_action('wp_ajax_nopriv_getData', 'handle_getData');
 ?>

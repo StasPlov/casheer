@@ -7,7 +7,7 @@
 			:image="item.image"
 			:title="item.title"
 			:description="item.description"
-			:isReverse="item.isReverse"
+			:isReverse="item.is_reverse"
 		></BlockInfo>
 	</template>
 
@@ -21,7 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import axios from "axios";
+import { computed, onMounted, ref, watch, watchEffect } from "vue";
 import Header from "../Widgets/Home/Header.vue";
 import GradiendText from "../Widgets/Home/GradiendText.vue";
 import BlockInfo from "../Widgets/Home/BlockInfo.vue";
@@ -33,24 +34,28 @@ import Trust from "../Widgets/Home/Trust.vue";
 import Download from "../Widgets/Home/Download.vue";
 import TrustedBy from "../Widgets/Home/TrustedBy.vue";
 import InfoInterface from "../Widgets/Home/Entity/InfoInterface";
+import { useStore } from "vuex";
+import { RootStateInterface } from "../Store";
+import StateInterface from "../Store/Modules/PageInfo/StateInterface";
+import PageDataStateInterface from "../Store/Modules/PageData/StateInterface";
 
-const itemList = computed(() => [
-	{
-		image: require('@/Assets/Images/644f2b16487d2196638996432083498e.gif'),
-		title: 'Grow',
-		description: 'Boost enterprise performance with an all-new range of advanced payment systems, real-time reporting and merchant dashboard built to manage your assets in a fully customisable sandbox environment.',
-		isReverse: false
-	},
-	{
-		image: require('@/Assets/Images/e8d61a3910ffcd51a88fd3a1459c94ec.gif'),
-		title: 'Secure',
-		description: 'Protect the integrity of your assets, business processes, and payment data with compliant digital solutions endorsed by the Bank of Kuwait and all regulatory bodies. <br>Every solution includes 24-7 global support.',
-		isReverse: true
-	},
-	{
-		image: require('@/Assets/Images/ef472f3c22388d1cf4c00146f33b8f84.gif'),
-		title: 'Innovate',
-		description: '<p>Become a market leader and foster a new competitive environment with fully intuitive and mobile-ready technologies complete with readymade plugins and restful APIs.</p> <p>Resolve silos through unified payment integrations and stay ahead of the industry, with instant merchant onboarding and settlements.</p>',
-		isReverse: false
-	}] as Array<InfoInterface>);
+const store = useStore<RootStateInterface>();
+const pageInfo = computed<StateInterface>(() => store.state.pageInfo);
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const itemList = computed<Array<InfoInterface>>(() => pageData.value.data?.info);
+
+let isInitData = ref(false);
+
+watch(pageInfo.value, () => {
+	if(!isInitData.value) {
+		store.dispatch('pageData/getPageData', {
+			// eslint-disable-next-line
+			'action': 'getData',
+			'page-name': pageInfo.value.pageName,
+			'page-id': pageInfo.value.pageId
+		});
+
+		isInitData.value = true;
+	}
+});
 </script>
