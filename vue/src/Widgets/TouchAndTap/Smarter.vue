@@ -2,15 +2,11 @@
 	<div class="bg-[var(--color-black1)]">
 		<div class="px-[9vw] py-[6vw] bgf rounded-b-[2.5rem] max-phoneX:py-[14vw]">
 			<div class="flex flex-col gap-24">
-				<h2 class="text-white text-4xl font-mont font-bold text-center leading-tight">
-					A smarter and simpler all-in-one POS solution. <br>
-					A better experience for your customers. <br>
-					A faster operations management system for your business.
-				</h2>
+				<h2 class="text-white text-4xl font-mont font-bold text-center leading-tight" v-html="title"></h2>
 
 				<ul class="grid grid-cols-[repeat(2,_auto)] justify-around gap-14 gap-x-32 max-md:grid-cols-[repeat(1,_auto)]">
 					<li v-for="item in list" :key="item" ref="itemsListAnim" class="flex gap-11 items-center">
-						<img :src="item.image" alt="" class="w-12">
+						<img v-if="item.image" :src="item.image.url" alt="" class="w-12">
 						<span class="text-white text-3xl font-normal font-[Arial] max-w-[23.75rem]" v-html="item.description"></span>
 					</li>
 				</ul>
@@ -28,7 +24,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps<{
-	list: Array<InfoInterface>
+	title: string;
+	list: Array<InfoInterface>;
 }>();
 
 const list = computed<typeof props.list>(() => props.list);

@@ -9,12 +9,18 @@
 	<Info></Info>
 
 	<LetsLaunch
-		:img="require('@/Assets/Images/casheer image 6.png')"
-		:themColor="'#7d00e278'"
-		:itemList="launchList"
+		:title="LLtitle"
+		:image="LLimage"
+		:step-image="LLstepImage"
+		:color="LLcolor"
+		:step-list="LLstepList"
+		:action="LLaction"
 	></LetsLaunch>
 
-	<OurBussinesProduct></OurBussinesProduct>
+	<OurBussinesProduct
+		:title="OBPtitle"
+		:product-list="OBPproductList"
+	></OurBussinesProduct>
 </template>
 
 <script setup lang="ts">
@@ -24,7 +30,6 @@ import Technology from "@/Widgets/Invoice/Technology.vue";
 import Info from "@/Widgets/Invoice/Info.vue";
 
 import LetsLaunch from "../Widgets/LetsLaunch/LetsLaunch.vue";
-import LetsLaunchItemInterface from "../Widgets/LetsLaunch/Type/LetsLaunchItemInterface";
 import OurBussinesProduct from "../Widgets/OurBussinesProduct/OurBussinesProduct.vue";
 import InfoInterface from "../Widgets/InfoListBlock/Type/InfoInterface";
 import InfoListBlock from "../Widgets/InfoListBlock/InfoListBlock.vue";
@@ -35,15 +40,33 @@ import StateInterface from "../Store/Modules/PageInfo/StateInterface";
 import PageDataStateInterface from "../Store/Modules/PageData/StateInterface";
 import InfoEntityInterface from "../Widgets/Home/Entity/InfoInterface";
 import ImageInterface from "../Entity/ImageInterface";
+import StepInterface from "../Widgets/LetsLaunch/Type/StepInterface";
+import ActionInterface from "../Widgets/LetsLaunch/Type/ActionInterface";
+import ProductInterface from "../Widgets/OurBussinesProduct/Type/ProductInterface";
 
 const store = useStore<RootStateInterface>();
+
 const pageInfo = computed<StateInterface>(() => store.state.pageInfo);
 const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+
 const data = computed(() => pageData.value.data?.info_list_block);
+const dataLetsLaunchBlock = computed(() => pageData.value.data?.lets_launch_block);
+const dataOurBussinesProductBlock = computed(() => pageData.value.data?.our_bussines_product_block);
 
-const image = computed<ImageInterface>(() => data.value?.image);
-
+/* InfoListBlock */
 const infoListBlock = computed<Array<InfoInterface>>(() => data.value?.items);
+
+/* LetsLaunch */
+const LLstepList = computed<Array<StepInterface>>(() => dataLetsLaunchBlock.value?.step_list);
+const LLaction = computed<ActionInterface>(() => dataLetsLaunchBlock.value?.action);
+const LLcolor = computed<string>(() => dataLetsLaunchBlock.value?.color);
+const LLimage = computed<ImageInterface>(() => dataLetsLaunchBlock.value?.image);
+const LLstepImage = computed<ImageInterface>(() => dataLetsLaunchBlock.value?.step_image);
+const LLtitle = computed<string>(() => dataLetsLaunchBlock.value?.title);
+
+/* OurBussinesProductBlock */
+const OBPproductList = computed<Array<ProductInterface>>(() => dataOurBussinesProductBlock.value?.product_list);
+const OBPtitle = computed<Array<ProductInterface>>(() => dataOurBussinesProductBlock.value?.title);
 
 let isInitData = ref(false);
 
@@ -59,22 +82,4 @@ watch(pageInfo.value, () => {
 		isInitData.value = true;
 	}
 });
-
-const launchList = ref<Array<LetsLaunchItemInterface>>([
-	{
-		num: '1',
-		title: 'Begin',
-		subTitle: 'Click and fill the express sign-up process. Get started now.'
-	},
-	{
-		num: '2',
-		title: 'Select',
-		subTitle: 'Simply choose the solution that’s best for your business.'
-	},
-	{
-		num: '3',
-		title: 'Grow',
-		subTitle: 'Expand and realise your complete business potential.'
-	},
-]);
 </script>

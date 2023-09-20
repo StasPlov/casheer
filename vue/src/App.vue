@@ -7,6 +7,7 @@
 </template>
 
 <script setup lang="ts">
+/* eslint-disable */
 import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
@@ -31,13 +32,15 @@ const store = useStore<RootStateInterface>();
 interface PropsInterface {
 	pageId?: number,
 	ajaxUrl: string,
-	pageName: string
+	pageName: string,
+	pageTemplate: string
 }
 
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 1, 
 	ajaxUrl: '',
-	pageName: 'привет-мир' // помнеять на проде на "привет-мир"
+	pageName: 'привет-мир', // "привет-мир" is home page
+	pageTemplate: '' // empty string is Home page
 });
 
 /* 
@@ -45,8 +48,7 @@ const props = withDefaults(defineProps<PropsInterface>(), {
 	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
 */
 
-/* eslint-disable */
-const routes = {
+/* const routes = { // for page name
 	'привет-мир': Home,
 	'about-us': About,
 	'invoice': Invoice,
@@ -57,20 +59,30 @@ const routes = {
 	'news-single': NewsSingle,
 	'pricing-onboarding': PricingOnboarding,
 	'not-found': NotFound
+} */
+
+const routesTemplate = {
+	'': Home,
+	'template-about.php': About,
+	'template-invoice.php': Invoice,
+	'template-checkout.php': Checkout,
+	'template-touch-and-tap.php': TouchTap,
+	'template-wallet-and-cards.php': WalletCards,
+	'template-news.php': News,
 }
 
 const currentPage = computed(() => {
-	return routes[props.pageName] || null;
+	return routesTemplate[props.pageTemplate] || null;
 });
 
 onMounted(() => {
 	store.commit('pageInfo/setPageName', props.pageName);
 	store.commit('pageInfo/setAjaxUrl', props.ajaxUrl);
 	store.commit('pageInfo/setPageId', props.pageId);
+	store.commit('pageInfo/setPageTemplate', props.pageTemplate);
 });
 
 console.log(props);
-
 
 /* const currentPath = ref(window.location.pathname)
 

@@ -14,9 +14,9 @@
 				</div>
 
 				<div class="flex gap-10 items-center mb-9">
-					<img v-if="logo" :src="logo.url" alt="">
+					<img v-if="logo" :src="logo.url" alt="" class="select-none" draggable="false">
 
-					<a :href="button.link" v-if="button.is_active">
+					<a :href="button.link" v-if="button && button?.is_active">
 						<Button class="border-[var(--color-violet1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
 							<span class="text-white text-base font-bold font-[Arial]">{{ button.text }}</span>
 						</Button>
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 
-			<div class="flex justify-end">
+			<div class="flex justify-end z-10">
 				<div class="relative max-md:hidden">
 					<img v-if="image" :src="image.url" alt="" class="w-[40rem] select-none" draggable="false" ref="waletImage">
 					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="w-[15.4375rem] absolute left-[-0.875rem] top-[10.25rem] select-none" draggable="false" ref="waletImage2">
@@ -69,6 +69,11 @@ const logo = computed<ImageInterface>(() => data.value?.logo);
 const image = computed<ImageInterface>(() => data.value?.image);
 const imageMobile = computed<ImageInterface>(() => data.value?.image_mobile);
 const imageTwo = computed<ImageInterface>(() => data.value?.image_two);
+
+onMounted(() => {
+	animateWalet();
+	animateWalet2();
+});
 
 function animateWalet() {
 	gsap.fromTo(
@@ -118,9 +123,4 @@ function animateWalet2() {
 		}
 	);
 }
-
-onMounted(() => {
-	animateWalet();
-	animateWalet2();
-});
 </script>

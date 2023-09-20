@@ -1,38 +1,38 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)] flex items-center relative">
-		<img :src="background" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-16.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain z-10" draggable="false">
+		<img v-if="background" :src="background.url" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-16.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain z-10" draggable="false">
 		
 		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
 
 			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
 				<div class="flex flex-col gap-9">
-					<h1 class="font-mont text-white text-7xl font-bold">Casheer Checkout</h1>
+					<h1 class="font-mont text-white text-7xl font-bold" v-html="title"></h1>
 
 					<div class="text-5xl max-phoneX:text-3xl">
-						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">
-							<p>Your complete payments hub is ready to use. <br><big>Rapid, Powerful, Intuitive.</big> <br>Process payments quickly.</p>
-						</span>
+						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="description"></span>
 					</div>
 				</div>
 
 				<div class="flex gap-10 items-center mb-9">
-					<img :src="logo" alt="">
+					<img v-if="logo" :src="logo.url" alt="" class="select-none" draggable="false">
 
-					<Button class="border-[var(--color-blue1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
-						<span class="text-white text-base font-bold font-[Arial]">Get insights</span>
-					</Button>
+					<a :href="button.link" v-if="button && button?.is_active">
+						<Button class="border-[var(--color-blue1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
+							<span class="text-white text-base font-bold font-[Arial]">{{ button.text }}</span>
+						</Button>
+					</a>
 				</div>
 			</div>
 
-			<div class="flex justify-end">
+			<div class="flex justify-end z-10">
 				<div class="relative h-full max-md:hidden">
-					<img :src="backgroundDashboard" alt="" class="select-none" draggable="false" ref="waletImage">
-					<img :src="backgroundMobile" alt="" class="absolute left-[-6.875rem] top-[11.875rem] select-none" draggable="false" ref="waletImage2">
+					<img v-if="image" :src="image.url" alt="" class="select-none" draggable="false" ref="waletImage">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="absolute left-[-6.875rem] top-[11.875rem] select-none" draggable="false" ref="waletImage2">
 				</div>
 
 				<div class="relative h-full hidden max-md:block">
-					<img :src="backgroundDashboardMod" alt="" class="relative select-none" draggable="false" ref="waletImage">
-					<img :src="backgroundMobileMod" alt="" class="w-[11.625rem] absolute left-[19.5rem] top-[11.875rem] select-none" draggable="false">
+					<img v-if="imageMobile" :src="imageMobile.url" alt="" class="relative select-none" draggable="false" ref="waletImage">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="w-[11.625rem] absolute left-[19.5rem] top-[11.875rem] select-none" draggable="false">
 				</div>	
 			</div>
 			
@@ -42,23 +42,38 @@
 </template>
 
 <script setup lang="ts">
-import background from "@/Assets/Images/uhflbtyn 1.png";
-import logo from "@/Assets/Icons/checkout.png";
-import backgroundMobile from "@/Assets/Images/checkoutreceipt.svg";
-import backgroundDashboard from "@/Assets/Images/checkoutDasboard.svg";
 import Button from "@/Ui/Button.vue";
-
-import backgroundDashboardMod from "@/Assets/Images/casheer checkout graphics (2).png";
-import backgroundMobileMod from "@/Assets/Images/casheer checkout graphics (3).png";
-
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { useStore } from "vuex";
+import ImageInterface from "../../Entity/ImageInterface";
+import ButtonInterface from "../../Entity/ButtonInterface";
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const waletImage = ref(null);
 const waletImage2 = ref(null);
+
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const header = computed(() => pageData.value.data?.header);
+
+const background = computed<ImageInterface>(() => header.value?.background);
+const button = computed<ButtonInterface>(() => header.value?.button);
+const description = computed<string>(() => header.value?.description);
+const title = computed<string>(() => header.value?.title);
+const logo = computed<ImageInterface>(() => header.value?.logo);
+const image = computed<ImageInterface>(() => header.value?.image);
+const imageMobile = computed<ImageInterface>(() => header.value?.image_mobile);
+const imageTwo = computed<ImageInterface>(() => header.value?.image_two);
+
+onMounted(() => {
+	animateWalet();
+	animateWalet2();
+});
 
 function animateWalet() {
 	gsap.fromTo(
@@ -108,9 +123,4 @@ function animateWalet2() {
 		}
 	);
 }
-
-onMounted(() => {
-	animateWalet();
-	animateWalet2();
-});
 </script>

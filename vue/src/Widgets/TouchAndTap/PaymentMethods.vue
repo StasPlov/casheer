@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)]">
 		<div class="px-[7vw] py-24">
-			<h2 class="text-white text-center font-mont text-4xl font-bold">All payment methods:</h2>			
+			<h2 class="text-white text-center font-mont text-4xl font-bold" v-html="title"></h2>			
 			
 			<div class="flex flex-col py-16 w-full">
 				<Carousel
@@ -10,8 +10,8 @@
 					:wrap-around="true" 
 					:transition="300"
 				>
-					<Slide v-for="icon in iconList" :key="icon">
-						<img :src="icon.img" alt="" draggable="false" class="select-none">
+					<Slide v-for="item in methodList" :key="item">
+						<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class="select-none">
 					</Slide>
 				</Carousel>	
 			</div>
@@ -23,12 +23,24 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { computed, ref, watch } from "vue";
+import { useStore } from "vuex";
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
+import ImageInterface from "../../Entity/ImageInterface";
+import ButtonInterface from "../../Entity/ButtonInterface";
 
 let curentRectWidth = ref(document.querySelector('html').clientWidth as number);
 
 const isMobile = computed(() => curentRectWidth.value < 425);
 const isTablet = computed(() => curentRectWidth.value < 768);
 const isTabletBig = computed(() => curentRectWidth.value < 1024);
+
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const data = computed(() => pageData.value.data?.payments_method);
+
+const methodList = computed<{ image: ImageInterface }>(() => data.value?.method_list);
+const title = computed<string>(() => data.value?.title);
 
 window.addEventListener('resize', () => {
 	resize();
@@ -49,24 +61,6 @@ const countItemsToShow = computed(() => {
 
 	return 5;
 });
-
-const iconList = computed(() => [
-	{
-		img: require('@/Assets/Icons/visa logo.png')
-	},
-	{
-		img: require('@/Assets/Icons/mastercard logo.png')
-	},
-	{
-		img: require('@/Assets/Icons/apple pay.png')
-	},
-	{
-		img: require('@/Assets/Icons/samsung pay logo.png')
-	},
-	{
-		img: require('@/Assets/Icons/benefit pay logo.png')
-	}
-]);
 
 function resize() {
 	curentRectWidth.value = document.querySelector('html').clientWidth as number;

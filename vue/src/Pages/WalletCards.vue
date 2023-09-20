@@ -24,7 +24,7 @@ import LetsLaunch from "../Widgets/LetsLaunch/LetsLaunch.vue";
 import Technology from "../Widgets/WalletAndCarts/Technology.vue";
 import Info from "../Widgets/WalletAndCarts/Info.vue";
 
-import LetsLaunchItemInterface from "../Widgets/LetsLaunch/Type/LetsLaunchItemInterface";
+import LetsLaunchItemInterface from "../Widgets/LetsLaunch/Type/ActionInterface";
 import OurBussinesProduct from "../Widgets/OurBussinesProduct/OurBussinesProduct.vue";
 
 import InfoInterface from "../Widgets/InfoListBlock/Type/InfoInterface";

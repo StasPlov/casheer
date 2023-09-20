@@ -9,10 +9,14 @@ const module: Module<StateInterface, any> = {
 		pageId: state => state.pageId,
 		ajaxUrl: state => state.ajaxUrl,
 		pageName: state => state.pageName,
+		pageTemplate: state => state.pageTemplate,
 	},
 	mutations: {
 		setPageName(state: StateInterface, payload: string): void {
 			state.pageName = payload;
+		},
+		setPageTemplate(state: StateInterface, payload: string): void {
+			state.pageTemplate = payload;
 		},
 		setAjaxUrl(state: StateInterface, payload: string): void {
 			state.ajaxUrl = payload;

@@ -15,4 +15,5 @@
 	data-ajax-url="<?php echo admin_url('admin-ajax.php'); ?>"
 	data-page-id="<?php echo get_the_ID(); ?>"
 	data-page-name="<?php echo urldecode(get_post_field('post_name', get_the_ID()))?>"
+	data-page-template="<?php echo esc_html( get_page_template_slug( get_the_ID() ) ); ?>"
 >

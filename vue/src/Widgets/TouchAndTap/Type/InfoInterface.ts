@@ -1,4 +1,6 @@
+import ImageInterface from "@/Entity/ImageInterface";
+
 export default interface InfoInterface {
-	image: string;
+	image: ImageInterface;
 	description: string;
 }

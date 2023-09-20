@@ -5,42 +5,37 @@
 			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
 	
 				<div class="flex flex-col gap-16 order-1 max-md:order-none max-md:pb-20">
-					<span class="text-white text-2xl font-normal text-[Arial]">
-						<p>Upgrade your Android device to a full-functioning <br>
-						contactless POS. Casheer Touch app accepts Visa & <br>
-						Mastercard with multiple payment options. Merchant <br>
-						infrastructure is now at your fingertips</p>
-					</span>
+					<span class="text-white text-2xl font-normal text-[Arial]" v-html="first.description"></span>
 
 					<ul class="flex flex-col gap-5 max-md:hidden">
 						<li class="flex items-center gap-3 before:content-normal before:flex before:w-4 before:h-4 before:rounded-full before:bg-[var(--color-arctic1)]"
-							v-for="text in textList" :key="text"
+							v-for="item in first.list" :key="item"
 						>
-							<span class="text-white text-2xl font-[Arial] font-semibold">{{ text }}</span>
+							<span class="text-white text-2xl font-[Arial] font-semibold">{{ item.title }}</span>
 						</li>
 					</ul>
 
 					<ul class="flex gap-6">
-						<li v-for="item in logoList" :key="item">
-							<img :src="item.image" alt="" class="max-h-11">
+						<li v-for="item in first.payment_list" :key="item">
+							<img v-if="item.image" :src="item.image.url" alt="" class="max-h-11">
 						</li>
 					</ul>
 				</div>
 
 				<div class="flex justify-start">
 					<div class="relative top-[-3.125rem]">
-						<img :src="background01" alt="" class="w-[33.8125rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
-						<img :src="background02" alt="" class="w-[24.3125rem] absolute select-none top-[12.5rem] right-[7.5rem] z-10" draggable="false" ref="animatePhone1">
-						<img :src="background03" alt="" class="w-[17.875rem] absolute select-none top-0 right-0 z-10 " draggable="false" ref="animateMonit1">
+						<img v-if="first.image_1" :src="first.image_1.url" alt="" class="w-[33.8125rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
+						<img v-if="first.image_2" :src="first.image_2.url" alt="" class="w-[24.3125rem] absolute select-none top-[12.5rem] right-[7.5rem] z-10" draggable="false" ref="animatePhone1">
+						<img v-if="first.image_3" :src="first.image_3.url" alt="" class="w-[17.875rem] absolute select-none top-0 right-0 z-10 " draggable="false" ref="animateMonit1">
 					</div>	
 				</div>
 
 				<div class="hidden flex-col gap-16 max-md:flex">
 					<ul class="flex flex-col gap-5">
 						<li class="flex items-center gap-3 before:content-normal before:flex before:w-4 before:h-4 before:rounded-full before:bg-[var(--color-arctic1)]"
-							v-for="text in textList" :key="text"
+							v-for="item in first.list" :key="item"
 						>
-							<span class="text-white text-2xl font-[Arial] font-semibold">{{ text }}</span>
+							<span class="text-white text-2xl font-[Arial] font-semibold">{{ item.title }}</span>
 						</li>
 					</ul>
 				</div>
@@ -53,27 +48,23 @@
 	
 				<div class="flex flex-col gap-16 max-md:pb-20">
 					<div class="flex flex-col gap-0">
-						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center">Flexibility</h1>
-						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">and accessible e-receipts</span>
+						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center" v-html="two.title"></h1>
+						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="two.sub_title"></span>
 					</div>
 					
-					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden">
-						<p>Enhance the customer experience with transparent and comprehensive transaction reports. Share and process paperless e-receipts instantly via email or mobile.</p>
-					</span>
+					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden" v-html="two.description"></span>
 				</div>
 
 				<div class="flex justify-start max-md:pb-96">
 					<div class="relative top-[-3.125rem]">
-						<img :src="background1" alt="" class="w-[35.5rem] relative select-none z-10" draggable="false" ref="waletImage">
-						<img :src="background2" alt="" class="w-[34.8125rem] absolute select-none top-0 -right-52 z-10" draggable="false" ref="waletImage">
-						<img :src="background3" alt="" class="w-[30.1875rem] h-[30.1875rem] absolute select-none top-16 right-10 z-0 animate-pulse" draggable="false" ref="waletImage">
+						<img v-if="two.image_1" :src="two.image_1.url" alt="" class="w-[35.5rem] relative select-none z-10" draggable="false" ref="waletImage">
+						<img v-if="two.image_2" :src="two.image_2.url" alt="" class="w-[34.8125rem] absolute select-none top-0 -right-52 z-10" draggable="false" ref="waletImage">
+						<img v-if="two.image_3" :src="two.image_3.url" alt="" class="w-[30.1875rem] h-[30.1875rem] absolute select-none top-16 right-10 z-0 animate-pulse" draggable="false" ref="waletImage">
 					</div>	
 				</div>
 
 				<div class="hidden flex-col max-md:flex">
-					<span class="text-white text-2xl font-normal text-[Arial]">
-						<p>Enhance the customer experience with transparent and comprehensive transaction reports. Share and process paperless e-receipts instantly via email or mobile.</p>
-					</span>
+					<span class="text-white text-2xl font-normal text-[Arial]" v-html="two.description"></span>
 				</div>
 
 			</div>
@@ -84,27 +75,23 @@
 	
 				<div class="flex flex-col gap-16 order-1 max-md:order-none max-md:pb-72">
 					<div class="flex flex-col gap-0">
-						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center">Security</h1>
-						<span class="text-white text-4xl font-normal leading-tight font-[Arial]">built to support efficiency</span>
+						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center" v-html="three.title"></h1>
+						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="three.sub_title"></span>
 					</div>
 					
-					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden">
-						<p>Enjoy complete protection for your transactions thanks to a 3D-secure PCI DSS compliant infrastructure. Cardholder data stays safe, invisible, and only in customer hands.</p>
-					</span>
+					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden" v-html="three.description"></span>
 				</div>
 
 				<div class="flex justify-start max-md:pb-20">
 					<div class="relative">
-						<img :src="background31" alt="" class="w-[25.3125rem] relative select-none z-10 animate-pulse ml-[6.25rem]" draggable="false" ref="waletImage">
-						<img :src="background32" alt="" class="w-full absolute top-[12.8125rem] left-[3.75rem] select-none z-10" draggable="false" ref="waletImage">
-						<img :src="background33" alt="" class="w-[37.5rem] min-w-[32rem] absolute select-none top-[-140px] left-[-7vw] z-10" draggable="false" ref="waletImage">
+						<img v-if="three.image_1" :src="three.image_1.url" alt="" class="w-[25.3125rem] relative select-none z-10 animate-pulse ml-[6.25rem]" draggable="false" ref="waletImage">
+						<img v-if="three.image_2" :src="three.image_2.url" alt="" class="w-full absolute top-[12.8125rem] left-[3.75rem] select-none z-10" draggable="false" ref="waletImage">
+						<img v-if="three.image_3" :src="three.image_3.url" alt="" class="w-[37.5rem] min-w-[32rem] absolute select-none top-[-140px] left-[-7vw] z-10" draggable="false" ref="waletImage">
 					</div>	
 				</div>
 
 				<div class="hidden flex-col max-md:flex">
-					<span class="text-white text-2xl font-normal text-[Arial]">
-						<p>Enjoy complete protection for your transactions thanks to a 3D-secure PCI DSS compliant infrastructure. Cardholder data stays safe, invisible, and only in customer hands.</p>
-					</span>
+					<span class="text-white text-2xl font-normal text-[Arial]" v-html="three.description"></span>
 				</div>
 
 			</div>
@@ -113,34 +100,30 @@
 		<div class="px-[7vw] py-[13vw] flex flex-col gap-20 w-full">
 			<div class="grid grid-cols-2 gap-32 max-md:grid-cols-1">
 				<div class="flex flex-col gap-0">
-					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center">Convenience</h1>
-					<span class="text-white text-4xl font-normal leading-tight font-[Arial]">meets intelligence</span>
+					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center" v-html="last.title"></h1>
+					<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="last.sub_title"></span>
 				</div>
 
 				<div class="mt-10 max-md:hidden">
-					<span class="text-white text-2xl font-normal text-[Arial] max-w-[29.375rem]">
-						<p>Accept digital payments, virtual and <br>physical cards through the fast and <br>intuitive Casheer Tap & Go POS. <br>Leverage any payment option <br>instantly, at any time, on any device.</p>
-					</span>
+					<span class="text-white text-2xl font-normal text-[Arial] max-w-[29.375rem]" v-html="last.description"></span>
 				</div>
 			</div>
 
 			<div class="flex justify-center">
 				<div class="relative max-md:hidden">
-					<img :src="background24" alt="" class="w-[39.25rem] relative select-none z-10" draggable="false">
-					<img :src="background21" alt="" class="w-[7.625rem] absolute select-none z-10 -top-10 right-[19.3125rem]" draggable="false">
-					<img :src="background22" alt="" class="w-[12.3125rem] absolute select-none z-10 top-[3.125rem] -right-[9.375rem]" draggable="false">
-					<img :src="background23" alt="" class="w-[39.9375rem] absolute select-none z-10 top-[2.1875rem] right-[17.875rem]" draggable="false">
+					<img v-if="last.image_1" :src="last.image_1.url" alt="" class="w-[39.25rem] relative select-none z-10" draggable="false">
+					<img v-if="last.image_2" :src="last.image_2.url" alt="" class="w-[7.625rem] absolute select-none z-10 -top-10 right-[19.3125rem]" draggable="false">
+					<img v-if="last.image_3" :src="last.image_3.url" alt="" class="w-[12.3125rem] absolute select-none z-10 top-[3.125rem] -right-[9.375rem]" draggable="false">
+					<img v-if="last.image_4" :src="last.image_4.url" alt="" class="w-[39.9375rem] absolute select-none z-10 top-[2.1875rem] right-[17.875rem]" draggable="false">
 				</div>
 
 				<div class="relative hidden max-md:flex">
-					<img :src="background24Mob" alt="" class="w-[39.25rem] relative select-none ml-[-7vw] z-10" draggable="false">
+					<img v-if="last.image_mobile" :src="last.image_mobile.url" alt="" class="w-[39.25rem] relative select-none ml-[-7vw] z-10" draggable="false">
 				</div>
 			</div>
 
 			<div class="hidden mt-10 max-md:flex">
-				<span class="text-white text-2xl font-normal text-[Arial] max-w-[29.375rem]">
-					<p>Accept digital payments, virtual and <br>physical cards through the fast and <br>intuitive Casheer Tap & Go POS. <br>Leverage any payment option <br>instantly, at any time, on any device.</p>
-				</span>
+				<span class="text-white text-2xl font-normal text-[Arial] max-w-[29.375rem]" v-html="last.description"></span>
 			</div>
 		</div>
 
@@ -148,7 +131,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 import background01 from "@/Assets/Images/Group 498.svg";
 import background02 from "@/Assets/Images/casheer card (1).png";
@@ -173,6 +156,9 @@ import InfoBlockInterface from "./InfoBlog/Type/InfoBlockInterface";
 
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useStore } from "vuex";
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -183,23 +169,25 @@ const itemsListAnim = ref([]);
 let animatePhone1 = ref(null);
 let animateMonit1 = ref(null);
 
-const logoList = computed<Array<any>>(() => [
-	{
-		image: require('@/Assets/Icons/samsung pay logo.png')
-	},
-	{
-		image: require('@/Assets/Icons/samsung pay logo.png')
-	},
-	{
-		image: require('@/Assets/Icons/samsung pay logo.png')
-	},
-]);
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const content = computed(() => pageData.value.data?.content);
 
-const textList = computed<Array<string>>(() => [
-	'Tap & Go - contactless credit card support.',
-	'Smart Link – email, SMS, social media.',
-	'Smart device superapp - no additional hardware.'
-]);
+const first = computed(() => content.value?.first);
+const two = computed(() => content.value?.two);
+const three = computed(() => content.value?.three);
+const last = computed(() => content.value?.last);
+/* const infoList = computed<Array<InfoBlockInterface>>(() => content.value?.info_list ?? []); */
+
+watch(content, () => {
+	animatePhone();
+	animatePhone2();
+	animateArrow();
+	animateItemList();
+
+	animateMonit01_();
+	animatePhone01_();
+});
 
 const infoList = computed<Array<InfoBlockInterface>>(() => [
 	{
@@ -325,8 +313,6 @@ function animateItemList() {
 }
 
 
-
-
 function animatePhone01_() {
 	gsap.fromTo(animatePhone1.value, {
 		opacity: 0,
@@ -364,15 +350,4 @@ function animateMonit01_() {
 		},
 	});
 }
-
-
-onMounted(() => {
-	animatePhone();
-	animatePhone2();
-	animateArrow();
-	animateItemList();
-
-	animateMonit01_();
-	animatePhone01_();
-});
 </script>
