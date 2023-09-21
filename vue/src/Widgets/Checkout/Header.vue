@@ -2,7 +2,7 @@
 	<div class="w-full bg-[var(--color-black1)] flex items-center relative">
 		<img v-if="background" :src="background.url" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-16.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain z-10" draggable="false">
 		
-		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
+		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 rtl:pr-[7vw] rtl:pl-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
 
 			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
 				<div class="flex flex-col gap-9">
@@ -16,7 +16,7 @@
 				<div class="flex gap-10 items-center mb-9">
 					<img v-if="logo" :src="logo.url" alt="" class="select-none" draggable="false">
 
-					<a :href="button.link" v-if="button && button?.is_active">
+					<a :href="button.link?.url ?? ''" v-if="button && button?.is_active">
 						<Button class="border-[var(--color-blue1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
 							<span class="text-white text-base font-bold font-[Arial]">{{ button.text }}</span>
 						</Button>
@@ -27,12 +27,12 @@
 			<div class="flex justify-end z-10">
 				<div class="relative h-full max-md:hidden">
 					<img v-if="image" :src="image.url" alt="" class="select-none" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="absolute left-[-6.875rem] top-[11.875rem] select-none" draggable="false" ref="waletImage2">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="absolute left-[-6.875rem] rtl:left-auto rtl:right-[-6.875rem] top-[11.875rem] select-none" draggable="false" ref="waletImage2">
 				</div>
 
 				<div class="relative h-full hidden max-md:block">
 					<img v-if="imageMobile" :src="imageMobile.url" alt="" class="relative select-none" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="w-[11.625rem] absolute left-[19.5rem] top-[11.875rem] select-none" draggable="false">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="w-[11.625rem] absolute left-[19.5rem] rtl:left-auto rtl:right-[19.5rem] top-[11.875rem] select-none" draggable="false">
 				</div>	
 			</div>
 			
@@ -45,7 +45,7 @@
 import Button from "@/Ui/Button.vue";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watchEffect } from "vue";
 import { useStore } from "vuex";
 import ImageInterface from "../../Entity/ImageInterface";
 import ButtonInterface from "../../Entity/ButtonInterface";
@@ -70,10 +70,10 @@ const image = computed<ImageInterface>(() => header.value?.image);
 const imageMobile = computed<ImageInterface>(() => header.value?.image_mobile);
 const imageTwo = computed<ImageInterface>(() => header.value?.image_two);
 
-onMounted(() => {
+watchEffect(() => {
 	animateWalet();
 	animateWalet2();
-});
+}, { flush: "post" });
 
 function animateWalet() {
 	gsap.fromTo(

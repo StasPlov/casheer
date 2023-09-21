@@ -37,8 +37,8 @@ add_action( 'after_setup_theme', 'wp_blank_setup' );
  */
 function wp_blank_load_scripts()
 {
-	$script_directory = get_template_directory() . '/dist/js/'; // Укажите путь к директории со скриптами
-	$script_url = get_template_directory_uri() . '/dist/js/'; // Укажите URL-адрес директории со скриптами
+	$script_directory = get_template_directory() . '../../../../dist/js/'; // Укажите путь к директории со скриптами
+	$script_url = get_template_directory_uri() . '../../../../dist/js/'; // Укажите URL-адрес директории со скриптами
 
 	$scripts = scandir($script_directory); // Получить список файлов в директории со скриптами
 
@@ -60,8 +60,8 @@ function wp_blank_load_scripts()
 add_action('wp_enqueue_scripts', 'wp_blank_load_scripts');
 
 function enqueue_style_custom() {
-	$script_directory = get_template_directory() . '/dist/css/'; // Укажите путь к директории со стилями
-	$script_url = get_template_directory_uri() . '/dist/css/'; // Укажите URL-адрес директории со стилями
+	$script_directory = get_template_directory() . '../../../../dist/css/'; // Укажите путь к директории со стилями
+	$script_url = get_template_directory_uri() . '../../../../dist/css/'; // Укажите URL-адрес директории со стилями
 	
 	if(!is_dir($script_directory)) {
 		return;
@@ -108,7 +108,7 @@ function handle_getData() {
 	$pageName = (string)trim($_GET['page-name']);
 	$pageId = (int)trim($_GET['page-id']);
 
-	if ($pageName == 'привет-мир' || $pageId === 1) {
+	if ($pageName === 'привет-мир' || $pageId === 1) {
 		$pageName = 'home-setup';
 	}
 
@@ -118,9 +118,55 @@ function handle_getData() {
 		$content = get_fields($pageId);
 	}
 
+	if ($pageName === 'header-setup') {
+		$content['lang'] = pll_the_languages( array( 'raw' => 1 ) );
+	}
+
 	$result = json_decode( json_encode( $content ), true );
 	wp_send_json($result);
 }
 add_action('wp_ajax_getData', 'handle_getData');
 add_action('wp_ajax_nopriv_getData', 'handle_getData');
+
+function handle_getPostList() {
+	$postId = (int)trim($_GET['post-id']) ?? 0;
+	$postType = (string)trim($_GET['post-type']);
+	$postCount = (int)trim($_GET['post-count']) ?? 1;
+	$pageNum = (int)trim($_GET['page-num']) ?? 1;
+
+	$args = [
+		'post_type' => $postType,
+		'post_status' => 'publish',
+		'posts_per_page' => $postCount,
+		'paged' => $pageNum
+	];
+
+	if(!empty($postId)) {
+		$args = [
+			'p' => $postId,
+			'post_type' => 'any'
+		];
+	}
+
+	$newsList = (new WP_Query($args))->posts;
+
+	$content = [];
+	foreach ($newsList as $news) {
+		$fileds = get_fields($news->ID);
+
+		array_push($content, [
+			'post' => $news,
+			'data' => $fileds,
+			'link' => get_permalink($news->ID)
+		]);
+	}
+
+	$result = json_decode( json_encode( $content ), true );
+	wp_send_json([
+		'data' => $result,
+		'count' => (int)wp_count_posts('news-post')->publish
+	]);
+}
+add_action('wp_ajax_getPostList', 'handle_getPostList');
+add_action('wp_ajax_nopriv_getPostList', 'handle_getPostList');
 ?>

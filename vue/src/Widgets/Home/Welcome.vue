@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full bg-[var(--color-black1)] rounded-[2.875rem] max-phoneX:overflow-hidden">
+	<div class="w-full bg-[var(--color-black1)] rounded-[2.875rem] max-phoneX:overflow-hidden" v-if="dataWelcome">
 		<div class="px-[7vw] py-[7vw] max-phoneX:py-[15vw] flex flex-col max-phoneX:gap-12">
 			
 			<div class="hidden max-phoneX:flex justify-center">
@@ -9,7 +9,7 @@
 			<div class="flex flex-col gap-4 items-start">
 				<h2 class="font-mont text-[3.375rem] text-white font-semibold leading-tight select-none" v-html="title"></h2>
 
-				<a :href="button.link" v-if="button.is_active">
+				<a :href="button.link?.url ?? ''" v-if="button.is_active">
 					<Button class="!bg-transparent btn relative !py-4 hover:scale-105 duration-500">
 						<span class="text-white text-base font-[Arial] font-semibold">{{ button.text }}</span>
 					</Button>

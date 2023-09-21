@@ -14,7 +14,7 @@
 				>
 					<!-- <div class="flex justify-around max-md:flex-col max-md:items-center gap-4"> -->
 						<Slide v-for="item in productList" :key="item">
-							<div ref="itemsListAnim" class="flex flex-col gap-10 items-start our-bussines-item px-5 py-8 rounded-[1.6875rem] min-h-[27.4375rem] max-w-[23.125rem] mr-8 relative" :style="`--our-bussines-product-them-color: ${item.color}`">
+							<div ref="itemsListAnim" class="flex flex-col gap-10 items-start our-bussines-item px-5 py-8 rounded-[1.6875rem] min-h-[27.4375rem] max-w-[23.125rem] mr-8 relative rtl:[direction:rtl]" :style="`--our-bussines-product-them-color: ${item.color}`">
 								<div class="flex gap-5">
 									<img v-if="item.icon" :src="item.icon.url" alt="" draggable="false" class="select-none w-[5.3125rem] h-[5.3125rem]">
 									<h2 class="text-black text-3xl font-mont font-bold text-start" v-html="item.title"></h2>
@@ -22,13 +22,13 @@
 
 								<span class="text-black text-xl font-[Arial] font-normal text-start" v-html="item.description"></span>
 								
-								<a :href="item.button.link" v-if="item.button && item.button.is_active">
+								<a :href="item.button.link?.url ?? ''" v-if="item.button && item.button.is_active">
 									<Button class="bg-[var(--our-bussines-product-them-color)]">
 										<span class="text-black text-base font-semibold font-[Arial]">{{ item.button.text }}</span>
 									</Button>
 								</a>
 
-								<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class=" absolute select-none w-[6.25rem] right-10 bottom-[1.375rem] z-50">
+								<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class=" absolute select-none w-[6.25rem] right-10 rtl:left-10 rtl:right-auto bottom-[1.375rem] z-50">
 							</div>
 						</Slide>
 					<!-- </div> -->
@@ -55,7 +55,6 @@ const props = defineProps<{
 }>();
 
 let itemsListAnim = ref([]);
-let isInitAnimation = ref(false);
 
 let curentRectWidth = ref(document.querySelector('html').clientWidth as number);
 
@@ -84,13 +83,8 @@ window.addEventListener('resize', () => {
 });
 
 watchEffect(() => {
-	if(!isInitAnimation.value) {
-		itemsListAnim = ref([]);
-		animateItemList();
-
-		isInitAnimation.value = true;
-	}
-});
+	animateItemList();
+}, { flush: "post" });
 
 function animateItemList() {
 	gsap.utils.toArray<any>(itemsListAnim.value).forEach((element, i) => {

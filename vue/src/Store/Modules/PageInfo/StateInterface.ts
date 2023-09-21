@@ -3,4 +3,5 @@ export default interface StateInterface {
 	ajaxUrl: string;
 	pageName: string;
 	pageTemplate: string;
+	postType: string;
 }

@@ -37,7 +37,7 @@ class Utils {
 		const setup: AxiosRequestConfig = {
 			method: method,
 			url: _url,
-			headers: _headers,
+			headers: _headers
 		};
 
 		if(method.toLowerCase() === 'get') {

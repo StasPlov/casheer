@@ -12,7 +12,7 @@
 							<span class="text-black text-xl font-normal font-[Arial] max-w-[14.625rem]" v-html="item.sub_title"></span>
 						</li>
 						<li v-if="index !== (stepList.length - 1)" ref="itemsListAnim">
-							<img v-if="props.stepImage" :src="stepImage.url" alt="" class="mt-10 max-md:rotate-90 max-md:max-h-3 select-none" draggable="false">
+							<img v-if="props.stepImage" :src="stepImage.url" alt="" class="mt-10 max-md:[transform:rotateZ(180deg)] max-md:max-h-3 select-none rtl:[transform:rotateY(180deg)]" draggable="false">
 						</li>
 					</template>
 				</ul>
@@ -21,7 +21,7 @@
 			<div class="flex flex-col gap-4 items-start z-10" v-if="action">
 				<h1 class="text-[var(--data-bg-color)] text-4xl font-mont font-medium" v-html="action.title"></h1>
 
-				<a :href="action.button.link" v-if="action.button.is_active">
+				<a :href="action.button.link?.url ?? ''" v-if="action.button.is_active">
 					<Button class="border-[var(--data-bg-color)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
 						<span class="text-[var(--color-black1)] text-2xl font-bold font-[Arial]">{{ action.button.text }}</span>
 					</Button>
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 
-		<img  v-if="image" :src="image.url" alt="" class="absolute right-0 bottom-0 select-none max-w-[40vw]" draggable="false" ref="imageAnim">
+		<img  v-if="image" :src="image.url" alt="" class="absolute right-0 bottom-0 select-none max-w-[40vw] rtl:left-0 rtl:right-auto rtl:[transform:rotateY(180deg)]" draggable="false" ref="imageAnim">
 	</div>
 </template>
 
@@ -57,19 +57,10 @@ const props = defineProps<{
 
 let imageAnim = ref(null);
 let itemsListAnim = ref([]);
-let isInitAnimation = ref(false);
 
 watchEffect(() => {
-	if(!isInitAnimation.value) {
-		imageAnim = ref(null);
-		itemsListAnim = ref([]);
-
-		animateImage();
-		animateItemList();
-		isInitAnimation.value = true;
-
-		console.log(123123);
-	}
+	animateImage();
+	animateItemList();
 });
 
 function animateImage() {

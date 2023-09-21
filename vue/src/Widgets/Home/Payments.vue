@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full min-h-screen bg-[var(--color-black1)] relative">
+	<div class="w-full min-h-screen bg-[var(--color-black1)] relative" v-if="pageData">
 		<div class="py-[5vw] px-[7vw] grid grid-cols-2 items-center max-phoneX:items-start max-phoneX:flex max-phoneX:flex-col-reverse max-phoneX:gap-20">
 
 			<div class="flex justify-end max-phoneX:self-start">
@@ -22,7 +22,7 @@
 									<div class="flex flex-col gap-4 max-w-[16.875rem]">
 										<span class="text-white text-lg font-normal block select-none" v-html="item.item.description"></span>
 										
-										<a :href="item.item.button.link" v-if="item.item.button.is_active" class="flex gap-2 self-end items-center">
+										<a :href="item.item.button.link?.url ?? ''" v-if="item.item.button.is_active" class="flex gap-2 self-end items-center">
 											<span class="text-white text-[Arial] text-xl font-normal leading-none">{{ item.item.button.text }}</span>
 											<Button class="bg-transparent !p-0">></Button>
 										</a>
@@ -94,7 +94,7 @@ watch(pageData.value, () => {
 	phoneImageBackground = ref(null);
 }); */
 
-function initList(active: PaymentsInterface | undefined) {
+function initList(active: PaymentsInterface | undefined = undefined) {
 	list.value = itemList.value.map((element, i) => {
 		const isActive = (active && active === element) ? true : (active === undefined) ? i === 0 : false; // first item is active set
 		return {

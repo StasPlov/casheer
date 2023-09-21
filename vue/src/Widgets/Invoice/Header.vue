@@ -1,8 +1,8 @@
 <template>
-	<div class="w-full bg-[var(--color-black1)] flex items-center relative overflow-hidden">
+	<div class="w-full bg-[var(--color-black1)] flex items-center relative overflow-hidden" v-if="data">
 		<img v-if="background" :src="background.url" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-2.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain" draggable="false">
 
-		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
+		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 rtl:pr-[7vw] rtl:pl-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
 
 			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
 				<div class="flex flex-col gap-9">
@@ -16,7 +16,7 @@
 				<div class="flex gap-10 items-center mb-9">
 					<img v-if="logo" :src="logo.url" alt="" class="select-none" draggable="false">
 
-					<a :href="button.link" v-if="button && button?.is_active">
+					<a :href="button.link?.url ?? ''" v-if="button && button?.is_active">
 						<Button class="border-[var(--color-violet1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
 							<span class="text-white text-base font-bold font-[Arial]">{{ button.text }}</span>
 						</Button>
@@ -27,7 +27,7 @@
 			<div class="flex justify-end z-10">
 				<div class="relative max-md:hidden">
 					<img v-if="image" :src="image.url" alt="" class="w-[40rem] select-none" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="w-[15.4375rem] absolute left-[-0.875rem] top-[10.25rem] select-none" draggable="false" ref="waletImage2">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="w-[15.4375rem] absolute left-[-0.875rem] rtl:left-auto rtl:right-[-0.875rem] top-[10.25rem] select-none" draggable="false" ref="waletImage2">
 				</div>
 
 				<div class="relative hidden max-md:block max-md:max-h-[41.5rem]">
@@ -45,7 +45,7 @@
 import Button from "@/Ui/Button.vue";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watchEffect } from "vue";
 import { useStore } from "vuex";
 import { RootStateInterface } from "../../Store";
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
@@ -70,10 +70,10 @@ const image = computed<ImageInterface>(() => data.value?.image);
 const imageMobile = computed<ImageInterface>(() => data.value?.image_mobile);
 const imageTwo = computed<ImageInterface>(() => data.value?.image_two);
 
-onMounted(() => {
+watchEffect(() => {
 	animateWalet();
 	animateWalet2();
-});
+}, { flush: "post" });
 
 function animateWalet() {
 	gsap.fromTo(
@@ -114,12 +114,12 @@ function animateWalet2() {
 			duration: 4,
 			y: '0px',
 			ease: 'power4.out',
-			scrollTrigger: {
+			/* scrollTrigger: {
 				trigger: waletImage2.value,
 				start: 'top 80%',
 				end: 'bottom bottom',
 				toggleActions: "play none none reset",
-			},
+			}, */
 		}
 	);
 }

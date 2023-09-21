@@ -11,6 +11,7 @@ License URI: https://opensource.org/licenses/MIT
 Tags: wordpress, html, javascript, css, vue
 Text Domain: one global
 */
-
+@import './dist/css/app.c0347d4e.css';
+@import './vue/src/Assets/Fonts/Mont/stylesheet.css';
 @import './vue/src/Assets/Fonts/Mont/stylesheet.css';
 @import './vue/src/Assets/Fonts/Roboto/stylesheet.css';

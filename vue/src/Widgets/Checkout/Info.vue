@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
 
-		<div class="px-[7vw] py-[13vw] pr-0 pb-0 w-full">
+		<div class="px-[7vw] py-[13vw] pr-0 pb-0 rtl:pl-0 rtl:pr-[7vw] w-full">
 			<div class="grid grid-cols-2 max-md:grid-cols-1">
 	
 				<div class="flex flex-col gap-16 max-md:pb-20">
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[13vw] pb-0 pr-0 w-full">
+		<div class="px-[7vw] py-[13vw] pb-0 pr-0 w-full rtl:pl-0 rtl:pr-[7vw]">
 			<div class="grid grid-cols-2 max-md:grid-cols-1">
 	
 				<div class="flex flex-col gap-16 max-md:pb-20">
@@ -87,15 +87,13 @@
 
 		<div class="px-[7vw] py-[13vw] pt-[10vw] w-full">
 			<div class="grid grid-cols-2 grid-flow-row gap-8 gap-y-11 max-md:grid-cols-1">
-				<template v-for="item in infoList" :key="item">
-					<div ref="itemsListAnim">
-						<InfoBlock
-							:title="item.title"
-							:description="item.description"
-							:image="item.image"
-						></InfoBlock>
-					</div>
-				</template>
+				<div v-for="item in infoList" :key="item" ref="itemsListAnim">
+					<InfoBlock class="h-full"
+						:title="item.title"
+						:description="item.description"
+						:image="item.image"
+					></InfoBlock>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -103,7 +101,7 @@
 
 <script setup lang="ts">
 import { useStore } from "vuex";
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch, watchEffect } from "vue";
 import InfoBlock from "./InfoBlog/InfoBlock.vue";
 import InfoBlockInterface from "./InfoBlog/Type/InfoBlockInterface";
 import gsap from "gsap";
@@ -130,7 +128,7 @@ const two = computed(() => content.value?.two);
 const last = computed(() => content.value?.last);
 const infoList = computed<Array<InfoBlockInterface>>(() => content.value?.info_list ?? []);
 
-watch(last.value, () => {
+watchEffect(() => {
 	animatePhone();
 	animatePhone2();
 	animateArrow();
@@ -138,7 +136,7 @@ watch(last.value, () => {
 	
 	animateMonit01_();
 	animatePhone01_();
-});
+}, { flush: "post" });
 
 function animatePhone() {
 	gsap.fromTo(

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watchEffect } from "vue";
 import InfoInterface from "./Type/InfoInterface";
 
 import gsap from "gsap";
@@ -26,6 +26,10 @@ const props = defineProps<{
 }>();
 
 const list = computed<typeof props.list>(() => props.list);
+
+watchEffect(() => {
+	animateItemList();
+}, { flush: "post" });
 
 function animateItemList() {
 	gsap.utils.toArray<any>(itemsListAnim.value).forEach((element, i) => {
@@ -48,8 +52,4 @@ function animateItemList() {
 		});
 	});
 }
-
-onMounted(() => {
-	animateItemList();
-});
 </script>

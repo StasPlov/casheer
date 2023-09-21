@@ -14,7 +14,7 @@
 
 			<div class="flex flex-col gap-5">
 				<div class="flex gap-10 mb-9">
-					<a :href="button.link" v-if="button && button.is_active">
+					<a :href="button.link?.url ?? ''" v-if="button && button.is_active">
 						<Button class="!bg-transparent btn relative !py-4 hover:scale-105 duration-500">
 							<span class="text-white text-base font-[Arial] font-semibold">{{ button.text }}</span>
 						</Button>

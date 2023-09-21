@@ -5,7 +5,7 @@
 
 			<div class="flex items-center justify-center absolute right-[7vw] top-28 max-md:top-0 max-md:relative max-md:right-0 max-md:justify-start max-md:px-[7vw] max-md:py-[2vw]">
 				<div class="flex flex-col gap-4">
-					<span class="text-white text-5xl font-mont font-bold leading-tight text-right max-md:text-start" v-html="description"></span>
+					<span class="text-white text-5xl font-mont font-bold leading-tight text-right max-md:text-start" v-html="title"></span>
 				</div>
 			</div>
 		</div>
@@ -25,6 +25,5 @@ const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
 const data = computed(() => pageData.value.data?.technology_block);
 
 const image = computed<ImageInterface>(() => data.value?.image);
-const description = computed<string>(() => data.value?.description);
 const title = computed<string>(() => data.value?.title);
 </script>

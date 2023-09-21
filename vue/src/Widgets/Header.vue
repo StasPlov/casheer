@@ -1,15 +1,159 @@
 <template>
-	<header class="flex justify-between">
-		<img src="" alt="">
+	<header class="flex justify-between bg-[var(--color-black1)] sticky top-0 z-50">
+		<div class="min-h-[5.6875rem] w-full flex justify-between px-[4vw]">
+			<a href="/" class="self-center">
+				<img :src="logo.url" v-if="logo" alt="" class=" max-w-[12.5rem] object-contain max-phoneX:max-w-[9.125rem]" draggable="false">
+			</a>
 
-		<div class="flex">
-			<Button class="bg-transparent">
-				<span>Language</span>
-			</Button>
+			<div class="flex items-center justify-end">
+				<div v-if="ButtonLang && ButtonLang.is_active" class="relative">
+					<Button class="bg-transparent gap-3" @click="langMenuIsOpen = !langMenuIsOpen">
+						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonLang.text }}</span>
+						<ArrowIcon></ArrowIcon>
+					</Button>
+
+					<Transition name="fade-top">
+					<div class="absolute z-[51] px-5 py-3 bg-[var(--color-black1)] rounded-2xl right-0" v-if="langMenuIsOpen" v-click-outside="clickOutsideLang">
+						<ul class="flex flex-col gap-2">
+							<li v-for="item in langList" :key="item" class="max-w-max transition duration-300 hover:scale-105">
+								<div class="flex gap-3">
+									<img :src="item.flag" alt="" class="h-5 object-contain">
+									<a :href="item.url" class="text-white text-base font-normal font-[Arial]" :class="{ 'font-medium':item.current_lang }">{{ item.name }}</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					</Transition>
+				</div>
+
+				<a :href="ButtonLogin.link" v-if="ButtonLogin && ButtonLogin.is_active">
+					<Button class="bg-transparent">
+						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonLogin.text }}</span>
+					</Button>
+				</a>
+
+				<a :href="buttonSignUp.link" v-if="buttonSignUp && buttonSignUp.is_active">
+					<Button class="bg-transparent">
+						<span class="text-white text-base font-[Arial] font-normal underline">{{ buttonSignUp.text }}</span>
+					</Button>
+				</a>
+
+				<Button class="bg-transparent max-w-[4.0625rem]" @click="menuIsOpen = !menuIsOpen">
+					<MenuIcon v-if="!menuIsOpen"></MenuIcon>
+					<MenuIconClose v-else></MenuIconClose>
+				</Button>
+			</div>
 		</div>
+
+		<Teleport to="body">
+		<Transition name="fade-top">
+			<div class="fixed bg-black/70 w-full h-[calc(100%_-_5.6875rem)] bottom-0 z-50" v-if="menuIsOpen">
+				<div class="w-full h-full flex items-center justify-center gap-28 px-[7vw] py-[10vw] max-md:items-start max-md:flex-col max-md:justify-start" v-click-outside="clickOutside">
+					<ul class="flex flex-col gap-8"  v-if="menu" v-click-outside="clickOutside">
+						<TransitionGroup name="popup">
+						<li v-for="item in menu" :key="item" class="transition duration-500 hover:translate-x-3 group">
+							<a :href="item.link.url" class="text-white text-4xl font-medium font-mont uppercase transition duration-500 group-hover:text-gray-200 cursor-default">{{ item.title }}</a>
+						</li>
+						</TransitionGroup>
+					</ul>
+
+					<ul class="flex flex-col gap-8" v-if="menuTwo" v-click-outside="clickOutside">
+						<TransitionGroup name="popup">
+						<li v-for="item in menuTwo" :key="item" class="transition duration-500 hover:translate-x-3 group">
+							<a :href="item.link.url" class="text-white text-4xl font-bold font-mont uppercase transition duration-500 group-hover:text-gray-200 cursor-default">{{ item.title }}</a>
+						</li>
+						</TransitionGroup>
+					</ul>
+				</div>
+			</div>
+		</Transition>
+		</Teleport>
 	</header>
 </template>
 
 <script setup lang="ts">
+/* eslint-disable */
+import vClickOutside from "../Service/ClickOutside";
+import ArrowIcon from "../Widgets/Header/Assets/ArrowIcon.vue";
+import MenuIcon from "../Widgets/Header/Assets/MenuIcon.vue";
+import MenuIconClose from "../Widgets/Header/Assets/MenuIconClose.vue";
 import Button from "@/Ui/Button.vue";
+import { computed, onMounted, ref, watch } from "vue";
+import { useStore } from "vuex";
+import { RootStateInterface } from "../Store";
+import StateInterface from "../Store/Modules/Header/StateInterface";
+import LinkInterface from "../Entity/LinkInterface";
+import ImageInterface from "../Entity/ImageInterface";
+import LangInterface from "../Entity/LangInterface";
+import ButtonInterface from "../Entity/ButtonInterface";
+
+const store = useStore<RootStateInterface>();
+const data = computed<{
+	button_login: ButtonInterface,
+	button_sign_up: ButtonInterface,
+	button_lang: ButtonInterface,
+	lang: Array<LangInterface>,
+	logo: ImageInterface,
+	menu: Array<{
+		title: string,
+		link: LinkInterface
+	}>,
+	menu_two: Array<{
+		title: string,
+		link: LinkInterface
+	}>
+}>(() => (store.state.header as StateInterface).data);
+
+const logo = computed(() => data.value?.logo);
+const ButtonLang = computed(() => data.value?.button_lang);
+const ButtonLogin = computed(() => data.value?.button_login);
+const buttonSignUp = computed(() => data.value?.button_sign_up);
+const menu = computed(() => data.value?.menu ?? []);
+const menuTwo = computed(() => data.value?.menu_two ?? []);
+const langList = computed(() => data.value?.lang ?? []);
+
+let menuIsOpen = ref(false);
+let langMenuIsOpen = ref(false);
+let isInitData = ref(false);
+
+watch(menuIsOpen, () => {
+	const main = document.querySelector('main');
+	const footer = document.querySelector('footer');
+
+	if(menuIsOpen.value) {
+		main.classList.add('body-blur');
+		footer.classList.add('body-blur');
+		return;
+	}
+
+	main.classList.remove('body-blur');
+	footer.classList.remove('body-blur');
+})
+
+onMounted(() => {
+	if(!isInitData.value) {
+		store.dispatch('header/getData', {
+			// eslint-disable-next-line
+			'action': 'getData',
+			'page-name': 'header-setup',
+		});
+
+		isInitData.value = true;
+	}
+});
+
+
+function clickOutside() {
+	menuIsOpen.value = false;
+}
+function clickOutsideLang() {
+	langMenuIsOpen.value = false;
+}
 </script>
+
+<style>
+.body-blur {
+	transition: 300ms;
+	filter: blur(10px);
+}
+</style>

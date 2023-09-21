@@ -1,10 +1,10 @@
 <template>
-	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start overflow-hidden">
+	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start overflow-hidden" v-if="content">
 
-		<div class="px-[7vw] py-[13vw] w-full">
+		<div class="px-[7vw] py-[13vw] w-full rtl:[direction:ltr]">
 			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
 	
-				<div class="flex flex-col gap-16 order-1 max-md:order-none max-md:pb-20">
+				<div class="flex flex-col gap-16 order-1 max-md:order-none max-md:pb-20 rtl:[direction:rtl]">
 					<span class="text-white text-2xl font-normal text-[Arial]" v-html="first.description"></span>
 
 					<ul class="flex flex-col gap-5 max-md:hidden">
@@ -55,7 +55,7 @@
 					<span class="text-white text-2xl font-normal text-[Arial] max-md:hidden" v-html="two.description"></span>
 				</div>
 
-				<div class="flex justify-start max-md:pb-96">
+				<div class="flex justify-start max-md:pb-96 rtl:justify-end">
 					<div class="relative top-[-3.125rem]">
 						<img v-if="two.image_1" :src="two.image_1.url" alt="" class="w-[35.5rem] relative select-none z-10" draggable="false" ref="waletImage">
 						<img v-if="two.image_2" :src="two.image_2.url" alt="" class="w-[34.8125rem] absolute select-none top-0 -right-52 z-10" draggable="false" ref="waletImage">
@@ -70,10 +70,10 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[13vw] w-full">
+		<div class="px-[7vw] py-[13vw] w-ful rtl:[direction:ltr]">
 			<div class="grid grid-cols-2 max-md:grid-cols-1">
 	
-				<div class="flex flex-col gap-16 order-1 max-md:order-none max-md:pb-72">
+				<div class="flex flex-col gap-16 order-1 max-md:order-none max-md:pb-72 rtl:[direction:rtl]">
 					<div class="flex flex-col gap-0">
 						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-TapAndGo-text-center" v-html="three.title"></h1>
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="three.sub_title"></span>
@@ -131,29 +131,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
-
-import background01 from "@/Assets/Images/Group 498.svg";
-import background02 from "@/Assets/Images/casheer card (1).png";
-import background03 from "@/Assets/Images/2300zdfgh 1.png";
-
-import background1 from "@/Assets/Images/Group 501.svg";
-import background2 from "@/Assets/Images/phone.png";
-import background3 from "@/Assets/Images/Group 497.svg";
-
-import background31 from "@/Assets/Images/Group 496.svg";
-import background32 from "@/Assets/Images/casheer touch & tap graphics2.png";
-import background33 from "@/Assets/Images/casheer touch & tap graphics3.png";
-
-import background21 from "@/Assets/Images/casheer touch & tap graphics (2).png";
-import background22 from "@/Assets/Images/casheer touch & tap graphics (3).png";
-import background23 from "@/Assets/Images/mockup laptop checkout (2) 1.png";
-import background24 from "@/Assets/Images/Group 495.svg";
-import background24Mob from "@/Assets/Images/Group 414.svg";
-
+import { computed, onMounted, ref, watch, watchEffect } from "vue";
 import InfoBlock from "./InfoBlog/InfoBlock.vue";
 import InfoBlockInterface from "./InfoBlog/Type/InfoBlockInterface";
-
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useStore } from "vuex";
@@ -177,9 +157,8 @@ const first = computed(() => content.value?.first);
 const two = computed(() => content.value?.two);
 const three = computed(() => content.value?.three);
 const last = computed(() => content.value?.last);
-/* const infoList = computed<Array<InfoBlockInterface>>(() => content.value?.info_list ?? []); */
 
-watch(content, () => {
+watchEffect(() => {
 	animatePhone();
 	animatePhone2();
 	animateArrow();
@@ -187,30 +166,7 @@ watch(content, () => {
 
 	animateMonit01_();
 	animatePhone01_();
-});
-
-const infoList = computed<Array<InfoBlockInterface>>(() => [
-	{
-		title: 'Direct integration',
-		description: 'From instant synchronisation with card networks and banks to browser-based checkout flows, we operate and serve at every level of the financial stack.',
-		image: require('@/Assets/Icons/Mask group.png')
-	},
-	{
-		title: 'Data-hardened',
-		description: 'Platform models respond to macro-insights to drive revenue streams across conversion, fraud, revenue recovery, and more.',
-		image: require('@/Assets/Icons/Mask group (3).svg')
-	},
-	{
-		title: 'Fastest-improving platform',
-		description: 'Stay ahead and secure of industry shifts, with continuous updates and optimizations.',
-		image: require('@/Assets/Icons/Mask group (4).svg')
-	},
-	{
-		title: 'Gold standard operability',
-		description: 'Our systems uphold unlimited uptime to ensure consistent scalability and compliance.',
-		image: require('@/Assets/Icons/Mask group (5).svg')
-	}
-]);
+}, { flush: "post" });
 
 function animatePhone() {
 	gsap.fromTo(
@@ -311,7 +267,6 @@ function animateItemList() {
 		});
 	});
 }
-
 
 function animatePhone01_() {
 	gsap.fromTo(animatePhone1.value, {

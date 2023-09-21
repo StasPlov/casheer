@@ -13,7 +13,7 @@ if(appElement !== null) {
 
 export const app = createApp(App, props)
 	.use(store)
-	.directive('click-outside', clickOutside);
+	.directive('v-click-outside', clickOutside);
 app.mount('#app');
 
 if(appElement !== null) {

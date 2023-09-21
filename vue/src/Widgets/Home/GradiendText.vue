@@ -18,7 +18,7 @@ const pageDataText = computed<string>(() => pageData.value.data?.gradient_text);
 </script>
 
 <style>
-.anim-bg-grident {
+.anim-bg-grident, .anim-bg-grident p {
 	-webkit-background-clip: text;
     background-clip: text;
 	background: linear-gradient(165deg, #7d00e200 10.24%, #7D00E2 21.24%, #5066F6 33.54%, #1CF4FF 55.78%, #18FE6A 68.07%, #FFF 81.29%, #7d00e200 99.24%);

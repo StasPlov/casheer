@@ -12,8 +12,8 @@
 	</template>
 
 	<Payments></Payments>
-	<Always></Always>
-	<Man></Man>
+	<!-- <Always></Always> -->
+	<!-- <Man></Man> -->
 	<Welcome></Welcome>
 	<Trust></Trust>
 	<Download></Download>

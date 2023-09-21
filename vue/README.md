@@ -17,6 +17,10 @@ npm run build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
+## BUILD 
+../../../../dist wor main folder WordPress
+
+
 ### FSD (VUE modification)
 Проект на FSD состоит из слоев (layers), каждый слой состоит из слайсов (slices) и каждый слайс состоит из сегментов (segments).
 

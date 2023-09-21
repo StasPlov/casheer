@@ -32,7 +32,6 @@ import ImageInterface from "../Entity/ImageInterface";
 import { RootStateInterface } from "../Store";
 import StateInterface from "../Store/Modules/PageInfo/StateInterface";
 import PageDataStateInterface from "../Store/Modules/PageData/StateInterface";
-import InfoInterface from "../Widgets/Home/Entity/InfoInterface";
 import InfoSmarterInterface from "../Widgets/TouchAndTap/Type/InfoInterface";
 import ActionInterface from "../Widgets/LetsLaunch/Type/ActionInterface";
 import StepInterface from "../Widgets/LetsLaunch/Type/StepInterface";
@@ -56,9 +55,6 @@ const data = computed(() => pageData.value.data?.info_list_block);
 const dataLetsLaunchBlock = computed(() => pageData.value.data?.lets_launch_block);
 const dataOurBussinesProductBlock = computed(() => pageData.value.data?.our_bussines_product_block);
 const dataSmartet = computed(() => pageData.value.data?.smarter);
-
-/* InfoListBlock */
-const infoListBlock = computed<Array<InfoInterface>>(() => data.value?.items);
 
 /* LetsLaunch */
 const LLstepList = computed<Array<StepInterface>>(() => dataLetsLaunchBlock.value?.step_list);

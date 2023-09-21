@@ -1,6 +1,7 @@
 <template>
 	<div class="flex flex-col bg-[var(--color-black1)] relative">
-		<img :src="backgroundGradient" alt="" class="absolute right-0 top-[-70%] select-none" draggable="false">
+		<!-- <img :src="backgroundGradient" alt="" class="absolute right-0 top-[-70%] select-none" draggable="false"> -->
+		<Light2 class="absolute right-0 top-[-70%] select-none" draggable="false"></Light2>
 
 		<div class="px-[7vw] py-[18vw]">
 			<div class="flex flex-col gap-10">
@@ -15,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import backgroundGradient from "@/Assets/Icons/casheer about us gradient2.svg";
+import Light2 from "./Assets/Light2.vue";
 
 import { RootStateInterface } from "../../Store";
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";

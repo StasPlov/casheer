@@ -7,7 +7,7 @@
 
 			<img v-if="image" :src="image.url" alt="" class="w-full select-none -z-0" draggable="false">
 
-			<div class="flex items-center justify-center absolute left-[7vw] top-28 max-md:top-0 max-md:relative max-md:left-0 max-md:justify-start max-md:px-[7vw] max-md:py-[2vw]">
+			<div class="flex items-center justify-center absolute left-[7vw] rtl:left-auto rtl:right-[7vw] top-28 max-md:top-0 max-md:relative max-md:left-0 max-md:justify-start max-md:px-[7vw] max-md:py-[2vw]">
 				<div class="flex flex-col gap-4">
 					<span class="text-white text-5xl font-mont font-bold leading-tight text-left max-md:text-start" v-html="title"></span>
 

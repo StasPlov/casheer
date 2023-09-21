@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start overflow-hidden" v-if="content">
 		
-		<div class="px-[7vw] py-[13vw] pb-0 z-0 w-full">
+		<div class="px-[7vw] py-[13vw] pb-0 z-0 w-full rtl:[direction:ltr]">
 			<div class="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-28">
 
 				<div class="flex flex-col gap-16">
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] pl-0 py-[13vw] pb-0 z-0 w-full max-md:pl-[7vw]">
+		<div class="px-[7vw] pl-0 py-[13vw] pb-0 z-0 w-full max-md:pl-[7vw] rtl:[direction:ltr]">
 			<div class="grid grid-cols-2  max-md:grid-cols-1">
 
 				<div class="hidden flex-col gap-0 max-md:flex">
@@ -96,7 +96,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, nextTick, onMounted, ref, watch, watchEffect } from "vue";
 import { useStore } from "vuex";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -113,7 +113,7 @@ const first = computed(() => content.value?.first);
 const two = computed(() => content.value?.two);
 const last = computed(() => content.value?.last);
 
-let elementsAnim: Array<HTMLElement> = [];
+let elementsAnim = Array.from(document.querySelectorAll<HTMLElement>('[refs="itemsListAnim"]'));
 let animateHend1 = ref(null);
 let animateMap1 = ref(null);
 
@@ -121,15 +121,9 @@ let animatePhone1 = ref(null);
 let animateMonit1 = ref(null);
 let animateRound1 = ref(null);
 
-watch(last.value, () => {
+
+watchEffect(() => {
 	elementsAnim = Array.from(document.querySelectorAll<HTMLElement>('[refs="itemsListAnim"]'));
-
-	animateHend1 = ref(null);
-	animateMap1 = ref(null);
-
-	animatePhone1 = ref(null);
-	animateMonit1 = ref(null);
-	animateRound1 = ref(null);
 
 	animateItemList();
 	animateHend();
@@ -138,7 +132,7 @@ watch(last.value, () => {
 	animateRound();
 	animateMonit();
 	animatePhone();
-});
+}, { flush: "post" });
 
 function animateItemList() {
 	gsap.utils.toArray<HTMLElement>(elementsAnim).forEach((element, i) => {

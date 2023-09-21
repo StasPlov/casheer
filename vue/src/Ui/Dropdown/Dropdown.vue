@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col gap-2">
+	<div class="flex flex-col">
 		<div @click="open" ref="parent">
 			<slot name="text">text</slot>
 		</div>
@@ -21,12 +21,16 @@ gsap.registerPlugin(ScrollTrigger);
 const emit = defineEmits(['selectItem'])
 
 interface PropsInterface {
-	classIsOpen: string;
+	classIsOpen?: string;
+	marginTop?: string;
+	useOpenClose: boolean;
 	item: ItemInterface,
 }
 
 const props = withDefaults(defineProps<PropsInterface>(), {
 	classIsOpen: '',
+	marginTop: '0.5rem',
+	useOpenClose: false,
 	item: null,
 });
 
@@ -43,9 +47,22 @@ watch(props, () => {
 });
 
 function open() {
+	if(props.useOpenClose) {
+		isOpen.value = !isOpen.value;
+		
+		if(isOpen.value) {
+			animateContentDrop();
+		} else {
+			animateContentDropClose();
+		}
+		emit('selectItem', props.item);
+		return;
+	}
+
 	if(isOpen.value) {
 		return;
 	}
+
 	isOpen.value = true;
 	animateContentDrop();
 	emit('selectItem', props.item);
@@ -58,16 +75,18 @@ function init() {
 	}
 	const childNodes = parent.value.childNodes;
 
-	childNodes.forEach((child: any) => {
-		if (child.nodeType === 1 && isOpen.value) {
-			const classStr = props.classIsOpen.split(' ');
-			classStr.forEach((cls:string) => child.classList.add(cls));
-		}
-		if (child.nodeType === 1 && !isOpen.value) {
-			const classStr = props.classIsOpen.split(' ');
-			classStr.forEach((cls:string) => child.classList.remove(cls));
-		}
-	});
+	if(props.classIsOpen.length) {
+		childNodes.forEach((child: any) => {
+			if (child.nodeType === 1 && isOpen.value) {
+				const classStr = props.classIsOpen.split(' ');
+				classStr.forEach((cls:string) => child.classList.add(cls));
+			}
+			if (child.nodeType === 1 && !isOpen.value) {
+				const classStr = props.classIsOpen.split(' ');
+				classStr.forEach((cls:string) => child.classList.remove(cls));
+			}
+		});
+	}
 }
 
 function animateContentDropClose() {
@@ -79,6 +98,7 @@ function animateContentDropClose() {
 			ease: 'power4.out',
 			duration: 1,
 			height: 0,
+			marginTop: 0
 			/* opacity: 1,
 			autoAlpha: 1,
 			delay: 0.5,
@@ -100,9 +120,9 @@ function animateContentDrop() {
 		contentDropAnim.value,
 		{
 			opacity: 1,
-			scale: 1,
 			ease: 'power4.out',
-			height: 'auto'
+			height: 'auto',
+			marginTop: props.marginTop
 			/* opacity: 1,
 			autoAlpha: 1,
 			delay: 0.5,

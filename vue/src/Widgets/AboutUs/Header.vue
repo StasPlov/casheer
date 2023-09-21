@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col bg-[var(--color-black1)] relative">
-		<img :src="backgroundGradient" alt="" class="absolute left-0 top-0 z-10 select-none" draggable="false">
+		<Light1 class="absolute left-0 top-0 z-10 select-none" draggable="false"></Light1>
 
 		<div class="relative w-full flex text-center max-phoneX:flex-col">
 			<img v-if="background" :src="background.url" alt="" class="w-full select-none -z-0" draggable="false">
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import backgroundGradient from "@/Assets/Icons/casheer about us gradient.svg";
+import Light1 from "./Assets/Light1.vue";
 import { useStore } from "vuex";
 import { RootStateInterface } from "../../Store";
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";

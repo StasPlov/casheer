@@ -8,7 +8,7 @@
 					<li v-for="item in downloadList" :key="item" class="flex flex-col gap-8">
 						<img :src="item.image_qr.url" alt="" class=" select-none" draggable="false">
 
-						<a :href="item.button.link" v-if="item.button.is_active">
+						<a :href="item.button.link?.url ?? ''" v-if="item.button.is_active">
 						<Button class="border-2 border-white border-solid bg-transparent !rounded-[6.25rem]">
 							<img :src="item.button.image.url" alt="">
 						</Button>
@@ -17,7 +17,7 @@
 				</ul>
 			</div>
 
-			<img v-if="background" :src="background.url" alt="" class="max-w-[65.875rem] w-[70%] absolute right-0 bottom-0 z-0 max-md:min-w-full max-phoneX:min-w-[150%] max-phoneX:right-[-12.5rem]">
+			<img v-if="background" :src="background.url" alt="" class="max-w-[65.875rem] w-[70%] absolute right-0 rtl:right-auto rtl:left-0 bottom-0 z-0 max-md:min-w-full max-phoneX:min-w-[150%] max-phoneX:right-[-12.5rem]">
 		</div>
 	</div>
 </template>

@@ -11,7 +11,7 @@
 import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useStore } from 'vuex'
 import { RootStateInterface } from './Store/index';
 
@@ -23,24 +23,27 @@ import Checkout from './Pages/Checkout.vue';
 import TouchTap from './Pages/TouchTap.vue';
 import WalletCards from './Pages/WalletCards.vue';
 import News from './Pages/News.vue';
-import NewsSingle from './Pages/NewsSingle.vue';
+import NewsPost from './Pages/NewsPost.vue';
+import Support from './Pages/Support.vue';
 import PricingOnboarding from './Pages/PricingOnboarding.vue';
 import NotFound from './Pages/404.vue';
 
 const store = useStore<RootStateInterface>();
 
 interface PropsInterface {
-	pageId?: number,
-	ajaxUrl: string,
-	pageName: string,
-	pageTemplate: string
+	pageId?: number;
+	ajaxUrl: string;
+	pageName: string;
+	pageTemplate: string;
+	postType: string;
 }
 
 const props = withDefaults(defineProps<PropsInterface>(), {
-	pageId: 1, 
+	pageId: 692, 
 	ajaxUrl: '',
-	pageName: 'привет-мир', // "привет-мир" is home page
-	pageTemplate: '' // empty string is Home page
+	pageName: 'home', // "привет-мир" is home page
+	pageTemplate: 'index.php', // empty string is Home page
+	postType: ''
 });
 
 /* 
@@ -48,31 +51,27 @@ const props = withDefaults(defineProps<PropsInterface>(), {
 	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
 */
 
-/* const routes = { // for page name
-	'привет-мир': Home,
-	'about-us': About,
-	'invoice': Invoice,
-	'checkout': Checkout,
-	'touch-tap': TouchTap,
-	'wallet-cards': WalletCards,
-	'news': News,
-	'news-single': NewsSingle,
-	'pricing-onboarding': PricingOnboarding,
-	'not-found': NotFound
-} */
-
 const routesTemplate = {
-	'': Home,
+	'index.php': Home,
 	'template-about.php': About,
 	'template-invoice.php': Invoice,
 	'template-checkout.php': Checkout,
 	'template-touch-and-tap.php': TouchTap,
 	'template-wallet-and-cards.php': WalletCards,
 	'template-news.php': News,
+	'template-support.php': Support,
 }
 
 const currentPage = computed(() => {
-	return routesTemplate[props.pageTemplate] || null;
+	type t = keyof typeof routesTemplate
+	const n:t = props.pageTemplate as t;
+	let template = routesTemplate[n] || null;
+
+	if(props.postType === 'news-post') {
+		template = NewsPost;
+	}
+
+	return template;
 });
 
 onMounted(() => {
@@ -80,20 +79,37 @@ onMounted(() => {
 	store.commit('pageInfo/setAjaxUrl', props.ajaxUrl);
 	store.commit('pageInfo/setPageId', props.pageId);
 	store.commit('pageInfo/setPageTemplate', props.pageTemplate);
+	store.commit('pageInfo/setPostType', props.postType);
 });
 
 console.log(props);
 
-/* const currentPath = ref(window.location.pathname)
+/* dev vue  */
 
+/* const routes = { // for page name
+	'': { template: Home, id: 0},
+	'about-us':  { template: About, id: 0},
+	'invoice': { template: Invoice, id: 0},
+	'checkout': { template: Checkout, id: 0},
+	'touch-tap': { template: TouchTap, id: 0},
+	'wallet-cards': { template: WalletCards, id: 0},
+	'news': { template: News, id: 0},
+	'news-single': { template: NewsSingle, id: 0},
+	'support': { template: Support, id: 0},
+	'pricing-onboarding': { template: PricingOnboarding, id: 0},
+	'not-found': { template: NotFound, id: 0}
+}
+const currentPath = ref(window.location.pathname)
 window.addEventListener('change', () => {
   	currentPath.value = window.location.pathname
 })
-
 const currentPage = computed(() => {
-	const n = currentPath.value.slice(1) || 'привет-мир';
-	return routes[n as never] || routes['привет-мир'];
-}) */
+	type t = keyof typeof routes
+	const n: t = (currentPath.value.slice(1) || 'привет-мир') as t;
+	return routes[n].template || routes['привет-мир'].template;
+})
+console.log(currentPage.value); */
+
 </script>
 
 <style>
