@@ -9,14 +9,14 @@
                 <div class="px-8">
                     <h3 class="text-transparent text-[2.5rem] font-medium font-mont">KYC Documents</h3>
 
-                    <ul>
+                    <!-- <ul>
                         <li for>
                             <div>
                                 <CheckTryIcon v-if="item_.is_active"></CheckTryIcon>
                                 <CheckNoneIcon v-else></CheckNoneIcon>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
