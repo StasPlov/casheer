@@ -3,10 +3,14 @@ const path = require('path');
 
 module.exports = defineConfig({
 	publicPath: '/dist/',
-	outputDir: path.resolve(__dirname, '../../../../dist'),
+	outputDir: path.resolve(__dirname, '../dist'),
 	configureWebpack: {
 		experiments: {
 			topLevelAwait: true // for can use async await in router
-		}
+		},
+		/* devServer: { // for CORS
+			headers: { "Access-Control-Allow-Origin": "*" },
+			proxy: 'http://localhost:8080'
+		} */
 	}
 })

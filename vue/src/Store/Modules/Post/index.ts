@@ -22,13 +22,13 @@ const module: Module<StateInterface, any> = {
 		setTotalCount(state: StateInterface, payload: number): void {
 			state.totalCount = payload;
 		},
-		setNewsListIsLoading(state: StateInterface, payload: boolean): void {
+		setPostListIsLoading(state: StateInterface, payload: boolean): void {
 			state.postListIsLoading = payload;
 		}
 	},
 	actions: {
 		async getPostList(context, params) {
-			context.commit('postListIsLoading', true);
+			context.commit('setPostListIsLoading', true);
 
 			try {
 				const result = await Utils.fetchData<Array<any>>('GET', null, null, params);
@@ -44,11 +44,11 @@ const module: Module<StateInterface, any> = {
 				console.error(`request error: ${error}`);
 			}
 
-			context.commit('postListIsLoading', false);
+			context.commit('setPostListIsLoading', false);
 		},
 
 		async addPostList(context, params) {
-			context.commit('postListIsLoading', true);
+			context.commit('setPostListIsLoading', true);
 
 			try {
 				const result = await Utils.fetchData<Array<any>>('GET', null, null, params);
@@ -60,7 +60,7 @@ const module: Module<StateInterface, any> = {
 				console.error(`request error: ${error}`);
 			}
 
-			context.commit('postListIsLoading', false);
+			context.commit('setPostListIsLoading', false);
 		},
 	},
 }

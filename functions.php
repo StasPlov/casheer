@@ -37,8 +37,8 @@ add_action( 'after_setup_theme', 'wp_blank_setup' );
  */
 function wp_blank_load_scripts()
 {
-	$script_directory = get_template_directory() . '../../../../dist/js/'; // Укажите путь к директории со скриптами
-	$script_url = get_template_directory_uri() . '../../../../dist/js/'; // Укажите URL-адрес директории со скриптами
+	$script_directory = get_template_directory() . './dist/js/'; // Укажите путь к директории со скриптами
+	$script_url = get_template_directory_uri() . './dist/js/'; // Укажите URL-адрес директории со скриптами
 
 	$scripts = scandir($script_directory); // Получить список файлов в директории со скриптами
 
@@ -60,8 +60,8 @@ function wp_blank_load_scripts()
 add_action('wp_enqueue_scripts', 'wp_blank_load_scripts');
 
 function enqueue_style_custom() {
-	$script_directory = get_template_directory() . '../../../../dist/css/'; // Укажите путь к директории со стилями
-	$script_url = get_template_directory_uri() . '../../../../dist/css/'; // Укажите URL-адрес директории со стилями
+	$script_directory = get_template_directory() . './dist/css/'; // Укажите путь к директории со стилями
+	$script_url = get_template_directory_uri() . './dist/css/'; // Укажите URL-адрес директории со стилями
 	
 	if(!is_dir($script_directory)) {
 		return;
@@ -107,6 +107,8 @@ add_action( 'widgets_init', 'wp_blank_widgets_init' );
 function handle_getData() {
 	$pageName = (string)trim($_GET['page-name']);
 	$pageId = (int)trim($_GET['page-id']);
+	$taxonomy = (string)trim($_GET['taxonomy']) ?? '';
+	$taxonomyOnly = (bool)trim($_GET['taxonomy-only']) ?? false;
 
 	if ($pageName === 'привет-мир' || $pageId === 1) {
 		$pageName = 'home-setup';
@@ -121,6 +123,20 @@ function handle_getData() {
 	if ($pageName === 'header-setup') {
 		$content['lang'] = pll_the_languages( array( 'raw' => 1 ) );
 	}
+
+	if (!empty($taxonomy)) {
+		$term['taxonomy'] = get_terms($taxonomy);
+
+		if($taxonomyOnly) {
+			$result = json_decode( json_encode( $term ), true );
+			wp_send_json($result);
+			return;
+		}
+
+		$content['taxonomy'] = $term['taxonomy'];
+	}
+
+	
 
 	$result = json_decode( json_encode( $content ), true );
 	wp_send_json($result);

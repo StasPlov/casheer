@@ -161,7 +161,8 @@ module.exports = {
 			'gradient-casheer-invoice-text-center': 'linear-gradient(91deg, #7D00E2 0.37%, #FFF 49.52%, #7D00E2 101.19%)',
 			'gradient-casheer-checkout-text-center': 'linear-gradient(91deg, #5066F6 0.37%, #FFF 49.52%, #5066F6 101.19%)',
 			'gradient-casheer-TapAndGo-text-center': 'linear-gradient(91deg, #1CF4FF 0.37%, #FFF 49.52%, #1CF4FF 101.19%)',
-			'gradient-casheer-WalletAndCard-text-center': 'linear-gradient(91deg, rgba(24, 254, 106, 0.81) 0.37%, #FFF 49.52%, rgba(24, 254, 106, 0.81) 101.19%);'
+			'gradient-casheer-WalletAndCard-text-center': 'linear-gradient(91deg, rgba(24, 254, 106, 0.81) 0.37%, #FFF 49.52%, rgba(24, 254, 106, 0.81) 101.19%);',
+			'gradient-casheer-pricing-to-r': 'linear-gradient(90deg, #7D00E2 0%, #1CF4FF 10%, #18FE6A 25%)'
 		},
 		backgroundOpacity: ({ theme }) => theme('opacity'),
 		backgroundPosition: {

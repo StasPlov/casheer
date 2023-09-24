@@ -1,7 +1,7 @@
 <template>
 	<Header></Header>
 	<Main>
-		<component :is="currentPage"></component>
+		<component :is="Pricing"></component>
 	</Main>
 	<Footer></Footer>
 </template>
@@ -25,7 +25,7 @@ import WalletCards from './Pages/WalletCards.vue';
 import News from './Pages/News.vue';
 import NewsPost from './Pages/NewsPost.vue';
 import Support from './Pages/Support.vue';
-import PricingOnboarding from './Pages/PricingOnboarding.vue';
+import Pricing from './Pages/Pricing.vue';
 import NotFound from './Pages/404.vue';
 
 const store = useStore<RootStateInterface>();
@@ -60,6 +60,7 @@ const routesTemplate = {
 	'template-wallet-and-cards.php': WalletCards,
 	'template-news.php': News,
 	'template-support.php': Support,
+	'template-pricing.php': Pricing,
 }
 
 const currentPage = computed(() => {
@@ -87,17 +88,17 @@ console.log(props);
 /* dev vue  */
 
 /* const routes = { // for page name
-	'': { template: Home, id: 0},
-	'about-us':  { template: About, id: 0},
-	'invoice': { template: Invoice, id: 0},
-	'checkout': { template: Checkout, id: 0},
-	'touch-tap': { template: TouchTap, id: 0},
-	'wallet-cards': { template: WalletCards, id: 0},
-	'news': { template: News, id: 0},
-	'news-single': { template: NewsSingle, id: 0},
-	'support': { template: Support, id: 0},
-	'pricing-onboarding': { template: PricingOnboarding, id: 0},
-	'not-found': { template: NotFound, id: 0}
+	'': Home,
+	'about-us':  About,
+	'invoice': Invoice,
+	'checkout': Checkout,
+	'touch-tap': TouchTap,
+	'wallet-cards': WalletCards,
+	'news': News,
+	'news-single': NewsSingle,
+	'support': Support,
+	'pricing': Pricing,
+	'not-found': NotFound
 }
 const currentPath = ref(window.location.pathname)
 window.addEventListener('change', () => {
@@ -109,7 +110,6 @@ const currentPage = computed(() => {
 	return routes[n].template || routes['привет-мир'].template;
 })
 console.log(currentPage.value); */
-
 </script>
 
 <style>
