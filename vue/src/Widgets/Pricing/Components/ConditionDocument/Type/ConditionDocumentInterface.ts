@@ -1,6 +1,6 @@
 import ButtonInterface from "@/Entity/ButtonInterface";
 
-export default interface DocumentInterface {
+export default interface ConditionDocumentInterface {
 	document: string;
 	button: ButtonInterface;
 }

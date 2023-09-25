@@ -3,6 +3,7 @@
     <Content></Content>
 	<Documents></Documents>
 	<Condition></Condition>
+	<Ready></Ready>
 </template>
 
 <script setup lang="ts">
@@ -11,6 +12,7 @@ import Header from "../Widgets/Pricing/Header.vue";
 import Content from "../Widgets/Pricing/Content.vue";
 import Documents from "../Widgets/Pricing/Documents.vue";
 import Condition from "../Widgets/Pricing/Condition.vue";
+import Ready from "../Widgets/Pricing/Ready.vue";
 import InfoInterface from "../Widgets/Home/Entity/InfoInterface";
 import { useStore } from "vuex";
 import { RootStateInterface } from "../Store";

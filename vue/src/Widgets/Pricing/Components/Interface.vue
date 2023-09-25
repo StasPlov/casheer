@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full">
-        <div class="px-[7vw] pb-24 flex gap-9">
+        <div class="px-[7vw] pb-24 flex gap-9 max-md:flex-col max-md:items-start">
             <div class="flex flex-col gap-3 z-10">
                 <span class="text-white text-xl font-[Arial] text-center select-none">Select Product</span>
 

@@ -1,5 +1,5 @@
 <template>
-	<footer class="flex flex-col bg-[var(--color-black1)]">
+	<footer class="flex flex-col bg-[var(--color-black1)] overflow-hidden">
 		<slot>
 			<div class="px-[7vw] py-[10vh] border-t-[3px] border-white flex flex-col gap-5 items-center">
 				<div class="flex flex-col gap-7">

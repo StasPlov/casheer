@@ -35,7 +35,7 @@ const countItemsToShow = computed(() => {
 	}
 
 	if(isTablet.value) {
-		return 2;
+		return 1;
 	}
 
 	if(isTabletBig.value) {
