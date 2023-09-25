@@ -9,7 +9,7 @@
 				<div v-if="ButtonLang && ButtonLang.is_active" class="relative">
 					<Button class="bg-transparent gap-3" @click="langMenuIsOpen = !langMenuIsOpen">
 						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonLang.text }}</span>
-						<ArrowIcon></ArrowIcon>
+						<ArrowIcon class="trasition duration-500 rotate-90" :class="{ '!rotate-0':langMenuIsOpen }"></ArrowIcon>
 					</Button>
 
 					<Transition name="fade-top">

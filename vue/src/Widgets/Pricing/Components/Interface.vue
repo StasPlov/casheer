@@ -1,18 +1,18 @@
 <template>
 	<div class="w-full">
-        <div class="px-[7vw] pb-52 flex gap-9">
-            <div class="flex flex-col gap-3">
-                <span class="text-white text-xl font-[Arial] text-center">Select Product</span>
+        <div class="px-[7vw] pb-24 flex gap-9">
+            <div class="flex flex-col gap-3 z-10">
+                <span class="text-white text-xl font-[Arial] text-center select-none">Select Product</span>
 
                 <Select
                     :list="list"
                 ></Select>
             </div>
 
-            <div class="flex flex-col gap-3">
-                <span class="text-white text-xl font-[Arial] text-center">Choose Package</span>
+            <div class="flex flex-col gap-3 z-10">
+                <span class="text-white text-xl font-[Arial] text-center select-none">Choose Package</span>
 
-                <Select
+                <Select class="z-50"
                     :list="list"
                 ></Select>
             </div>

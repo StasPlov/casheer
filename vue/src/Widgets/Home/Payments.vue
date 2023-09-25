@@ -35,7 +35,7 @@
 			</div>
 			
 			<div class="flex justify-center">
-				<img v-if="imageSelect" :src="imageSelect.url" alt="" class="w-[26.875rem] h-min select-none z-10" ref="phoneImage" draggable="false">
+				<img v-if="imageSelect" :src="imageSelect.url" alt="" class="w-[26.875rem] object-contain h-min select-none z-10" ref="phoneImage" draggable="false">
 				<img v-if="imageBgSelecet" :src="imageBgSelecet.url" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" ref="phoneImageBackground" draggable="false">
 			</div>
 
@@ -46,10 +46,6 @@
 
 
 <script setup lang="ts">
-/* import backgroundWallet from "@/Assets/Images/casheer_phone_wallet.png";
-import background from "@/Assets/Images/casheer_s1_background.png";
-import backgroundMob from "@/Assets/Images/casheer_background_mobile.png";
-import ButtonImage from "@/Assets/Icons/ButtonImage.svg"; */
 import Dropdown from "@/Ui/Dropdown/Dropdown.vue";
 import Button from "@/Ui/Button.vue";
 import PaymentsInterface from "./Entity/PaymentsInterface";

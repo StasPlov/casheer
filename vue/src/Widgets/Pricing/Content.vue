@@ -1,16 +1,18 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)]">
-        <Light1 class="absolute select-none animate-pulse" draggable="false"></Light1>
-        <Light2 class="absolute select-none animate-pulse" draggable="false"></Light2>
-        <Light3 class="absolute select-none right-0 animate-pulse" draggable="false"></Light3>
+        <Light1 class="absolute select-none animate-pulse top-0 z-0" draggable="false"></Light1>
+        <Light2 class="absolute select-none animate-pulse z-0" draggable="false"></Light2>
+        <Light3 class="absolute select-none right-0 animate-pulse z-0" draggable="false"></Light3>
 
-        <div class="flex flex-col gap-12">
-            <Title
-                :title="title"
-                :description="description"
-            ></Title>
+        <div class="pb-[10vw]">
+            <div class="flex flex-col gap-11">
+				<Title
+					:title="title"
+					:description="description"
+				></Title>
 
-            <Interface></Interface>
+				<Interface></Interface>
+			</div>
 
             <PlanList></PlanList>
         </div>

@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 const path = require('path');
 
 module.exports = defineConfig({
-	publicPath: '/dist/',
+	publicPath: '/dist',
 	outputDir: path.resolve(__dirname, '../dist'),
 	configureWebpack: {
 		experiments: {

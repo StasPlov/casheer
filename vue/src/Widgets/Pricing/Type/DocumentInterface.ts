@@ -1,7 +1,6 @@
-import CheckInterface from "../Components/Plan/Type/CheckInterface";
+import ButtonInterface from "@/Entity/ButtonInterface";
 
 export default interface DocumentInterface {
-    title: string;
-    description: string;
-    list: Array<CheckInterface>;
+	document: string;
+	button: ButtonInterface;
 }

@@ -5,7 +5,7 @@
             <span class="text-white/40 text-xl font-[Arial] font-normal" v-else>—</span>
 
             <Button class="!rounded-full h-10 w-10 !p-2 self-end bg-gradient-casheer-title-to-b" @click="isOpen = !isOpen">
-                <ArrowIcon class="transition duration-500 rotate-90" :class="{ 'rotate-0':isOpen }"></ArrowIcon>
+                <ArrowIcon class="transition duration-500 rotate-90" :class="{ '!rotate-0':isOpen }"></ArrowIcon>
             </Button>
         </div>
         

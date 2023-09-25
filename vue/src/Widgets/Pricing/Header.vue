@@ -1,14 +1,14 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
-		<img v-if="background" :src="background?.url" alt="" class="absolute w-full max-phoneX:hidden animate-pulse select-none" draggable="false">
+		<img v-if="background" :src="background?.url" alt="" class="absolute w-full max-phoneX:hidden animate-pulse select-none z-0" draggable="false">
 
-		<div class="flex flex-col gap-28 px-[7vw] py-[10vw] z-0 max-phoneX:justify-between max-phoneX:h-full max-phoneX:pt-[25vh] max-phoneX:pb-[5vh]">
+		<div class="flex flex-col gap-28 px-[7vw] py-[10vw] max-phoneX:justify-between max-phoneX:h-full max-phoneX:pt-[25vh] max-phoneX:pb-[5vh] z-10">
 			<div class="flex flex-col gap-16">
-                <h1 class="font-mont text-white text-7xl font-bold leading-tight" v-html="title"></h1>
+                <h1 class="font-mont text-white text-7xl font-bold leading-tight select-none" v-html="title"></h1>
 
                 <hr class="max-w-[70%] max-phoneX:max-w-full">
 
-				<span class="text-white text-3xl font-normal leading-tight" v-html="description"></span>
+				<span class="text-white text-3xl font-normal leading-tight select-none" v-html="description"></span>
             </div>
 		</div>
 

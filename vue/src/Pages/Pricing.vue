@@ -2,6 +2,7 @@
     <Header></Header>
     <Content></Content>
 	<Documents></Documents>
+	<Condition></Condition>
 </template>
 
 <script setup lang="ts">
@@ -9,6 +10,7 @@ import { computed, ref, watch } from "vue";
 import Header from "../Widgets/Pricing/Header.vue";
 import Content from "../Widgets/Pricing/Content.vue";
 import Documents from "../Widgets/Pricing/Documents.vue";
+import Condition from "../Widgets/Pricing/Condition.vue";
 import InfoInterface from "../Widgets/Home/Entity/InfoInterface";
 import { useStore } from "vuex";
 import { RootStateInterface } from "../Store";

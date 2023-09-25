@@ -37,8 +37,8 @@ add_action( 'after_setup_theme', 'wp_blank_setup' );
  */
 function wp_blank_load_scripts()
 {
-	$script_directory = get_template_directory() . './dist/js/'; // Укажите путь к директории со скриптами
-	$script_url = get_template_directory_uri() . './dist/js/'; // Укажите URL-адрес директории со скриптами
+	$script_directory = get_template_directory() . '/dist/js/'; // Укажите путь к директории со скриптами
+	$script_url = get_template_directory_uri() . '/dist/js/'; // Укажите URL-адрес директории со скриптами
 
 	$scripts = scandir($script_directory); // Получить список файлов в директории со скриптами
 
@@ -60,8 +60,8 @@ function wp_blank_load_scripts()
 add_action('wp_enqueue_scripts', 'wp_blank_load_scripts');
 
 function enqueue_style_custom() {
-	$script_directory = get_template_directory() . './dist/css/'; // Укажите путь к директории со стилями
-	$script_url = get_template_directory_uri() . './dist/css/'; // Укажите URL-адрес директории со стилями
+	$script_directory = get_template_directory() . '/dist/css/'; // Укажите путь к директории со стилями
+	$script_url = get_template_directory_uri() . '/dist/css/'; // Укажите URL-адрес директории со стилями
 	
 	if(!is_dir($script_directory)) {
 		return;
