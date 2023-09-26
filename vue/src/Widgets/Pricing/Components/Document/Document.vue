@@ -15,7 +15,7 @@
 							<CheckNoneIcon v-else class="w-[inherit]"></CheckNoneIcon>
 						</div>
 
-						<span class="text-[var(--color-black1)] text-xl font-[Arial] font-normal">{{ item.description }}</span>
+						<span class="text-[var(--color-black1)] text-xl font-[Arial] font-normal" v-html="item.description"></span>
 					</div>
 				</li>
 			</ul>

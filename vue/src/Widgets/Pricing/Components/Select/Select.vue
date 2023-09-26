@@ -4,7 +4,7 @@
             <span class="text-white text-xl font-[Arial] font-normal" v-if="selectItem">{{ selectItem.item.name }}</span>
             <span class="text-white/40 text-xl font-[Arial] font-normal" v-else>—</span>
 
-            <Button class="!rounded-full h-10 w-10 !p-2 self-end bg-gradient-casheer-title-to-b" @click="isOpen = !isOpen">
+            <Button class="!rounded-full h-10 w-10 !p-2 self-end bg-gradient-casheer-title-to-b" @click="open">
                 <ArrowIcon class="transition duration-500 rotate-90" :class="{ '!rotate-0':isOpen }"></ArrowIcon>
             </Button>
         </div>
@@ -29,14 +29,20 @@ import ArrowIcon from "./Assets/ArrowIcon.vue";
 import Button from "@/Ui/Button.vue";
 import SelectInterface from './Type/SelectInterface';
 import TaxonomyInterface from '@/Entity/TaxonomyInterface';
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 
+const emit = defineEmits(['selectItem']);
 const props = defineProps<{
     list?: Array<SelectInterface<TaxonomyInterface>>
 }>();
 
 let isOpen = ref(false);
 let selectItem = ref<SelectInterface>(null);
+const list = computed(() => props.list ?? []);
+
+watch(list.value, () => {
+	selectItem.value = null;
+});
 
 function clickOutside() {
     isOpen.value = false;
@@ -44,6 +50,15 @@ function clickOutside() {
 
 function selectedItem(item: SelectInterface) {
     selectItem.value = item;
+	emit('selectItem', item.item);
     clickOutside();
+}
+
+function open() {
+	if(!list.value.length) {
+		return;
+	}
+
+	isOpen.value = !isOpen.value;
 }
 </script>

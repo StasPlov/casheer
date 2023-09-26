@@ -23,20 +23,20 @@ import { RootStateInterface } from "../../Store";
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 import { computed, ref } from "vue";
 
-/* const store = useStore<RootStateInterface>();
+const store = useStore<RootStateInterface>();
 const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
 const content = computed(() => pageData.value.data?.header);
 
 const background = computed<ImageInterface>(() => content.value?.background);
 const title = computed<string>(() => content.value?.title);
-const description = computed<string>(() => content.value?.description); */
+const description = computed<string>(() => content.value?.description);
 
 
-const background = computed<ImageInterface>(() => {
+/* const background = computed<ImageInterface>(() => {
     return {
         url: require('@/Assets/Images/casheer_s1_background.png')
     };
 });
 const title = ref('Casheer <br>Products Pricing <br>& Onboarding');
-const description = ref('Onboard your business in real time. <br>Simply view the simple checklist below and sign up. <br>Get started now.')
+const description = ref('Onboard your business in real time. <br>Simply view the simple checklist below and sign up. <br>Get started now.') */
 </script>

@@ -25,16 +25,26 @@
 				</div>
 			</div>
 
-			<div class="px-[7vw] py-[10vh] border-t-[3px] border-white w-full">
-				<div>
-					<div>
-						<img :src="logo" alt="" class="w-[10rem]">
+			<div class="px-[7vw] py-[10vh] border-t-[3px] border-white w-full flex flex-col gap-20">
+				<div class="flex flex-col gap-8">
+					<img v-if="logo" :src="logo" alt="" class="w-[10rem]">
+
+					<div class="grid grid-cols-3">
+						<div class="flex flex-col gap-4" v-for="menu in menuList" :key="menu">
+							<h2 class="text-white text-base font-[Arial] font-semibold" v-if="menu.title">{{ menu.title }}</h2>
+
+							<ul class="flex flex-col gap-4">
+								<li v-for="item in menu.list" :key="item">
+									<a :href="item.link" v-if="item.link" class=" text-white text-base font-normal font-[Arial]cursor-default">{{ item.text }}</a>
+									<span class="text-white text-base font-normal font-[Arial] cursor-default" v-else>{{ item.text }}</span>
+								</li>
+							</ul>
+						</div>
 					</div>
-					
 				</div>
 
 				<div>
-					
+					<!-- social list -->
 				</div>
 			</div>
 		</slot>
@@ -47,4 +57,76 @@ import Button from "@/Ui/Button.vue";
 import Input from "@/Ui/Input.vue";
 import iconCollIcon from "@/Assets/Icons/icon_coll.svg";
 import sendIcon from "@/Assets/Icons/send.svg";
+import MenuInterface from "../Widgets/Footer/Type/MenuInterface";
+import { computed } from "vue";
+import ImageInterface from "../Entity/ImageInterface";
+
+const socialList = computed(() => []); /* imageInterfaceArray */
+const menuList = computed<Array<MenuInterface>>(() => {
+	return [
+		{
+			title: '',
+			list: [
+				{
+					text: 'Products',
+					link: ''
+				},
+				{
+					text: 'About us',
+					link: ''
+				},
+				{
+					text: 'Lets Talk',
+					link: ''
+				},
+				{
+					text: 'News',
+					link: ''
+				}
+			]
+		},
+		{
+			title: 'Contacts',
+			list: [
+				{
+					text: 'Lorem Ipsum is simply dummy',
+					link: ''
+				},
+				{
+					text: 'Lorem Ipsum is simply dummy',
+					link: ''
+				}
+			]
+		},
+		{
+			title: 'Explore',
+			list: [
+				{
+					text: 'Terms of Use',
+					link: ''
+				},
+				{
+					text: 'Privacy Policy',
+					link: ''
+				},
+				{
+					text: 'FAQ',
+					link: ''
+				},
+				{
+					text: 'Copyright',
+					link: ''
+				},
+				{
+					text: 'Data Privacy',
+					link: ''
+				},
+				{
+					text: 'DDisclaimer',
+					link: ''
+				}
+			]
+		}
+	]
+});
 </script>

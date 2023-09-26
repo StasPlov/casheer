@@ -127,6 +127,10 @@ function handle_getData() {
 	if (!empty($taxonomy)) {
 		$term['taxonomy'] = get_terms($taxonomy);
 
+		/* if($taxonomy === 'product') {
+			$term['']
+		} */
+
 		if($taxonomyOnly) {
 			$result = json_decode( json_encode( $term ), true );
 			wp_send_json($result);
@@ -145,11 +149,12 @@ add_action('wp_ajax_getData', 'handle_getData');
 add_action('wp_ajax_nopriv_getData', 'handle_getData');
 
 function handle_getPostList() {
-	$postId = (int)trim($_GET['post-id']) ?? 0;
-	$postType = (string)trim($_GET['post-type']);
-	$postCount = (int)trim($_GET['post-count']) ?? 1;
-	$pageNum = (int)trim($_GET['page-num']) ?? 1;
-
+	$postId = trim($_GET['post-id']);
+	$postType = trim($_GET['post-type']);
+	$postCount = trim($_GET['post-count']);
+	$pageNum = trim($_GET['page-num']);
+	$taxonomy = $_GET['taxonomy'];
+	
 	$args = [
 		'post_type' => $postType,
 		'post_status' => 'publish',
@@ -163,17 +168,27 @@ function handle_getPostList() {
 			'post_type' => 'any'
 		];
 	}
-
-	$newsList = (new WP_Query($args))->posts;
-
+	
+	if(!empty($taxonomy)) {
+		foreach ($taxonomy as $tax) {
+			$args['tax_query'][] = [
+				'taxonomy' => $tax['taxonomy'],
+				'field' => 'slug',
+				'terms' => $tax['term']
+			];
+		}
+	}
+	
+	$postList = (new WP_Query($args))->posts;
+	
 	$content = [];
-	foreach ($newsList as $news) {
-		$fileds = get_fields($news->ID);
+	foreach ($postList as $post) {
+		$fileds = get_fields($post->ID);
 
 		array_push($content, [
-			'post' => $news,
+			'post' => $post,
 			'data' => $fileds,
-			'link' => get_permalink($news->ID)
+			'link' => get_permalink($post->ID)
 		]);
 	}
 

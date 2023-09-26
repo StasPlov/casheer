@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-[var(--color-black1)]">
+	<div class="bg-[var(--color-black1)]" v-if="condition">
 		<div class="bg-white w-full rounded-[2.25rem]">
 			<div class="px-[7vw] py-12 flex flex-col gap-24">
 				<div class="flex flex-col gap-14">
@@ -44,8 +44,23 @@ import ConditionDocumentInterface from './Components/ConditionDocument/Type/Cond
 import ConditionInterface from "./Type/ConditionInterface";
 import DisclaimerInterface from "./Type/DisclaimerInterface";
 import ConditionDocument from "./Components/ConditionDocument/ConditionDocument.vue";
+import { useStore } from "vuex";
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 
-const condition = computed<ConditionInterface>(() => {
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+
+const condition = computed(() => pageData.value.data?.condition);
+
+const title = computed<string>(() => condition.value?.title);
+const description = computed<string>(() => condition.value?.description);
+const disclaimer = computed<DisclaimerInterface>(() => condition.value?.disclaimer);
+const documtensList = computed<Array<ConditionDocumentInterface>>(() => condition.value?.documtens_list);
+
+const disclaimerIsAgree = ref(disclaimer?.value?.is_agree ?? false);
+
+/* const condition = computed<ConditionInterface>(() => {
 	return {
 		title: 'Web Store Terms & Conditions <br>(Sample Template)',
 		description: 'Copy or download this sample template for your e-commerce business and modify it to suit your website. You will be able to copy the template once you have agreed to the disclaimer below.'
@@ -80,5 +95,5 @@ const documtensList = computed<Array<ConditionDocumentInterface>>(() => [
 			link: '/'
 		}
 	}
-]);
+]); */
 </script>

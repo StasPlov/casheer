@@ -1,6 +1,6 @@
 import ButtonInterface from "./ButtonInterface";
 import ImageInterface from "./ImageInterface";
-import NewsInterface from "./NewsInterface";
+import PostInterface from "./PostInterface";
 
 export default interface NewsPageDataInterface {
 	data: {
@@ -8,5 +8,5 @@ export default interface NewsPageDataInterface {
 		button: ButtonInterface;
 	};
 	link: string;
-	post: NewsInterface;
+	post: PostInterface;
 }

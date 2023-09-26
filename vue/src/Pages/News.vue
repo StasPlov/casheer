@@ -47,7 +47,6 @@
 import Button from "@/Ui/Button.vue";
 import { computed, onMounted, ref, watch, watchEffect } from "vue";
 import NewsItem from "@/Widgets/News/News.vue";
-import NewsInterface from "../Entity/NewsInterface";
 import NewsPageDataInterface from "../Entity/NewsPageDataInterface";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

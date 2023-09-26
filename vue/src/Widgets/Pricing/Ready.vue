@@ -6,17 +6,13 @@
 			<h2 class="text-transparent text-4xl font-mont font-semibold bg-clip-text bg-gradient-casheer-pricing-to-r leading-tight" v-html="title"></h2>
 
 			<div class="flex gap-20">
-				<a :href="buttonOne.link" v-if="buttonOne && buttonOne.is_active">
-					<Button class="!bg-transparent btn1 relative !py-4 !px-20 hover:scale-105 duration-500">
-						<span class="text-white text-base font-[Arial] font-normal">{{ buttonOne.text }}</span>
-					</Button>
-				</a>
-
-				<a :href="buttonTwo.link" v-if="buttonTwo && buttonTwo.is_active">
-					<Button class="!bg-transparent btn2 relative !py-4 !px-20 hover:scale-105 duration-500">
-						<span class="text-white text-base font-[Arial] font-normal">{{ buttonTwo.text }}</span>
-					</Button>
-				</a>
+				<template v-for="(item, index) in list" :key="item">
+					<a :href="item.link" v-if="item && item.is_active">
+						<Button class="!bg-transparent btn1 relative !py-4 !px-20 hover:scale-105 duration-500" :class="{ 'btn2':index == 1 }">
+							<span class="text-white text-base font-[Arial] font-normal">{{ item.text }}</span>
+						</Button>
+					</a>
+				</template>
 			</div>
 		</div>
 	</div>
@@ -27,24 +23,16 @@ import Light4 from "./Assets/Light4.vue";
 import Button from "@/Ui/Button.vue";
 import { computed } from "vue";
 import ButtonInterface from "../../Entity/ButtonInterface";
+import { useStore } from "vuex";
+import { RootStateInterface } from "../../Store";
+import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 
-const title = computed<string>(() => 'Ready to Get Started?');
+const store = useStore<RootStateInterface>();
+const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const ready = computed(() => pageData.value?.data?.ready);
 
-const buttonOne = computed<ButtonInterface>(() => {
-    return {
-        is_active: true,
-		link: '/',
-		text: 'Sign up'
-    };
-});
-
-const buttonTwo = computed<ButtonInterface>(() => {
-    return {
-        is_active: true,
-		link: '/',
-		text: 'Let’s Talk'
-    };
-});
+const title = computed<string>(() => ready.value?.title);
+const list = computed<Array<ButtonInterface>>(() => ready.value?.button_list);
 </script>
 
 <style scoped>

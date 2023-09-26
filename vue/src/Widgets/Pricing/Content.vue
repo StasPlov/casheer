@@ -11,10 +11,14 @@
 					:description="description"
 				></Title>
 
-				<Interface></Interface>
+				<Interface
+					:filter="filter"
+				></Interface>
 			</div>
 
-            <PlanList></PlanList>
+            <PlanList
+				:list="planeList"
+			></PlanList>
         </div>
 	</div>
 </template>
@@ -27,18 +31,25 @@ import Light3 from './Assets/Light3.vue'
 import Title from './Components/Title.vue'
 import Interface from './Components/Interface.vue'
 import PlanList from './Components/PlanList.vue'
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import { RootStateInterface } from "../../Store";
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
+import PlaneDataStateInterface from "../../Store/Modules/Plane/StateInterface";
+import FilterInterface from "../../Entity/FilterInterface";
+import PlanInterface from './Components/Plan/Type/PlanInterface';
+import PlaneListResponceInterface from './Components/Type/PlaneListResponceInterface';
 
-/* const store = useStore<RootStateInterface>();
+const store = useStore<RootStateInterface>();
 const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
+const planeData = computed<PlaneDataStateInterface>(() => store.state.plane);
+
 const content = computed(() => pageData.value.data?.content);
+const filter = computed<Array<FilterInterface>>(() => pageData.value.data?.filter);
 
 const title = computed<string>(() => content.value?.title);
-const description = computed<string>(() => content.value?.description); */
+const description = computed<string>(() => content.value?.description);
 
-const title = ref('Pricing & Onboarding');
-const description = ref('Please select your country and product to know more about the <br>requirements to onboard your business successfully.')
+const planeListData = computed<Array<PlaneListResponceInterface>>(() => planeData.value.planeList);
+const planeList = computed(() => planeListData.value.map(i => i.data));
 </script>

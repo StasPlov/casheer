@@ -1,7 +1,7 @@
 <template>
 	<Header></Header>
 	<Main>
-		<component :is="Pricing"></component>
+		<component :is="currentPage"></component>
 	</Main>
 	<Footer></Footer>
 </template>
