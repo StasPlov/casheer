@@ -8,13 +8,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php bloginfo('description'); ?>">
 	<?php wp_head(); ?>
-	<?php wp_footer(); ?>
+	<?php echo wp_print_footer_scripts(); ?>
 </head>
-<body <?php body_class(); ?> 
-	id="app"
-	data-ajax-url="<?php echo admin_url('admin-ajax.php'); ?>"
-	data-page-id="<?php echo get_the_ID(); ?>"
-	data-page-name="<?php echo urldecode(get_post_field('post_name', get_the_ID()))?>"
-	data-page-template="<?php echo esc_html( get_page_template_slug( get_the_ID() ) ); ?>"
-	data-post-type="<?php echo get_post_type(get_the_ID()); ?>"
->
+<body <?php body_class(); ?>>
+	<div 
+		id="app"
+		data-ajax-url="<?php echo admin_url('admin-ajax.php'); ?>"
+		data-page-id="<?php echo get_the_ID(); ?>"
+		data-page-name="<?php echo urldecode(get_post_field('post_name', get_the_ID()))?>"
+		data-page-template="<?php echo esc_html( get_page_template_slug( get_the_ID() ) ); ?>"
+		data-post-type="<?php echo get_post_type(get_the_ID()); ?>"
+		data-form-html="<?php echo base64_encode(do_shortcode("[ninja_form id=1]")); ?>"
+	>

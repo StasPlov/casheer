@@ -10,7 +10,8 @@ const module: Module<StateInterface, any> = {
 		ajaxUrl: state => state.ajaxUrl,
 		pageName: state => state.pageName,
 		pageTemplate: state => state.pageTemplate,
-		postType: state => state.postType
+		postType: state => state.postType,
+		formHtml: state => state.formHtml
 	},
 	mutations: {
 		setPageName(state: StateInterface, payload: string): void {
@@ -27,6 +28,9 @@ const module: Module<StateInterface, any> = {
 		},
 		setPostType(state: StateInterface, payload: string): void {
 			state.postType = payload;
+		},
+		setFormHtml(state: StateInterface, payload: string): void {
+			state.formHtml = payload;
 		}
 	},
 	actions: {

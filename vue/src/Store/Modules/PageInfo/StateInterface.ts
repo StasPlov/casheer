@@ -4,4 +4,5 @@ export default interface StateInterface {
 	pageName: string;
 	pageTemplate: string;
 	postType: string;
+	formHtml: string;
 }

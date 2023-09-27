@@ -6,6 +6,26 @@
 			</a>
 
 			<div class="flex items-center justify-end">
+
+				<div v-if="ButtonCountry && ButtonCountry.is_active" class="relative">
+					<Button class="bg-transparent gap-3" @click="countryMenuIsOpen = !countryMenuIsOpen">
+						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonCountry.text }}</span>
+						<ArrowIcon class="trasition duration-500 rotate-90" :class="{ '!rotate-0':countryMenuIsOpen }"></ArrowIcon>
+					</Button>
+
+					<Transition name="fade-top">
+					<div class="absolute z-[51] px-5 py-3 bg-[var(--color-black1)] rounded-2xl right-0" v-if="countryMenuIsOpen" v-click-outside="clickOutsideCountry">
+						<ul class="flex flex-col gap-2">
+							<li v-for="item in countryList" :key="item" class="max-w-max transition duration-300 hover:scale-105">
+								<div class="flex gap-3">
+									<a :href="item.link.url" class="text-white text-base font-normal font-[Arial] cursor-default">{{ item.title }}</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					</Transition>
+				</div>
+				
 				<div v-if="ButtonLang && ButtonLang.is_active" class="relative">
 					<Button class="bg-transparent gap-3" @click="langMenuIsOpen = !langMenuIsOpen">
 						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonLang.text }}</span>
@@ -18,7 +38,7 @@
 							<li v-for="item in langList" :key="item" class="max-w-max transition duration-300 hover:scale-105">
 								<div class="flex gap-3">
 									<img :src="item.flag" alt="" class="h-5 object-contain">
-									<a :href="item.url" class="text-white text-base font-normal font-[Arial]" :class="{ 'font-medium':item.current_lang }">{{ item.name }}</a>
+									<a :href="item.url" class="text-white text-base font-normal font-[Arial] cursor-default" :class="{ 'font-medium':item.current_lang }">{{ item.name }}</a>
 								</div>
 							</li>
 						</ul>
@@ -89,6 +109,7 @@ import ButtonInterface from "../Entity/ButtonInterface";
 
 const store = useStore<RootStateInterface>();
 const data = computed<{
+	button_country: ButtonInterface,
 	button_login: ButtonInterface,
 	button_sign_up: ButtonInterface,
 	button_lang: ButtonInterface,
@@ -101,19 +122,26 @@ const data = computed<{
 	menu_two: Array<{
 		title: string,
 		link: LinkInterface
+	}>,
+	country_list: Array<{
+		title: string,
+		link: LinkInterface
 	}>
 }>(() => (store.state.header as StateInterface).data);
 
 const logo = computed(() => data.value?.logo);
+const ButtonCountry = computed(() => data.value?.button_country);
 const ButtonLang = computed(() => data.value?.button_lang);
 const ButtonLogin = computed(() => data.value?.button_login);
 const buttonSignUp = computed(() => data.value?.button_sign_up);
 const menu = computed(() => data.value?.menu ?? []);
 const menuTwo = computed(() => data.value?.menu_two ?? []);
+const countryList = computed(() => data.value?.country_list ?? []);
 const langList = computed(() => data.value?.lang ?? []);
 
 let menuIsOpen = ref(false);
 let langMenuIsOpen = ref(false);
+let countryMenuIsOpen = ref(false);
 let isInitData = ref(false);
 
 watch(menuIsOpen, () => {
@@ -148,6 +176,9 @@ function clickOutside() {
 }
 function clickOutsideLang() {
 	langMenuIsOpen.value = false;
+}
+function clickOutsideCountry() {
+	countryMenuIsOpen.value = false;
 }
 </script>
 

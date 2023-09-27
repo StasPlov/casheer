@@ -12,6 +12,7 @@
 
 					<div class="flex flex-col gap-10 max-phoneX:gap-11 text-[13px] relative pl-6 max-phoneX:pl-0 max-phoneX:before:content-none
 						before:content-normal before:w-[3px] before:absolute before:bg-white before:rounded-lg before:h-[92%] before:left-0
+						rtl:pl-[unset] rtl:pr-6 rtl:before:left-auto rtl:before:right-0
 					">
 						<NewsItem 
 							:item="newsTwo"

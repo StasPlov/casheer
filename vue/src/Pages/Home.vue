@@ -12,7 +12,7 @@
 	</template>
 
 	<Payments></Payments>
-	<!-- <Always></Always> -->
+	<Always></Always>
 	<!-- <Man></Man> -->
 	<Welcome></Welcome>
 	<Trust></Trust>

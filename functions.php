@@ -59,6 +59,16 @@ function wp_blank_load_scripts()
 }
 add_action('wp_enqueue_scripts', 'wp_blank_load_scripts');
 
+add_action('wp_enqueue_scripts', function () {
+	// enqueue ninja forms css, including for any ninja forms addons
+	wp_enqueue_style('nf-display', content_url('/plugins/ninja-forms/assets/css/display-structure.css'), ['dashicons']);
+	wp_enqueue_style('nf-layout-front-end', content_url('/plugins/ninja-forms-style/layouts/assets/css/display-structure.css'), ['nf-display']);
+	//wp_enqueue_script('nf-front-end-deps', content_url('/plugins/ninja-forms/assets/js/min/front-end-deps.js'), ['nf-front-end-deps']);
+  
+	// make sure that backbone is enqueued on the page, as ninja forms relies on this
+	wp_enqueue_script('backbone');
+  }, 100);
+
 function enqueue_style_custom() {
 	$script_directory = get_template_directory() . '/dist/css/'; // Укажите путь к директории со стилями
 	$script_url = get_template_directory_uri() . '/dist/css/'; // Укажите URL-адрес директории со стилями
@@ -200,4 +210,33 @@ function handle_getPostList() {
 }
 add_action('wp_ajax_getPostList', 'handle_getPostList');
 add_action('wp_ajax_nopriv_getPostList', 'handle_getPostList');
+
+
+/* function initNinjaFormData($formId = 1) {
+	// clear default loaded scripts.
+	global $wp_scripts;
+	unset($wp_scripts->registered);
+  
+	// get the requested form id
+	$form_id = absint($formId);
+  
+	// retrieve the requested form
+	ob_start();
+	$form = do_shortcode("[ninja_forms id='{$form_id}']");
+	ob_get_clean();
+  
+	// output the requested form on the page
+	ob_start();
+	NF_Display_Render::output_templates();
+	$templates = ob_get_clean();
+	$response = [
+	  'form' => $form,
+	  'scripts' => $wp_scripts->registered,
+	  'templates' => $templates
+	];
+	return json_encode($response);
+  
+	// die, because we don't want anything else to be returned
+	die();
+} */
 ?>

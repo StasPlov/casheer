@@ -6,4 +6,5 @@ export default class State implements StateInterface {
 	pageName: string = '';
 	pageTemplate: string = '';
 	postType: string = '';
+	formHtml: string = '';
 }

@@ -17,6 +17,7 @@ import { RootStateInterface } from './Store/index';
 
 /* Pages */
 import Home from './Pages/Home.vue';
+/* for test */ import Always from './Widgets/Home/Always.vue';
 import About from './Pages/About.vue';
 import Invoice from './Pages/Invoice.vue';
 import Checkout from './Pages/Checkout.vue';
@@ -36,6 +37,7 @@ interface PropsInterface {
 	pageName: string;
 	pageTemplate: string;
 	postType: string;
+	formHtml: string;
 }
 
 const props = withDefaults(defineProps<PropsInterface>(), {
@@ -43,7 +45,8 @@ const props = withDefaults(defineProps<PropsInterface>(), {
 	ajaxUrl: '',
 	pageName: 'home', // "привет-мир" is home page
 	pageTemplate: 'index.php', // empty string is Home page
-	postType: ''
+	postType: '',
+	formHtml: ''
 });
 
 /* 
@@ -81,6 +84,7 @@ onMounted(() => {
 	store.commit('pageInfo/setPageId', props.pageId);
 	store.commit('pageInfo/setPageTemplate', props.pageTemplate);
 	store.commit('pageInfo/setPostType', props.postType);
+	store.commit('pageInfo/setFormHtml', props.formHtml);
 });
 
 console.log(props);
