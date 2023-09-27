@@ -27,7 +27,7 @@
 				</div>
 			</div>
 
-			<div class="px-[7vw] py-[2vw] border-t-[3px] border-white w-full flex flex-col gap-20">
+			<div class="px-[7vw] py-[2vw] pb-[4vw] border-t-[3px] border-white w-full flex flex-col gap-20">
 				<div class="flex flex-col gap-8">
 					<a href="/">
 						<img v-if="logo" :src="logo.url" alt="" class="w-[10rem] select-none" draggable="false">

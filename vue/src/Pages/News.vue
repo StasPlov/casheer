@@ -29,7 +29,7 @@
 				">
 					<TransitionGroup>
 						<li v-for="item in list" :key="item" refs="itemsListAnim">
-							<NewsItem class="text-[13px]"
+							<NewsItem class="text-[0.8125rem]"
 								:item="item"
 							></NewsItem>
 						</li>

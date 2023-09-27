@@ -13,7 +13,7 @@
 
 	<Payments></Payments>
 	<Always></Always>
-	<!-- <Man></Man> -->
+	<Man></Man>
 	<Welcome></Welcome>
 	<Trust></Trust>
 	<Download></Download>
