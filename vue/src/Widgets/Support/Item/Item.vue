@@ -11,9 +11,15 @@
 					:item="item"
 					:use-open-close="true"
 					:margin-top="'2.5rem'"
+					@selectItem="open"
 				>
 					<template #text>
-						<span class="text-white text-2xl font-[Arial] font-normal leading-normal" v-html="item.item.title"></span>
+						<div class="flex justify-between items-center gap-2">
+							<span class="text-white text-2xl font-[Arial] font-normal leading-normal" v-html="item.item.title"></span>
+							
+							<OpenButton v-if="!item.isActive"></OpenButton>
+							<CloseButton v-else></CloseButton>
+						</div>
 					</template>
 					
 					<template #content>
@@ -26,6 +32,8 @@
 </template>
 
 <script setup lang="ts">
+import OpenButton from "./Assets/OpenButton.vue";
+import CloseButton from "./Assets/CloseButton.vue";
 import Dropdown from "@/Ui/Dropdown/Dropdown.vue";
 import QuestionInterface from "../Type/QuestionInterface";
 import { defineProps, onMounted, ref, watch } from "vue";
@@ -62,5 +70,9 @@ function initList(active: QuestionInterface | undefined = undefined) {
 	imageBgSelecet.value = itemSelect.value.item?.background; */
 
 	/* animatePhone(); */
+}
+
+function open(item: ItemInterface) {
+	item.isActive = !item.isActive;
 }
 </script>

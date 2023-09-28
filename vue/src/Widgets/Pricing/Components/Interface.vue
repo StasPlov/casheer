@@ -6,6 +6,7 @@
 
                 <Select
                     :list="listProd"
+					:select-first="true"
 					@selectItem="setSelectItemProduct"
                 ></Select>
             </div>
@@ -15,6 +16,7 @@
 
                 <Select class="z-50"
                     :list="listPack"
+					:select-first="true"
 					@selectItem="setSelectItemPackage"
                 ></Select>
             </div>
@@ -85,7 +87,7 @@ function setSelectItemPackage(item: TaxonomyInterface | null) {
 }
 
 function initList(list: Array<TaxonomyInterface>): Array<SelectInterface<TaxonomyInterface>> {
-	return list.map(element => {
+	return list.map((element, key) => {
 		return {
 			isActive: false,
 			item: element

@@ -17,9 +17,10 @@
 					<div class="absolute z-[51] px-5 py-3 bg-[var(--color-black1)] rounded-2xl right-0" v-if="countryMenuIsOpen" v-click-outside="clickOutsideCountry">
 						<ul class="flex flex-col gap-2">
 							<li v-for="item in countryList" :key="item" class="max-w-max transition duration-300 hover:scale-105">
-								<div class="flex gap-3">
-									<a :href="item.link.url" class="text-white text-base font-normal font-[Arial] cursor-default">{{ item.title }}</a>
-								</div>
+								<a :href="item.link.url" class="flex gap-3 cursor-default">
+									<img v-if="item.image" :src="item.image.url" alt="" class="h-5 object-contain">
+									<span class="text-white text-base font-normal font-[Arial] ">{{ item.title }}</span>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -125,7 +126,8 @@ const data = computed<{
 	}>,
 	country_list: Array<{
 		title: string,
-		link: LinkInterface
+		link: LinkInterface,
+		image: ImageInterface
 	}>
 }>(() => (store.state.header as StateInterface).data);
 

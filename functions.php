@@ -187,6 +187,7 @@ function handle_getPostList() {
 				'terms' => $tax['term']
 			];
 		}
+		$args['posts_per_page'] = 1000;
 	}
 	
 	$postList = (new WP_Query($args))->posts;

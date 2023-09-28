@@ -2,7 +2,7 @@
 	<div class="flex flex-col bg-[var(--color-black1)] relative">
 		<Light1 class="absolute left-0 top-0 z-10 select-none" draggable="false"></Light1>
 
-		<div class="relative w-full flex text-center max-phoneX:flex-col">
+		<div class="relative w-full flex text-center max-phoneX:flex-col z-10">
 			<img v-if="background" :src="background.url" alt="" class="w-full select-none -z-0" draggable="false">
 
 			<div class="w-full max-phoneX:px-[7vw] absolute  max-phoneX:relative bottom-0 z-20">

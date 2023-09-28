@@ -5,13 +5,13 @@
 
 		<div class="px-[7vw] py-[18vw]">
 			<div class="flex flex-col gap-10">
-				<h2 class="text-white text-6xl font-bold font-mont text-center max-phoneX:text-start leading-tight z-0" v-html="title"></h2>
+				<h2 class="text-white text-6xl font-bold font-mont text-center max-phoneX:text-start leading-tight z-10" v-html="title"></h2>
 
-				<span class="text-white text-4xl font-normal font-[Arial] text-center max-phoneX:text-start max-phoneX:text-2xl z-0" v-html="description"></span>
+				<span class="text-white text-4xl font-normal font-[Arial] text-center max-phoneX:text-start max-phoneX:text-2xl z-10" v-html="description"></span>
 			</div>
 		</div>
 
-		<img v-if="image" :src="image.url" alt="" class="select-none" draggable="false">
+		<img v-if="image" :src="image.url" alt="" class="select-none z-10" draggable="false">
 	</div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-white rounded-[2.5rem] z-10">
+	<div class="bg-white rounded-[2.5rem] z-10 scale-[0.8]">
         <div class="px-[4.25rem] py-[4.9375rem] flex flex-col gap-16">
             <div class="flex flex-col gap-5">
                 <h2 class="text-[var(--color-black1)] text-4xl font-bold font-mont" v-html="item.title"></h2>

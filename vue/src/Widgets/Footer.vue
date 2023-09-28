@@ -20,7 +20,7 @@
 					<Input class="border-[0.1875rem] border-white !rounded-[6.25rem] !bg-transparent max-w-[48.125rem] py-2 pl-8 text-[var(--color-silver1)] text-xl font-[Arial]" placeholder="Your email address">
 						<template #content-after>
 							<Button class="!rounded-full h-10 w-10 !p-2">
-								<img :src="sendIcon" alt="" class="h-5">
+								<SendIcon class="max-h-[1.5rem]"></SendIcon>
 							</Button>
 						</template>
 					</Input>
@@ -39,7 +39,7 @@
 
 							<ul class="flex flex-col gap-4">
 								<li v-for="item in menu.list" :key="item">
-									<a :href="item.link" v-if="item.link" class=" text-white text-base font-normal font-[Arial] cursor-default">{{ item.text }}</a>
+									<a :href="item.link.url" v-if="item.link" class=" text-white text-base font-normal font-[Arial] cursor-default">{{ item.text }}</a>
 									<span class="text-white text-base font-normal font-[Arial] cursor-default" v-else>{{ item.text }}</span>
 								</li>
 							</ul>
@@ -51,14 +51,18 @@
 					<ul class="flex gap-16">
 						<li v-for="item in socialList" :key="item">
 							<template v-if="item.link">
-								<a :href="item.link">
-									<img v-if="item.image" :src="item.image.url" alt="" class="select-none" draggable="false">
+								<a :href="item.link.url">
+									<img v-if="item.image" :src="item.image.url" alt="" class="select-none max-w-[2.875rem] object-contain" draggable="false">
 								</a>
 							</template>
 
-							<img v-else-if="item.image" :src="item.image.url" alt="" class="select-none" draggable="false">
+							<img v-else-if="item.image" :src="item.image.url" alt="" class="select-none max-w-[2.875rem] object-contain" draggable="false">
 						</li>
 					</ul>
+				</div>
+
+				<div class="flex justify-center items-center px-11" v-if="info">
+					<span class="text-white text-base font-[Arial] font-normal text-center" v-html="info"></span>
 				</div>
 			</div>
 		</slot>
@@ -69,7 +73,7 @@
 import Button from "@/Ui/Button.vue";
 import Input from "@/Ui/Input.vue";
 import iconCollIcon from "@/Assets/Icons/icon_coll.svg";
-import sendIcon from "@/Assets/Icons/send.svg";
+import SendIcon from "../Widgets/Footer/Assets/SendIcon.vue";
 import sendFacebookIcon from "@/Assets/Icons/icon_facebook.svg";
 import socialIcon from "../Assets/Icons/icon_facebook.svg";
 import MenuInterface from "../Widgets/Footer/Type/MenuInterface";
@@ -86,6 +90,7 @@ const store = useStore<RootStateInterface>();
 const data = computed<{
 	logo: ImageInterface,
 	menu: Array<MenuInterface>,
+	info: string,
 	social: Array<ImageInterface>
 }>(() => (store.state.footer as StateInterface).data?.footer);
 
@@ -97,6 +102,7 @@ const contactData = computed<{
 
 const socialList = computed(() => data.value?.social ?? []);
 const menuList = computed(() => data.value?.menu ?? []);
+const info = computed(() => data.value?.info);
 const logo = computed(() => data.value?.logo);
 
 /* const formTemplate = computed<string>(() => atob((store.state.pageInfo as PageInfoStateInterface)?.formHtml ?? '')); */

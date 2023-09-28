@@ -29,19 +29,24 @@ import ArrowIcon from "./Assets/ArrowIcon.vue";
 import Button from "@/Ui/Button.vue";
 import SelectInterface from './Type/SelectInterface';
 import TaxonomyInterface from '@/Entity/TaxonomyInterface';
-import { computed, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 const emit = defineEmits(['selectItem']);
 const props = defineProps<{
     list?: Array<SelectInterface<TaxonomyInterface>>
+	selectFirst?: boolean;
 }>();
 
+const list = computed(() => props.list ?? []);
 let isOpen = ref(false);
 let selectItem = ref<SelectInterface>(null);
-const list = computed(() => props.list ?? []);
 
-watch(list.value, () => {
+watch(list, () => {
 	selectItem.value = null;
+
+	if(props?.selectFirst) {
+		selectedItem(list.value[0]);
+	}
 });
 
 function clickOutside() {
