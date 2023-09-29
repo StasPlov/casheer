@@ -6,6 +6,7 @@ import plane from "@/Store/Modules/Plane/index";
 import header from "@/Store/Modules/Header/index";
 import footer from "@/Store/Modules/Footer/index";
 import filter from "@/Store/Modules/Filter/index";
+import support from "@/Store/Modules/Support/index";
 
 export interface RootStateInterface {
 	pageInfo: typeof import("@/Store/Modules/PageInfo/StateInterface");
@@ -14,7 +15,8 @@ export interface RootStateInterface {
 	header: typeof import("@/Store/Modules/Header/StateInterface");
 	plane: typeof import("@/Store/Modules/Plane/StateInterface");
 	filter: typeof import("@/Store/Modules/Filter/StateInterface");
-	footer: typeof import("@/Store/Modules/Filter/StateInterface");
+	footer: typeof import("@/Store/Modules/Footer/StateInterface");
+	support: typeof import("@/Store/Modules/Filter/StateInterface");
 }
 
 export default new Store<RootStateInterface>({
@@ -25,6 +27,7 @@ export default new Store<RootStateInterface>({
 		header,
 		plane,
 		filter,
-		footer
+		footer,
+		support
 	}
 });

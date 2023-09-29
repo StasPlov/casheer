@@ -26,8 +26,8 @@
 
 			<div class="flex justify-center z-10">
 				<div class="relative top-[-3.125rem] max-md:right-[-4.375rem]">
-					<img v-if="image" :src="image.url"  alt="" class="w-[16.5rem] select-none" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="absolute left-[-14.5rem] top-[23.75rem] max-w-none w-[25.625rem] select-none" draggable="false" ref="waletImage2">
+					<img v-if="image" :src="image.url"  alt="" class="animation-levitate-one w-[16.5rem] select-none" draggable="false" ref="waletImage">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="animation-levitate-two absolute left-[-14.5rem] top-[23.75rem] max-w-none w-[25.625rem] select-none" draggable="false" ref="waletImage2">
 				</div>
 			</div>
 		</div>

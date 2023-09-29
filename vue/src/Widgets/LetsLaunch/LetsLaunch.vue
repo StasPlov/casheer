@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full bg-white relative launch overflow-hidden" :style="`--data-bg-color: ${color}`">
-		<div class="flex flex-col gap-28 px-[7vw] py-[5vw] z-0">
+		<div class="flex flex-col gap-28 px-[7vw] py-[5vw] max-phoneX:py-[15vw] z-0">
 			<div class="flex flex-col gap-24 items-center z-10">
 				<h1 class="text-[var(--data-bg-color)] text-3xl font-mont uppercase font-bold text-center" v-html="title"></h1>
 				
@@ -12,7 +12,7 @@
 							<span class="text-black text-xl font-normal font-[Arial] max-w-[14.625rem]" v-html="item.sub_title"></span>
 						</li>
 						<li v-if="index !== (stepList.length - 1)" ref="itemsListAnim">
-							<img v-if="props.stepImage" :src="stepImage.url" alt="" class="mt-10 max-md:[transform:rotateZ(180deg)] max-md:max-h-3 select-none rtl:[transform:rotateY(180deg)]" draggable="false">
+							<img v-if="props.stepImage" :src="stepImage.url" alt="" class="max-w-[3.75rem] mt-10 max-md:[transform:rotateZ(90deg)] max-md:max-h-3 select-none rtl:[transform:rotateY(180deg)]" draggable="false">
 						</li>
 					</template>
 				</ul>

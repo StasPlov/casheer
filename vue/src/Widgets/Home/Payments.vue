@@ -35,7 +35,7 @@
 			</div>
 			
 			<div class="flex justify-center">
-				<img v-if="imageSelect" :src="imageSelect.url" alt="" class="w-[26.875rem] object-contain h-min select-none z-10" ref="phoneImage" draggable="false">
+				<img v-if="imageSelect" :src="imageSelect.url" alt="" class="animation-levitate-one w-[26.875rem] object-contain h-min select-none z-10" ref="phoneImage" draggable="false">
 				<img v-if="imageBgSelecet" :src="imageBgSelecet.url" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" ref="phoneImageBackground" draggable="false">
 			</div>
 

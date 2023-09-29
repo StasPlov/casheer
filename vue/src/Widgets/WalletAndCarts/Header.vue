@@ -26,7 +26,7 @@
 
 			<div class="flex justify-center z-10">
 				<div class="relative h-full">
-					<img v-if="image" :src="image.url" alt="" class="w-[28.25rem] select-none" draggable="false" ref="animElement">
+					<img v-if="image" :src="image.url" alt="" class="animation-levitate-one w-[28.25rem] select-none" draggable="false" ref="animElement">
 				</div>
 			</div>
 			

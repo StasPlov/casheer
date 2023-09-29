@@ -15,9 +15,9 @@
 
 				<div class="flex justify-end">
 					<div class="relative top-[-3.125rem]">
-						<img v-if="first.image_1" :src="first.image_1.url" alt="" class="w-[52.6875rem] relative select-none z-0 max-md:min-w-[130%] max-md:right-[8.125rem]" draggable="false" ref="animateMonit01">
+						<img v-if="first.image_1" :src="first.image_1.url" alt="" class="animation-levitate-one w-[52.6875rem] relative select-none z-0 max-md:min-w-[130%] max-md:right-[8.125rem]" draggable="false" ref="animateMonit01">
 
-						<div class="absolute w-[18.75rem] top-[5rem] right-[6.25rem] max-md:top-[5.625rem] max-md:left-0 z-0" ref="animatePhone01">
+						<div class="animation-levitate-two absolute w-[18.75rem] top-[5rem] right-[6.25rem] max-md:top-[5.625rem] max-md:left-0 z-0" ref="animatePhone01">
 							<img v-if="first.image_2" :src="first.image_2.url" alt="" class="relative select-none" draggable="false" ref="waletImage">
 							<img v-if="first.image_3" :src="first.image_3.url" alt="" class="w-[87%] absolute select-none top-7 left-5" draggable="false" ref="waletImage">
 						</div>
@@ -45,11 +45,11 @@
 
 			<div class="flex justify-center">
 				<div class="relative max-md:hidden">
-					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="w-[39.25rem] relative select-none z-10" draggable="false">
+					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="animation-levitate-one w-[39.25rem] relative select-none z-10" draggable="false">
 				</div>
 
 				<div class="relative hidden max-md:flex">
-					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="w-[39.25rem] relative select-none z-10" draggable="false">
+					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="animation-levitate-one w-[39.25rem] relative select-none z-10" draggable="false">
 				</div>
 			</div>
 
@@ -72,9 +72,9 @@
 
 				<div class="flex justify-center max-md:pb-10">
 					<div class="relative">
-						<img v-if="last.image_1" :src="last.image_1.url" alt="" class="w-[14.1875rem] absolute select-none z-0 top-16 left-[-3.125rem]" draggable="false" ref="phoneImage2">
-						<img v-if="last.image_2" :src="last.image_2.url" alt="" class="w-[19rem] select-none z-10" draggable="false" ref="phoneImage">
-						<img v-if="last.image_3" :src="last.image_3.url" alt="" class="w-[35.625rem] min-w-[35.625rem] top-0 right-[-7.5rem] absolute select-none animate-pulse" draggable="false" ref="arrowImage">
+						<img v-if="last.image_1" :src="last.image_1.url" alt="" class="animation-levitate-one w-[14.1875rem] absolute select-none z-0 top-16 left-[-3.125rem]" draggable="false" ref="phoneImage2">
+						<img v-if="last.image_2" :src="last.image_2.url" alt="" class="animation-levitate-two w-[19rem] select-none z-10" draggable="false" ref="phoneImage">
+						<img v-if="last.image_3" :src="last.image_3.url" alt="" class="animation-levitate-three w-[35.625rem] min-w-[35.625rem] top-0 right-[-7.5rem] absolute select-none animate-pulse" draggable="false" ref="arrowImage">
 					</div>	
 				</div>
 

@@ -26,13 +26,13 @@
 
 			<div class="flex justify-end z-10">
 				<div class="relative h-full max-md:hidden">
-					<img v-if="image" :src="image.url" alt="" class="select-none" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="absolute left-[-6.875rem] rtl:left-auto rtl:right-[-6.875rem] top-[11.875rem] select-none" draggable="false" ref="waletImage2">
+					<img v-if="image" :src="image.url" alt="" class="animation-levitate-one select-none" draggable="false" ref="waletImage">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="animation-levitate-two absolute left-[-6.875rem] rtl:left-auto rtl:right-[-6.875rem] top-[11.875rem] select-none" draggable="false" ref="waletImage2">
 				</div>
 
 				<div class="relative h-full hidden max-md:block">
-					<img v-if="imageMobile" :src="imageMobile.url" alt="" class="relative select-none" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="w-[11.625rem] absolute left-[19.5rem] rtl:left-auto rtl:right-[19.5rem] top-[11.875rem] select-none" draggable="false">
+					<img v-if="imageMobile" :src="imageMobile.url" alt="" class="animation-levitate-one relative select-none" draggable="false" ref="waletImage">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="animation-levitate-two w-[11.625rem] absolute left-[19.5rem] rtl:left-auto rtl:right-[19.5rem] top-[11.875rem] select-none" draggable="false">
 				</div>	
 			</div>
 			

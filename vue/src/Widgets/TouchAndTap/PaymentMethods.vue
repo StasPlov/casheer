@@ -9,6 +9,7 @@
 					:snapAlign="'start'"
 					:wrap-around="true" 
 					:transition="300"
+					:autoplay="2000"
 				>
 					<Slide v-for="item in methodList" :key="item">
 						<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class="select-none">

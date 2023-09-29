@@ -9,8 +9,9 @@
 				<Carousel
 					:items-to-show="countItemsToShow" 
 					:wrap-around="true" 
-					:transition="300"
+					:transition="500"
 					:snapAlign="'start'"
+					:autoplay="2000"
 				>
 					<Slide v-for="item in list" :key="item">
 						<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class="select-none">

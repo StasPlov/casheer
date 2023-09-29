@@ -226,4 +226,30 @@ p:not(:last-child) { /* Каждый эелмент кроме послежен�
 	opacity: 0;
 	transform: translateY(-10px);
 }
+
+.animation-levitate-one {
+	animation: levitate-animation 2s ease-in-out infinite alternate;
+	transform-origin: center;
+	transform: translate3d(0, 0, 0);
+}
+
+.animation-levitate-two {
+	animation: levitate-animation 2.2s ease-in-out infinite alternate;
+	transform-origin: center;
+	transform: translate3d(0, 0, 0);
+}
+.animation-levitate-three {
+	animation: levitate-animation 2.4s ease-in-out infinite alternate;
+	transform-origin: center;
+	transform: translate3d(0, 0, 0);
+}
+
+@keyframes levitate-animation {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	100% {
+		transform: translate3d(0, -10px, 0);
+	}
+}
 </style>

@@ -16,8 +16,8 @@
 				<div class="flex justify-start">
 					<div class="relative max-md:ml-[-2.5rem]">
 						<img v-if="first.image_1" :src="first.image_1.url" alt="" class="w-[37.125rem] relative select-none z-10 animate-pulse" draggable="false" ref="animateRound1">
-						<img v-if="first.image_2" :src="first.image_2.url" alt="" class="w-[7.6875rem] absolute select-none top-8 left-10 z-10" draggable="false" ref="animatePhone1">
-						<img v-if="first.image_3" :src="first.image_3.url" alt="" class="w-[24.3125rem] absolute select-none top-[13.125rem] right-[-4.375rem] z-10" draggable="false" ref="animateMonit1">
+						<img v-if="first.image_2" :src="first.image_2.url" alt="" class="animation-levitate-one w-[7.6875rem] absolute select-none top-8 left-10 z-10" draggable="false" ref="animatePhone1">
+						<img v-if="first.image_3" :src="first.image_3.url" alt="" class="animation-levitate-two w-[24.3125rem] absolute select-none top-[13.125rem] right-[-4.375rem] z-10" draggable="false" ref="animateMonit1">
 					</div>	
 				</div>
 				
@@ -53,7 +53,7 @@
 						<span class="text-white text-2xl font-normal text-[Arial] max-w-[35.625rem]" v-html="two.description"></span>
 					</div>
 
-					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="select-none left-0 -ml-20" draggable="false" ref="animateMap1">
+					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="animation-levitate-one select-none left-0 -ml-20" draggable="false" ref="animateMap1">
 				</div>
 
 			</div>
@@ -79,8 +79,8 @@
 					<img v-if="last.image_4" :src="last.image_4.url" alt="" class="w-[8.625rem] absolute select-none z-10 top-[-4.375rem] right-[16.875rem]" draggable="false" refs="itemsListAnim">
 					<img v-if="last.image_5" :src="last.image_5.url" alt="" class="w-[16.25rem] absolute select-none z-10 top-[-5.8125rem] left-[-1.9375rem]" draggable="false" refs="itemsListAnim">
 					<img v-if="last.image_6" :src="last.image_6.url" alt="" class="w-[6.6875rem] absolute select-none z-10 top-[-2.5rem] left-[10.3125rem]" draggable="false" refs="itemsListAnim">
-					<img v-if="last.image_7" :src="last.image_7.url" alt="" class="w-[9.9375rem] absolute select-none z-10 top-[4.6875rem] left-[-6.875rem]" draggable="false" refs="itemsListAnim">
-					<img v-if="last.image_8" :src="last.image_8.url" alt="" class="w-[16.375rem] absolute select-none z-10 bottom-0 right-[7.5rem]" draggable="false" refs="itemsListAnim">
+					<img v-if="last.image_7" :src="last.image_7.url" alt="" class="animation-levitate-one w-[9.9375rem] absolute select-none z-10 top-[4.6875rem] left-[-6.875rem]" draggable="false" refs="itemsListAnim">
+					<img v-if="last.image_8" :src="last.image_8.url" alt="" class="animation-levitate-two w-[16.375rem] absolute select-none z-10 bottom-0 right-[7.5rem]" draggable="false" refs="itemsListAnim">
 				</div>
 
 				<div class="relative hidden max-md:flex">

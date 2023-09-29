@@ -3,7 +3,7 @@
 		<div class="px-[7vw] py-[7vw] max-phoneX:py-[15vw] flex flex-col max-phoneX:gap-12">
 			
 			<div class="hidden max-phoneX:flex justify-center">
-				<img v-if="image" :src="image.url" alt="" draggable="false" class="w-[17.125rem] select-none">
+				<img v-if="image" :src="image.url" alt="" draggable="false" class="animation-levitate-two w-[17.125rem] select-none">
 			</div>
 			
 			<div class="flex flex-col gap-4 items-start">
@@ -18,8 +18,8 @@
 			
 			<div class="flex justify-end">
 				<div class="relative max-phoneX:flex max-phoneX:justify-end">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" draggable="false" class="w-[61.8125rem] select-none max-phoneX:min-w-[250%] max-phoneX:mr-[-6.6875rem]">
-					<img v-if="image" :src="image.url" alt="" draggable="false" class="w-[16.125rem] select-none absolute bottom-0 left-16 max-phoneX:hidden">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" draggable="false" class="animation-levitate-one w-[61.8125rem] select-none max-phoneX:min-w-[250%] max-phoneX:mr-[-6.6875rem]">
+					<img v-if="image" :src="image.url" alt="" draggable="false" class="animation-levitate-two w-[16.125rem] select-none absolute bottom-0 left-16 max-phoneX:hidden">
 				</div>
 			</div>
 

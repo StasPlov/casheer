@@ -21,7 +21,7 @@
 
 				<div class="flex justify-start">
 					<div class="relative top-[-3.125rem]">
-						<img v-if="first.image_1" :src="first.image_1.url" alt="" class="w-[49.4375rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
+						<img v-if="first.image_1" :src="first.image_1.url" alt="" class="animation-levitate-one w-[49.4375rem] relative select-none z-10" draggable="false" ref="waletImage">
 					</div>
 				</div>
 
@@ -44,7 +44,7 @@
 		></Supported>
 
 		<div class="px-[7vw] py-[13vw] pt-[9vw] flex flex-col gap-20 w-full">
-			<div class="grid grid-cols-[max-content_auto] gap-32 max-md:grid-cols-1">
+			<div class="grid grid-cols-[max-content_auto] gap-32 max-lg:grid-cols-1 max-lg:pb-[9.375rem] max-md:pb-0">
 				<div class="flex flex-col gap-0">
 					<h1 class="text-[5.625rem] font-mont font-bold text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center leading-none" v-html="two.title"></h1>
 					<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="two.sub_title"></span>
@@ -61,15 +61,15 @@
 				</div>
 			</div>
 
-			<div class="flex">
+			<div class="flex py-[9.375rem] pb-[5.625rem]">
 				<div class="relative max-md:hidden w-full mt-[-3.125rem]">
-					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="w-[65.6875rem] relative select-none z-10" draggable="false">
-					<img v-if="two.image_2" :src="two.image_2.url" alt="" class="w-[35rem] absolute select-none top-[-18.75rem] left-[-7vw] z-10" draggable="false">
-					<img v-if="two.image_3" :src="two.image_3.url" alt="" class="w-[35rem] absolute select-none top-[0.625rem] right-[-7vw] z-10" draggable="false">
+					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="animation-levitate-one w-[65.6875rem] relative select-none z-10" draggable="false">
+					<img v-if="two.image_2" :src="two.image_2.url" alt="" class="animation-levitate-two w-[35rem] absolute select-none top-[-18.75rem] left-[-7vw] z-10" draggable="false">
+					<img v-if="two.image_3" :src="two.image_3.url" alt="" class="animation-levitate-three w-[35rem] absolute select-none top-[0.625rem] right-[-7vw] z-10" draggable="false">
 				</div>
 
 				<div class="hidden relative max-md:flex w-full mt-[-3.125rem]">
-					<img v-if="two.image_mobile" :src="two.image_mobile.url" alt="" class="right-[7vw] min-w-[calc(100%_+_14vw)] relative select-none z-10" draggable="false">
+					<img v-if="two.image_mobile" :src="two.image_mobile.url" alt="" class="animation-levitate-one right-[7vw] min-w-[calc(100%_+_14vw)] relative select-none z-10" draggable="false">
 				</div>
 			</div>
 
@@ -104,9 +104,9 @@
 
 				<div class="flex justify-center">
 					<div class="relative">
-						<img v-if="three.image_1" :src="three.image_1.url" alt="" class="w-[21.875rem] relative select-none z-10" draggable="false" ref="waletImage">
-						<img v-if="three.image_2" :src="three.image_2.url" alt="" class="w-[18.5rem] absolute select-none bottom-0 left-[11.75rem]" draggable="false" ref="waletImage">
-						<img v-if="three.image_3" :src="three.image_3.url" alt="" class="w-[17.5rem] absolute select-none z-10 top-[13.125rem] left-[-6.875rem]" draggable="false" ref="waletImage">
+						<img v-if="three.image_1" :src="three.image_1.url" alt="" class="animation-levitate-one w-[21.875rem] relative select-none z-10" draggable="false" ref="waletImage">
+						<img v-if="three.image_2" :src="three.image_2.url" alt="" class="animation-levitate-two w-[18.5rem] absolute select-none bottom-0 left-[11.75rem]" draggable="false" ref="waletImage">
+						<img v-if="three.image_3" :src="three.image_3.url" alt="" class="animation-levitate-three w-[17.5rem] absolute select-none z-10 top-[13.125rem] left-[-6.875rem]" draggable="false" ref="waletImage">
 					</div>	
 				</div>
 
@@ -148,7 +148,7 @@
 
 				<div class="flex justify-start max-md:order-1">
 					<div class="relative top-[-3.125rem]">
-						<img v-if="last.image_1" :src="last.image_1.url" alt="" class="w-[49.4375rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
+						<img v-if="last.image_1" :src="last.image_1.url" alt="" class="animation-levitate-one w-[49.4375rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
 					</div>	
 				</div>
 
