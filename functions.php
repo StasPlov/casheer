@@ -132,6 +132,12 @@ function handle_getData() {
 
 	if ($pageName === 'header-setup') {
 		$content['lang'] = pll_the_languages( array( 'raw' => 1 ) );
+		
+		foreach ($content['lang'] as &$value) {
+			if($value['url']) {
+				$value['url'] = get_the_permalink(pll_get_post($pageId));
+			}
+		}
 	}
 
 	if (!empty($taxonomy)) {
@@ -191,6 +197,36 @@ function handle_getPostList() {
 	}
 	
 	$postList = (new WP_Query($args))->posts;
+	
+	if(!empty($postList) && !empty($taxonomy) && $postType === 'pricing-plan') {
+		$args = [
+			'post_type' => $postType,
+			'post_status' => 'publish',
+			'posts_per_page' => 1000,
+			'paged' => $pageNum,
+		];
+	
+		foreach ($taxonomy as $tax) {
+			if($tax['taxonomy'] !== 'product') {
+				$args['tax_query'][] = [
+					'taxonomy' => $tax['taxonomy'],
+					'field' => 'slug',
+					'operator' => 'NOT IN',
+					'terms' => $tax['term']
+				];
+				continue;
+			}
+
+			$args['tax_query'][] = [
+				'taxonomy' => $tax['taxonomy'],
+				'field' => 'slug',
+				'terms' => $tax['term']
+			];
+		}
+	}
+	
+	array_push($postList, ...(new WP_Query($args))->posts);
+
 	
 	$content = [];
 	foreach ($postList as $post) {

@@ -15,7 +15,7 @@
 				<div class="flex flex-col gap-7 items-center w-full">
 					<h3 class="text-xl text-white font-normal font-[Arial]" v-html="contactData.input_title"></h3>
 
-					<!-- <div ref="ninjaForm"></div> -->
+					<div ref="ninjaForm"></div>
 
 					<Input class="border-[0.1875rem] border-white !rounded-[6.25rem] !bg-transparent max-w-[48.125rem] py-2 pl-8 text-[var(--color-silver1)] text-xl font-[Arial]" placeholder="Your email address">
 						<template #content-after>
@@ -108,13 +108,13 @@ const logo = computed(() => data.value?.logo);
 /* const formTemplate = computed<string>(() => atob((store.state.pageInfo as PageInfoStateInterface)?.formHtml ?? '')); */
 
 let isInitData = ref(false);
-/* let ninjaForm = ref(null); */
+let ninjaForm = ref(null);
 
-/* watch(ninjaForm, () => { // init Form
+watch(ninjaForm, () => { // init Form
 	const form = document.getElementById('ninjaForm1');
 	form.removeAttribute('hidden');
 	(ninjaForm.value as HTMLElement).append(form);
-}); */
+});
 
 onMounted(() => {
 	if(!isInitData.value) {

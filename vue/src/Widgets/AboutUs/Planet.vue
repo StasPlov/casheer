@@ -1,12 +1,12 @@
 <template>
-	<div class="flex items-center justify-around bg-[var(--color-black1)] relative overflow-hidden max-md:flex-col ">
+	<div class="flex items-center justify-around bg-[var(--color-black1)] relative overflow-hidden max-lg::flex-col ">
 		<img v-if="image" :src="image.url" alt="" height="618" width="618" class="animate-spin-planet z-10 px-3">
 
-		<div class="absolute left-16 z-20" ref="animRocket">
+		<div class="absolute left-16 rtl:right-20 rtl:left-auto z-20" ref="animRocket">
 			<Rocket class="rotate-90"></Rocket>
 		</div>
 		
-		<div class="flex flex-col gap-10 z-10 max-phoneX:px-[7vw] max-md:pt-[14vw]">
+		<div class="flex flex-col gap-10 z-10 max-phoneX:px-[7vw] max-lg:pt-[14vw]">
 			<h2 class="text-white text-5xl font-bold font-mont max-phoneX:text-start leading-tight z-10" v-html="title"></h2>
 
 			<span class="text-white text-2xl font-normal font-[Arial] max-w-[33.8125rem] max-phoneX:text-start z-10" v-html="description">

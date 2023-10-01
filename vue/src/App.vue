@@ -117,23 +117,6 @@ console.log(currentPage.value); */
 </script>
 
 <style>
-@import './Assets/Fonts/Mont/stylesheet.css';
-@import './Assets/Fonts/Roboto/stylesheet.css';
-@import url('https://use.fontawesome.com/releases/v6.2.0/css/all.css');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-	--color-black1: #1B1B1B;
-	--color-silver1: #959595;
-	--color-violet1: #7D00E2;
-	--color-green1: #00FF70;
-	--color-blue1: #5066F6;
-	--color-arctic1: #1CF4FF;
-}
-
 @media (min-width: 320px) {
     html {
        font-size: 9px!important;
@@ -173,6 +156,22 @@ console.log(currentPage.value); */
     html {
        font-size: 16px!important;
     }
+}
+
+@import './Assets/Fonts/Mont/stylesheet.css';
+@import './Assets/Fonts/Roboto/stylesheet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--color-black1: #1B1B1B;
+	--color-silver1: #959595;
+	--color-violet1: #7D00E2;
+	--color-green1: #00FF70;
+	--color-blue1: #5066F6;
+	--color-arctic1: #1CF4FF;
 }
 
 /* img {

@@ -27,9 +27,9 @@
 					</Transition>
 				</div>
 				
-				<div v-if="ButtonLang && ButtonLang.is_active" class="relative">
+				<div v-if="curentLang" class="relative">
 					<Button class="bg-transparent gap-3" @click="langMenuIsOpen = !langMenuIsOpen">
-						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonLang.text }}</span>
+						<span class="text-white text-base font-[Arial] font-normal underline">{{ curentLang.name }}</span>
 						<ArrowIcon class="trasition duration-500 rotate-90" :class="{ '!rotate-0':langMenuIsOpen }"></ArrowIcon>
 					</Button>
 
@@ -38,7 +38,7 @@
 						<ul class="flex flex-col gap-2">
 							<li v-for="item in langList" :key="item" class="max-w-max transition duration-300 hover:scale-105">
 								<div class="flex gap-3">
-									<img :src="item.flag" alt="" class="h-5 object-contain">
+									<!-- <img :src="item.flag" alt="" class="h-5 object-contain"> -->
 									<a :href="item.url" class="text-white text-base font-normal font-[Arial] cursor-default" :class="{ 'font-medium':item.current_lang }">{{ item.name }}</a>
 								</div>
 							</li>
@@ -103,6 +103,7 @@ import { computed, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { RootStateInterface } from "../Store";
 import StateInterface from "../Store/Modules/Header/StateInterface";
+import PageInfoStateInterface from "../Store/Modules/PageInfo/StateInterface";
 import LinkInterface from "../Entity/LinkInterface";
 import ImageInterface from "../Entity/ImageInterface";
 import LangInterface from "../Entity/LangInterface";
@@ -114,7 +115,10 @@ const data = computed<{
 	button_login: ButtonInterface,
 	button_sign_up: ButtonInterface,
 	button_lang: ButtonInterface,
-	lang: Array<LangInterface>,
+	lang: {
+		ar: LangInterface,
+		en: LangInterface
+	},
 	logo: ImageInterface,
 	menu: Array<{
 		title: string,
@@ -130,16 +134,17 @@ const data = computed<{
 		image: ImageInterface
 	}>
 }>(() => (store.state.header as StateInterface).data);
-
+const pageId = computed(() => (store.state.pageInfo as PageInfoStateInterface).pageId);
 const logo = computed(() => data.value?.logo);
 const ButtonCountry = computed(() => data.value?.button_country);
-const ButtonLang = computed(() => data.value?.button_lang);
+//const ButtonLang = computed(() => data.value?.button_lang);
 const ButtonLogin = computed(() => data.value?.button_login);
 const buttonSignUp = computed(() => data.value?.button_sign_up);
 const menu = computed(() => data.value?.menu ?? []);
 const menuTwo = computed(() => data.value?.menu_two ?? []);
 const countryList = computed(() => data.value?.country_list ?? []);
-const langList = computed(() => data.value?.lang ?? []);
+const langList = computed(() => data?.value?.lang);
+const curentLang = computed(() => Object.values(langList?.value ?? {}).find((i: LangInterface) => i?.current_lang));
 
 let menuIsOpen = ref(false);
 let langMenuIsOpen = ref(false);
@@ -160,25 +165,28 @@ watch(menuIsOpen, () => {
 	footer.classList.remove('body-blur');
 })
 
-onMounted(() => {
+watch(pageId, () => {
 	if(!isInitData.value) {
 		store.dispatch('header/getData', {
 			// eslint-disable-next-line
 			'action': 'getData',
 			'page-name': 'header-setup',
+			'page-id': pageId.value
 		});
 
 		isInitData.value = true;
 	}
-});
+}, { flush: "post" }); 
 
 
 function clickOutside() {
 	menuIsOpen.value = false;
 }
+
 function clickOutsideLang() {
 	langMenuIsOpen.value = false;
 }
+
 function clickOutsideCountry() {
 	countryMenuIsOpen.value = false;
 }

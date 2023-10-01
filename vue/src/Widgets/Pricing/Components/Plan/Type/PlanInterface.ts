@@ -1,3 +1,4 @@
+import ButtonInterface from "@/Entity/ButtonInterface";
 import CheckInterface from "./CheckInterface";
 
 export default interface PlanInterface {
@@ -5,4 +6,5 @@ export default interface PlanInterface {
     description: string;
     info: string;
     list: Array<CheckInterface>
+    button: ButtonInterface
 }
