@@ -131,13 +131,10 @@ function handle_getData() {
 	}
 
 	if ($pageName === 'header-setup') {
-		$content['lang'] = pll_the_languages( array( 'raw' => 1 ) );
-		
-		foreach ($content['lang'] as &$value) {
-			if($value['url']) {
-				$value['url'] = get_the_permalink(pll_get_post($pageId));
-			}
-		}
+		$content['lang'] = pll_the_languages([
+			'raw' => 1,
+			'post_id' => $pageId
+		]);
 	}
 
 	if (!empty($taxonomy)) {
