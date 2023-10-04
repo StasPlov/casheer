@@ -21,7 +21,6 @@ import ItemInterface from "./Type/ItemInterface";
 import { RootStateInterface } from "../../Store";
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 import { useStore } from "vuex";
-import ButtonInterface from "../../Entity/ButtonInterface";
 import SupportStateInterface from "../../Store/Modules/Support/StateInterface";
 
 const store = useStore<RootStateInterface>();

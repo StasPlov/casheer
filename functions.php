@@ -164,7 +164,7 @@ add_action('wp_ajax_nopriv_getData', 'handle_getData');
 function handle_getPostList() {
 	$postId = trim($_GET['post-id']);
 	$postType = trim($_GET['post-type']);
-	$postCount = trim($_GET['post-count']);
+	$postCount = $_GET['post-count'];
 	$pageNum = trim($_GET['page-num']);
 	$taxonomy = $_GET['taxonomy'];
 	
@@ -220,10 +220,10 @@ function handle_getPostList() {
 				'terms' => $tax['term']
 			];
 		}
+
+		array_push($postList, ...(new WP_Query($args))->posts);
 	}
 	
-	array_push($postList, ...(new WP_Query($args))->posts);
-
 	
 	$content = [];
 	foreach ($postList as $post) {

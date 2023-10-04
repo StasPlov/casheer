@@ -43,7 +43,6 @@ import ActionInterface from './Type/ActionInterface';
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ImageInterface from "../../Entity/ImageInterface";
-import ButtonInterface from "../../Entity/ButtonInterface";
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps<{

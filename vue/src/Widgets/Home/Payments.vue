@@ -1,9 +1,9 @@
 <template>
-	<div class="w-full min-h-screen bg-[var(--color-black1)] relative" v-if="pageData">
-		<div class="py-[5vw] px-[7vw] grid grid-cols-2 items-center max-phoneX:items-start max-phoneX:flex max-phoneX:flex-col-reverse max-phoneX:gap-20">
+	<div class="w-full bg-[var(--color-black1)] relative" v-if="pageData">
+		<div class="py-[25vw] pb-[5vw] px-[7vw] grid grid-cols-2 items-center max-phoneX:items-start max-phoneX:flex max-phoneX:flex-col-reverse max-phoneX:gap-20">
 
 			<div class="flex justify-end max-phoneX:self-start">
-				<div class="flex flex-col gap-16">
+				<div class="flex flex-col gap-16 z-30">
 					<h2 class="text-white text-6xl font-normal leading-tight max-phoneX:hidden" v-html="title"></h2>
 
 					<div class="flex flex-col gap-8 z-10" v-if="list.length">
@@ -24,7 +24,10 @@
 										
 										<a :href="item.item.button.link?.url ?? ''" v-if="item.item.button.is_active" class="flex gap-2 self-end items-center">
 											<span class="text-white text-[Arial] text-xl font-normal leading-none">{{ item.item.button.text }}</span>
-											<Button class="bg-transparent !p-0">></Button>
+											
+											<Button class="bg-transparent !p-0">
+												<ButtonIcon :color="item.item?.color"></ButtonIcon>
+											</Button>
 										</a>
 									</div>
 								</template>
@@ -35,8 +38,8 @@
 			</div>
 			
 			<div class="flex justify-center">
-				<img v-if="imageSelect" :src="imageSelect.url" alt="" class="animation-levitate-one w-[26.875rem] object-contain h-min select-none z-10" ref="phoneImage" draggable="false">
-				<img v-if="imageBgSelecet" :src="imageBgSelecet.url" alt="" class="absolute select-none right-0 bottom-0 animate-pulse max-phoneX:top-1/4" ref="phoneImageBackground" draggable="false">
+				<img v-if="imageSelect" :src="imageSelect.url" alt="" class="animation-levitate-one w-[26.875rem] object-contain h-min select-none z-20" ref="phoneImage" draggable="false">
+				<img v-if="imageBgSelecet" :src="imageBgSelecet.url" alt="" class="absolute select-none right-0 top-0 animate-pulse max-phoneX:top-1/4 z-10 mix-blend-lighten" ref="phoneImageBackground" draggable="false">
 			</div>
 
 			<h2 class="text-white text-6xl font-normal leading-tight hidden max-phoneX:block" v-html="title"></h2>
@@ -46,6 +49,7 @@
 
 
 <script setup lang="ts">
+import ButtonIcon from "./Assets/ButtonIcon.vue";
 import Dropdown from "@/Ui/Dropdown/Dropdown.vue";
 import Button from "@/Ui/Button.vue";
 import PaymentsInterface from "./Entity/PaymentsInterface";
@@ -110,6 +114,7 @@ function initList(active: PaymentsInterface | undefined = undefined) {
 function setSelectItem(item: ItemInterface) {
 	animatePhone();
 	animatePhoneBg();
+	itemSelect.value = null;
 
 	list.value.forEach(i => {
 		if(i === item) {

@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-[var(--color-black1)] min-h-screen">
-		<div class="px-[7vw] py-[1vw] flex flex-col gap-11 max-phoneX:gap-11">
+		<div class="px-[7vw] py-[5vw] flex flex-col gap-11 max-phoneX:gap-11">
 
 			<div class="flex flex-col gap-14 max-phoneX:gap-11" v-show="newsList">
 				<div class="grid grid-cols-[auto_23.125rem] gap-6 w-full max-md:grid-cols-1 max-md:gap-11">
@@ -10,8 +10,9 @@
 						></NewsItem>
 					</div>
 
-					<div class="flex flex-col gap-10 max-phoneX:gap-11 text-[13px] relative pl-6 max-phoneX:pl-0 max-phoneX:before:content-none
+					<div class="flex flex-col gap-10 max-phoneX:gap-11 text-[13px] relative pl-6 max-md:!p-0 max-md:!pt-11
 						before:content-normal before:w-[3px] before:absolute before:bg-white before:rounded-lg before:h-[92%] before:left-0
+						max-md:before:h-[3px] max-md:before:top-0 max-md:before:w-full
 						rtl:pl-[unset] rtl:pr-6 rtl:before:left-auto rtl:before:right-0
 					">
 						<NewsItem 
@@ -28,7 +29,7 @@
 					before:content-normal before:h-[3px] before:absolute before:bg-white before:rounded-lg before:w-full before:left-0
 				">
 					<TransitionGroup>
-						<li v-for="item in list" :key="item" refs="itemsListAnim">
+						<li v-for="item in list" :key="item" refs="itemsListAnim" class="max-phoneX:first:pt-7">
 							<NewsItem class="text-[0.8125rem]"
 								:item="item"
 							></NewsItem>

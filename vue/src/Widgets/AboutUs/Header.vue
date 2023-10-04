@@ -6,13 +6,12 @@
 			<img v-if="background" :src="background.url" alt="" class="w-full select-none -z-0" draggable="false">
 
 			<div class="w-full max-phoneX:px-[7vw] absolute  max-phoneX:relative bottom-0 z-20">
-				<h1 class="text-white text-9xl font-bold font-mont select-none py-4 max-phoneX:text-6xl max-phoneX:text-start" v-html="title"></h1>
+				<h1 class="text-white text-9xl font-bold font-mont select-none py-4 max-phoneX:text-6xl max-phoneX:text-start max-md:text-[6rem]" v-html="title"></h1>
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[17vw] z-20">
-			<span class="text-white text-3xl font-normal font-[Arial]" v-html="description">
-			</span>
+		<div class="px-[18vw] py-[17vw] z-20">
+			<span class="text-white text-3xl font-normal font-[Arial]" v-html="description"></span>
 		</div>
 	</div>
 </template>

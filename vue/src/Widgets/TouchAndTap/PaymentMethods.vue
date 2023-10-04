@@ -28,7 +28,6 @@ import { useStore } from "vuex";
 import { RootStateInterface } from "../../Store";
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 import ImageInterface from "../../Entity/ImageInterface";
-import ButtonInterface from "../../Entity/ButtonInterface";
 
 let curentRectWidth = ref(document.querySelector('html').clientWidth as number);
 

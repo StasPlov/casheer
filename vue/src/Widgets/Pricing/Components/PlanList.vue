@@ -1,8 +1,14 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)]">
-		<Carousel
+		<SimpleSlider ref="planeCarousel" v-if="list.length && !listIsLoading">
+			<div v-for="(item, index) in list" :key="item" ref="itemsListAnim" class="scale-75">
+				<Plan @click="slideTo(index)" :item="item"></Plan>
+			</div>
+		</SimpleSlider>
+
+		<!-- <Carousel
 			ref="planeCarousel"
-			v-if="list.length"
+			v-if="list.length && !listIsLoading"
 			:items-to-show="countItemsToShow"
 			:wrap-around="false"
 			:transition="500"
@@ -15,15 +21,16 @@
 					<Plan @click="slideTo(index)" :item="item"> </Plan>
 				</div>
 			</Slide>
-		</Carousel>
+		</Carousel> -->
 
-		<div class="flex justify-center" v-else>
+		<div class="flex justify-center" v-if="listIsLoading">
 			<LoadSpiner></LoadSpiner>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
+import SimpleSlider from "@/Ui/SimpleSlider.vue";
 import LoadSpiner from "@/Components/LoadSpiner.vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
@@ -32,9 +39,13 @@ import Plan from "./Plan/Plan.vue";
 import PlanInterface from "./Plan/Type/PlanInterface";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { RootStateInterface } from "../../../Store";
+import { useStore } from "vuex";
+import StateInterface from "../../../Store/Modules/Plane/StateInterface";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const store = useStore<RootStateInterface>();
 const props = defineProps<{
 	list: Array<PlanInterface>;
 }>();
@@ -43,6 +54,8 @@ let curentRectWidth = ref(document.querySelector("html").clientWidth as number);
 let planeCarousel = ref(null);
 let curentSlide = ref(0);
 let itemsListAnim = ref([]);
+
+const listIsLoading = computed(() => (store.state.plane as StateInterface).planeListIsLoading);
 
 const isEvenList = computed(() => props.list.length % 2 === 0); // Четное ли кол-во элэментов
 const isMobile = computed(() => curentRectWidth.value < 425);
@@ -60,11 +73,11 @@ const countItemsToShow = computed(() => {
 	}
 
 	if(isTabletBig.value) {
-		return 1.5;
+		return 3;
 	}
 
 	if(isMonitBig.value) {
-		return 2;
+		return 3;
 	}
 
 	if(props.list.length <= 2) {

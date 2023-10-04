@@ -13,7 +13,7 @@
 			<a :href="link" v-if="button.is_active">
 				<Button class="bg-transparent self-start !p-0 gap-6">
 					<span class="text-white text-3xl font-bold font-mont underline text-center">{{ button.text }}</span>
-					<ArrowIcon></ArrowIcon>
+					<ArrowIcon class="rtl:rotate-180 w-5"></ArrowIcon>
 				</Button>
 			</a>
 		</template>

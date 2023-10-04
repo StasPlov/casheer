@@ -8,13 +8,13 @@
 			<div class="flex items-center justify-end">
 
 				<div v-if="ButtonCountry && ButtonCountry.is_active" class="relative">
-					<Button class="bg-transparent gap-3" @click="countryMenuIsOpen = !countryMenuIsOpen">
+					<Button class="bg-transparent gap-2" @click="countryMenuIsOpen = !countryMenuIsOpen">
 						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonCountry.text }}</span>
 						<ArrowIcon class="trasition duration-500 rotate-90" :class="{ '!rotate-0':countryMenuIsOpen }"></ArrowIcon>
 					</Button>
 
 					<Transition name="fade-top">
-					<div class="absolute z-[51] px-5 py-3 bg-[var(--color-black1)] rounded-2xl right-0" v-if="countryMenuIsOpen" v-click-outside="clickOutsideCountry">
+					<div class="absolute z-[51] px-5 py-3 bg-[var(--color-black1)] rounded-2xl right-0 min-w-max" v-if="countryMenuIsOpen" v-click-outside="clickOutsideCountry">
 						<ul class="flex flex-col gap-2">
 							<li v-for="item in countryList" :key="item" class="max-w-max transition duration-300 hover:scale-105">
 								<a :href="item.link.url" class="flex gap-3 cursor-default">
@@ -26,34 +26,14 @@
 					</div>
 					</Transition>
 				</div>
-				
-				<div v-if="curentLang" class="relative">
-					<Button class="bg-transparent gap-3" @click="langMenuIsOpen = !langMenuIsOpen">
-						<span class="text-white text-base font-[Arial] font-normal underline">{{ curentLang.name }}</span>
-						<ArrowIcon class="trasition duration-500 rotate-90" :class="{ '!rotate-0':langMenuIsOpen }"></ArrowIcon>
-					</Button>
 
-					<Transition name="fade-top">
-					<div class="absolute z-[51] px-5 py-3 bg-[var(--color-black1)] rounded-2xl right-0" v-if="langMenuIsOpen" v-click-outside="clickOutsideLang">
-						<ul class="flex flex-col gap-2">
-							<li v-for="item in langList" :key="item" class="max-w-max transition duration-300 hover:scale-105">
-								<div class="flex gap-3">
-									<!-- <img :src="item.flag" alt="" class="h-5 object-contain"> -->
-									<a :href="item.url" class="text-white text-base font-normal font-[Arial] cursor-default" :class="{ 'font-medium':item.current_lang }">{{ item.name }}</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-					</Transition>
-				</div>
-
-				<a :href="ButtonLogin.link" v-if="ButtonLogin && ButtonLogin.is_active">
+				<a :href="ButtonLogin.link.url" v-if="ButtonLogin && ButtonLogin.is_active">
 					<Button class="bg-transparent">
 						<span class="text-white text-base font-[Arial] font-normal underline">{{ ButtonLogin.text }}</span>
 					</Button>
 				</a>
 
-				<a :href="buttonSignUp.link" v-if="buttonSignUp && buttonSignUp.is_active">
+				<a :href="buttonSignUp.link.url" v-if="buttonSignUp && buttonSignUp.is_active">
 					<Button class="bg-transparent">
 						<span class="text-white text-base font-[Arial] font-normal underline">{{ buttonSignUp.text }}</span>
 					</Button>
@@ -63,6 +43,26 @@
 					<MenuIcon v-if="!menuIsOpen"></MenuIcon>
 					<MenuIconClose v-else></MenuIconClose>
 				</Button>
+
+				<div v-if="curentLang" class="relative">
+					<Button class="bg-transparent gap-2" @click="langMenuIsOpen = !langMenuIsOpen">
+						<span class="text-white text-base font-[Arial] font-normal underline uppercase">{{ curentLang.slug }}</span>
+						<ArrowIcon class="trasition duration-500 rotate-90" :class="{ '!rotate-0':langMenuIsOpen }"></ArrowIcon>
+					</Button>
+
+					<Transition name="fade-top">
+					<div class="absolute z-[51] px-5 py-3 bg-[var(--color-black1)] rounded-2xl right-0 min-w-max left-0" v-if="langMenuIsOpen" v-click-outside="clickOutsideLang">
+						<ul class="flex flex-col gap-2">
+							<li v-for="item in langListFiltered" :key="item" class="max-w-max transition duration-300 hover:scale-105">
+								<div class="flex gap-3">
+									<!-- <img :src="item.flag" alt="" class="h-5 object-contain"> -->
+									<a :href="item.url" class="text-white text-base font-normal font-[Arial] cursor-default uppercase" :class="{ 'font-medium':item.current_lang }">{{ item.slug }}</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					</Transition>
+				</div>
 			</div>
 		</div>
 
@@ -145,6 +145,7 @@ const menuTwo = computed(() => data.value?.menu_two ?? []);
 const countryList = computed(() => data.value?.country_list ?? []);
 const langList = computed(() => data?.value?.lang);
 const curentLang = computed(() => Object.values(langList?.value ?? {}).find((i: LangInterface) => i?.current_lang));
+const langListFiltered = computed(() => Object.values(langList?.value ?? {}).filter(i => !i.current_lang));
 
 let menuIsOpen = ref(false);
 let langMenuIsOpen = ref(false);

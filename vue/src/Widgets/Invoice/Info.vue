@@ -6,7 +6,7 @@
 
 				<div class="flex flex-col gap-16">
 					<div class="flex flex-col gap-0">
-						<h1 class="text-[5.625rem] font-mont font-bold text-transparent bg-clip-text bg-gradient-casheer-invoice-text-center leading-none" v-html="first.title"></h1>
+						<h1 class="text-[5.625rem] font-mont font-bold text-transparent bg-clip-text bg-gradient-casheer-invoice-text-center leading-none max-lg:text-[5.025rem]" v-html="first.title"></h1>
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="first.sub_title"></span>
 					</div>
 					
@@ -32,7 +32,7 @@
 			<div class="grid grid-cols-2  max-md:grid-cols-1">
 
 				<div class="hidden flex-col gap-0 max-md:flex">
-					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-invoice-text-center" v-html="two.title"></h1>
+					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-invoice-text-center max-lg:text-[5.025rem]" v-html="two.title"></h1>
 					<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="two.sub_title"></span>
 				</div>
 
@@ -62,7 +62,7 @@
 		<div class="px-[7vw] py-[13vw] flex flex-col gap-20 w-full">
 			<div class="grid grid-cols-2 gap-32 max-md:grid-cols-1 pb-32">
 				<div class="flex flex-col gap-0">
-					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-invoice-text-center" v-html="last.title"></h1>
+					<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-invoice-text-center max-lg:text-[4.625rem]" v-html="last.title"></h1>
 					<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="last.sub_title"></span>
 				</div>
 

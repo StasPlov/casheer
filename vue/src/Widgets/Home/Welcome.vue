@@ -16,10 +16,10 @@
 				</a>
 			</div>
 			
-			<div class="flex justify-end">
-				<div class="relative max-phoneX:flex max-phoneX:justify-end">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" draggable="false" class="animation-levitate-one w-[61.8125rem] select-none max-phoneX:min-w-[250%] max-phoneX:mr-[-6.6875rem]">
-					<img v-if="image" :src="image.url" alt="" draggable="false" class="animation-levitate-two w-[16.125rem] select-none absolute bottom-0 left-16 max-phoneX:hidden">
+			<div class="flex justify-center">
+				<div class="relative max-phoneX:flex max-phoneX:justify-end top-[-1.625rem]">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" draggable="false" class="animation-levitate-one w-[61.8125rem] select-none max-phoneX:min-w-[250%] max-phoneX:mr-[-6.6875rem] shadow">
+					<img v-if="image" :src="image.url" alt="" draggable="false" class="animation-levitate-two w-[16.125rem] select-none absolute bottom-0 left-16 max-phoneX:hidden shadow">
 				</div>
 			</div>
 
@@ -58,5 +58,9 @@ const imageTwo = computed<ImageInterface>(() => dataWelcome.value?.image_two);
     background: radial-gradient(var(--color-green1), transparent) border-box;
     mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
+}
+
+.shadow {
+	filter: drop-shadow(-11px -52px 18px #344287);
 }
 </style>

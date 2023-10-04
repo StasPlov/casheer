@@ -10,7 +10,7 @@
 				<a :href="button.link?.url ?? ''" v-if="button && button.is_active">
 					<Button class="!p-0 bg-transparent gap-3">
 						<span class="text-white text-base font-[Arial] font-normal underline">{{ button.text }}</span>
-						<ArrowIcon></ArrowIcon>
+						<ArrowIcon class="rtl:rotate-180 w-[1.875rem]"></ArrowIcon>
 					</Button>
 				</a>
 
@@ -19,7 +19,7 @@
 			
 
 			<div class="flex flex-col gap-14 z-10">
-				<Input class="border-[0.1875rem] border-white !rounded-[6.25rem] !bg-transparent max-w-[48.125rem] py-2 pl-8 text-[var(--color-silver1)] text-xl font-[Arial]" :placeholder="searchPlaceholder" v-model="searchText">
+				<Input class="rtl:pl-3 rtl:pr-8 border-[0.1875rem] border-white !rounded-[6.25rem] !bg-transparent max-w-[48.125rem] py-2 pl-8 text-[var(--color-silver1)] text-xl font-[Arial]" :placeholder="searchPlaceholder" v-model="searchText">
 					<template #content-after>
 						<Button class="!rounded-full h-10 w-10 !p-2">
 							<SearchIcon></SearchIcon>

@@ -7,7 +7,7 @@
 
 			<div class="flex gap-20">
 				<template v-for="(item, index) in list" :key="item">
-					<a :href="item.link" v-if="item && item.is_active">
+					<a :href="item.link.url" v-if="item && item.is_active">
 						<Button class="!bg-transparent btn1 relative !py-4 !px-20 hover:scale-105 duration-500" :class="{ 'btn2':index == 1 }">
 							<span class="text-white text-base font-[Arial] font-normal">{{ item.text }}</span>
 						</Button>

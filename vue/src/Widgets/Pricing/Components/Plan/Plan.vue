@@ -1,6 +1,6 @@
 <template>
-	<div class="bg-white rounded-[2.5rem] z-10">
-        <div class="px-[3.25rem] py-[4.9375rem] pb-[2.9375rem] flex flex-col gap-12">
+	<div class="bg-white rounded-[2.5rem] z-10 text-center">
+        <div class="px-[3.25rem] py-[4.9375rem] pb-[2.9375rem] flex flex-col gap-12 rtl:[direction:rtl]">
             <div class="flex flex-col gap-5">
                 <h2 class="text-[var(--color-black1)] text-4xl font-bold font-mont" v-html="item.title"></h2>
                 <span class="text-[var(--color-black1)] text-2xl font-normal font-[Arial]" v-html="item.description"></span>
@@ -24,7 +24,7 @@
                     <span class="text-black text-base font-[Arial] font-semibold">{{ item.button.text }}</span>
                 </Button>
 
-                <a :href="item.button.link.url" v-else-if="item.button.is_active">
+                <a :href="item.button?.link?.url" v-else-if="item.button.is_active">
                     <Button class="!bg-transparent btn relative !py-4 hover:scale-105 duration-500 !px-20 self-center">
                         <span class="text-black text-base font-[Arial] font-semibold">{{ item.button.text }}</span>
                     </Button>

@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
-		<img v-if="background" :src="background?.url" alt="" class="absolute w-full max-phoneX:hidden animate-pulse select-none" draggable="false">
+		<img v-if="background" :src="background?.url" alt="" class="absolute w-full top-[3.75rem] max-phoneX:hidden animate-pulse select-none" draggable="false">
 		<img v-if="backgroundMob" :src="backgroundMob?.url" alt="" class="absolute w-full hidden max-phoneX:block select-none" draggable="false">
 
 		<div class="flex flex-col gap-28 px-[7vw] py-[10vw] z-0 max-phoneX:justify-between max-phoneX:h-full max-phoneX:pt-[25vh] max-phoneX:pb-[5vh]">
@@ -56,7 +56,7 @@ const background = computed(() => dataHeader.value?.background);
 const backgroundMob = computed(() => dataHeader.value?.background_mobile);
 const logo = computed(() => dataHeader.value?.logo);
 const title = computed(() => dataHeader.value?.title);
-const infoList = computed(() => dataHeader.value?.infoList);
+const infoList = computed(() => dataHeader.value?.info);
 </script>
 
 <style scoped>

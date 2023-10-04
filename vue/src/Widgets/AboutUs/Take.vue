@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col bg-[var(--color-black1)] relative">
 		<!-- <img :src="backgroundGradient" alt="" class="absolute right-0 top-[-70%] select-none" draggable="false"> -->
-		<Light2 class="absolute right-0 top-[-70%] select-none" draggable="false"></Light2>
+		<Light2 class="absolute right-0 top-[-31.25rem] select-none" draggable="false"></Light2>
 
 		<div class="px-[7vw] py-[18vw]">
 			<div class="flex flex-col gap-10">

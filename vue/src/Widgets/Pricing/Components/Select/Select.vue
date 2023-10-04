@@ -1,11 +1,11 @@
 <template>
 	<div class="relative">
-        <div class="flex justify-between items-center gap-5 border-[3px] border-white !rounded-[6.25rem] !bg-transparent max-w-[48.125rem] py-2 pl-7 pr-[0.625rem] min-w-[12.5rem]">
+        <div class="flex justify-between items-center gap-5 border-[3px] border-white !rounded-[6.25rem] !bg-transparent max-w-[48.125rem] py-2 pl-7 pr-[0.625rem] rtl:pr-7 rtl:pl-[0.625rem] min-w-[12.5rem]">
             <span class="text-white text-xl font-[Arial] font-normal" v-if="selectItem">{{ selectItem.item.name }}</span>
             <span class="text-white/40 text-xl font-[Arial] font-normal" v-else>—</span>
 
             <Button class="!rounded-full h-10 w-10 !p-2 self-end bg-gradient-casheer-title-to-b" @click="open">
-                <ArrowIcon class="transition duration-500 rotate-90" :class="{ '!rotate-0':isOpen }"></ArrowIcon>
+                <ArrowIcon class="transition duration-500 rotate-90 rtl:-rotate-90" :class="{ '!rotate-0':isOpen }"></ArrowIcon>
             </Button>
         </div>
         
