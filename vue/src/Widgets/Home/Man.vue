@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col w-full bg-white relative items-center">
+	<div class="flex flex-col w-full bg-white relative items-center" v-if="man">
 		<div class="px-[7vw] max-phoneX:px-0">
 			<div class="relative">
 				<img v-if="man.background" :src="man.background.url" alt="" class="w-[79.3125rem] max-phoneX:hidden">

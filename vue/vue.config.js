@@ -8,9 +8,24 @@ module.exports = defineConfig({
 		experiments: {
 			topLevelAwait: true // for can use async await in router
 		},
-		/* devServer: { // for CORS
-			headers: { "Access-Control-Allow-Origin": "*" },
-			proxy: 'http://localhost:8080'
-		} */
+		devServer: { // for CORS
+			headers: { 
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+				"Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+			},
+			/* proxy: {
+				'**': {
+					target: {
+						host: "0.0.0.0",
+						protocol: 'http:',
+						port: 8080
+					},
+					pathRewrite: {
+						'^/dist': ''
+					}
+				}
+			 } */
+		}
 	}
 })

@@ -76,14 +76,18 @@ let imageBgSelecet = ref(null);
 const store = useStore<RootStateInterface>();
 const pageData = computed<PageDataStateInterface>(() => store.state.pageData);
 const title = computed<string>(() => pageData.value.data?.payments_title);
-const itemList = computed<Array<PaymentsInterface>>(() => pageData.value.data?.payments);
+const itemList = computed<Array<PaymentsInterface>>(() => pageData.value.data?.payments ?? []);
 
 watch(pageData.value, () => {
+	if(!itemList.value.length) {
+		return;
+	}
+	
 	if(!listIsInit.value) {
 		initList();
 		listIsInit.value = true;
 	}
-});
+}, { flush: "post" });
 
 /* onMounted(() => {
 	if(!listIsInit.value) {
@@ -105,8 +109,8 @@ function initList(active: PaymentsInterface | undefined = undefined) {
 
 	itemSelect.value = list.value.find(i => i.isActive);
 
-	imageSelect.value = itemSelect.value.item?.image;
-	imageBgSelecet.value = itemSelect.value.item?.background;
+	imageSelect.value = itemSelect.value?.item?.image;
+	imageBgSelecet.value = itemSelect.value?.item?.background;
 
 	animatePhone();
 }

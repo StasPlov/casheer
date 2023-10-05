@@ -1,7 +1,7 @@
 <template>
 	<Header></Header>
 	<Main>
-		<component :is="currentPage"></component>
+		<component :is="currentPageTemplate"></component>
 	</Main>
 	<Footer></Footer>
 </template>
@@ -11,7 +11,7 @@
 import Header from './Widgets/Header.vue';
 import Main from './Widgets/Main.vue';
 import Footer from './Widgets/Footer.vue';
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch, watchEffect } from 'vue';
 import { useStore } from 'vuex'
 import { RootStateInterface } from './Store/index';
 
@@ -42,7 +42,7 @@ interface PropsInterface {
 
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 692, 
-	ajaxUrl: '',
+	ajaxUrl: 'http://casheer.loc/wp-admin/admin-ajax.php',
 	pageName: 'home', // "привет-мир" is home page
 	pageTemplate: 'index.php', // empty string is Home page
 	postType: '',
@@ -54,7 +54,7 @@ const props = withDefaults(defineProps<PropsInterface>(), {
 	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
 */
 
-const routesTemplate = {
+/* const routesTemplate = {
 	'index.php': Home,
 	'template-about.php': About,
 	'template-invoice.php': Invoice,
@@ -66,7 +66,7 @@ const routesTemplate = {
 	'template-pricing.php': Pricing,
 }
 
-const currentPage = computed(() => {
+const currentPageTemplate = computed(() => {
 	type t = keyof typeof routesTemplate
 	const n:t = props.pageTemplate as t;
 	let template = routesTemplate[n] || null;
@@ -85,35 +85,90 @@ onMounted(() => {
 	store.commit('pageInfo/setPageTemplate', props.pageTemplate);
 	store.commit('pageInfo/setPostType', props.postType);
 	store.commit('pageInfo/setFormHtml', props.formHtml);
-});
-
-console.log(props);
+}); */
 
 /* dev vue  */
-
-/* const routes = { // for page name
-	'': Home,
-	'about-us':  About,
-	'invoice': Invoice,
-	'checkout': Checkout,
-	'touch-tap': TouchTap,
-	'wallet-cards': WalletCards,
-	'news': News,
-	'news-single': NewsSingle,
-	'support': Support,
-	'pricing': Pricing,
-	'not-found': NotFound
-}
-const currentPath = ref(window.location.pathname)
+const routes = ref({ // for page name
+	'': {
+		template: Home,
+		id: 692,
+		name: 'home'
+	},
+	'about-us':  {
+		template: About,
+		id: 6,
+		name: 'about-us'
+	},
+	'invoice': {
+		template: Invoice,
+		id: 10,
+		name: 'invoice'
+	},
+	'checkout': {
+		template: Checkout,
+		id: 351,
+		name: 'checkout'
+	},
+	'touch-and-tap': {
+		template: TouchTap,
+		id: 444,
+		name: 'touch-and-tap'
+	},
+	'wallet-and-cards': {
+		template: WalletCards,
+		id: 538,
+		name: 'wallet-and-cards'
+	},
+	'news': {
+		template: News,
+		id: 641,
+		name: 'news'
+	},
+	'news-post': {
+		template: NewsPost,
+		id: 657,
+		name: 'news-post'
+	},
+	'support': {
+		template: Support,
+		id: 518,
+		name: 'support'
+	},
+	'pricing': {
+		template: Pricing,
+		id: 774,
+		name: 'pricing'
+	},
+	'not-found': {
+		template: NotFound,
+		id: 999,
+		name: ''
+	},
+});
+const currentPath = ref(window.location.pathname.replace('/dist', ''))
 window.addEventListener('change', () => {
   	currentPath.value = window.location.pathname
 })
 const currentPage = computed(() => {
-	type t = keyof typeof routes
-	const n: t = (currentPath.value.slice(1) || 'привет-мир') as t;
-	return routes[n].template || routes['привет-мир'].template;
-})
-console.log(currentPage.value); */
+	type t = keyof typeof routes.value;
+	const n: t = (currentPath.value.slice(1) || '') as t;
+	return routes.value[n] || routes.value[''];
+});
+const currentPageTemplate = computed(() => currentPage.value.template);
+let isInit = ref(false);
+onMounted(() => {
+	if(!isInit.value) {
+		store.commit('pageInfo/setPageName', currentPage.value.name);
+		store.commit('pageInfo/setAjaxUrl', props.ajaxUrl);
+		store.commit('pageInfo/setPageId', currentPage.value.id);
+		store.commit('pageInfo/setPageTemplate', props.pageTemplate);
+		store.commit('pageInfo/setPostType', props.postType);
+		store.commit('pageInfo/setFormHtml', props.formHtml);
+		isInit.value = true;
+	}
+});
+console.log(currentPage.value);
+/* dev vue end  */
 </script>
 
 <style>

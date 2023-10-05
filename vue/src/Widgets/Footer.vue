@@ -104,6 +104,9 @@ let ninjaForm = ref(null);
 
 watch(ninjaForm, () => { // init Form
 	const form = document.getElementById('ninjaForm1');
+	if(form === null) {
+		return;
+	}
 	form.removeAttribute('hidden');
 	(ninjaForm.value as HTMLElement).append(form);
 });

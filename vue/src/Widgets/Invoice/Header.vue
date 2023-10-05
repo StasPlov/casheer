@@ -17,7 +17,7 @@
 					<img v-if="logo" :src="logo.url" alt="" class="select-none" draggable="false">
 
 					<a :href="button.link?.url ?? ''" v-if="button && button?.is_active">
-						<Button class="border-[var(--color-violet1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
+						<Button class="border-[var(--color-violet1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-12 !py-1">
 							<span class="text-white text-base font-bold font-[Arial]">{{ button.text }}</span>
 						</Button>
 					</a>

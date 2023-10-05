@@ -9,19 +9,20 @@
 		<Light5 class="hidden absolute right-0 bottom-[-40vh] select-none z-0 max-phoneX:block" draggable="false"></Light5>
 
 		<div class="px-[7vw] py-[20vw] pb-0 z-10">
-			<div class="flex gap-32 pb-[15vw] justify-around max-phoneX:flex-col">
+			<div class="flex gap-60 pb-[15vw] justify-around max-phoneX:flex-col max-md:">
 				<div class="hidden max-phoneX:block">
 					<h2 class="text-black text-6xl font-bold font-mont text-center leading-tight">Our promise <br> to you</h2>
 				</div>
 
-				<div class="box-graident rounded-[1.4375rem] relative h-[32rem]  max-w-[29rem] w-full">
-					<img v-if="image" :src="image.url" alt="" class="absolute bottom-0 -right-16 select-none z-10 rounded-br-[1.4375rem]" draggable="false">	
-				</div>
+				<div class="flex max-md:flex-col gap-24 w-full max-md:w-auto">				
+					<div class="box-graident rounded-[1.4375rem] relative h-[32rem]  max-w-[29rem] w-full">
+						<img v-if="image" :src="image.url" alt="" class="absolute bottom-0 -right-16 select-none z-10 rounded-br-[1.4375rem]" draggable="false">	
+					</div>
 
-				<div class="flex flex-col gap-10">
-					<h2 class="text-black text-5xl font-bold font-mont max-phoneX:hidden" v-html="title"></h2>
-
-					<span class="text-black text-xl font-normal font-[Arial] max-w-[35.625rem] max-phoneX:text-[16px] max-phoneX:leading-tight" v-html="description"></span>
+					<div class="flex flex-col gap-10">
+						<h2 class="text-black text-5xl font-bold font-mont max-phoneX:hidden" v-html="title"></h2>
+						<span class="text-black text-xl font-normal font-[Arial] max-w-[35.625rem] max-phoneX:text-[16px] max-phoneX:leading-tight" v-html="description"></span>
+					</div>
 				</div>
 			</div>
 
