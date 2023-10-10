@@ -2,10 +2,10 @@
 	<div class="bg-[var(--color-black1)] relative">
 		<Light4 class="absolute right-0 z-0"></Light4>
 
-		<div class="px-[7vw] py-[10vw] pt-[4vw] flex flex-col items-center gap-20">
+		<div class="px-[8.375rem] py-[9rem] pt-[3.6rem] flex flex-col items-center gap-20 max-phoneX:px-[1.125rem]">
 			<h2 class="text-transparent text-4xl font-mont font-semibold bg-clip-text bg-gradient-casheer-pricing-to-r leading-tight" v-html="title"></h2>
 
-			<div class="flex gap-20">
+			<div class="flex gap-20 max-phoneX:flex-col">
 				<template v-for="(item, index) in list" :key="item">
 					<a :href="item.link.url" v-if="item && item.is_active">
 						<Button class="!bg-transparent btn1 relative !py-4 !px-20 hover:scale-105 duration-500" :class="{ 'btn2':index == 1 }">

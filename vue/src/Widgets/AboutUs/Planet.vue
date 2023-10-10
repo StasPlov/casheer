@@ -1,9 +1,9 @@
 <template>
-	<div class="flex items-center justify-around bg-[var(--color-black1)] relative max-lg:flex-col ">
-		<div class="max-md:mr-[63vw] max-md:w-full h-auto z-10 planet scale-[0.8]">
-			<div class="relative">
+	<div class="flex items-center justify-around bg-[var(--color-black1)] relative max-phoneX:flex-col rtl:[direction:ltr]">
+		<div class="max-phoneX:w-full h-auto z-10 planet scale-[0.8]">
+			<div class="relative w-[38.625rem] max-phoneX:left-[-19rem] max-phoneX:w-[49.625rem]">
 				<img v-if="image" :src="image.url" alt="" height="618" width="618" class="animate-spin-planet z-10 px-3 w-full">
-				<Line class="absolute top-[-7px] left-[17px] w-full h-full object-contain animate-pulse animate-spin-line"></Line>
+				<Line class="absolute top-[-7px] left-[17px] w-full h-full object-contain animate-pulse"></Line>
 			</div>
 			
 			<div class="absolute left-16 rtl:right-20 rtl:left-auto z-20" ref="animRocket">
@@ -11,9 +11,9 @@
 			</div>
 		</div>
 		
-		<div class="flex flex-col gap-10 z-10 px-[7vw] max-lg:pt-[14vw]">
-			<h2 class="text-white text-5xl font-bold font-mont max-phoneX:text-start leading-tight z-10" v-html="title"></h2>
-			<span class="text-white text-2xl font-normal font-[Arial] max-w-[33.8125rem] max-phoneX:text-start z-10" v-html="description"></span>
+		<div class="flex flex-col gap-10 z-10 px-[8.375rem] rtl:[direction:rtl] max-phoneX:px-[1.375rem] max-phoneX:gap-16 max-phoneX:pt-[8rem]">
+			<h2 class="text-white text-5xl text-[2.8125rem] font-bold font-mont max-phoneX:text-start leading-tight z-10 max-phoneX:text-[3.8125rem]" v-html="title"></h2>
+			<span class="text-white text-2xl text-[1.5rem] font-normal font-[Arial] max-w-[33.8125rem] max-phoneX:max-w-[30.4375rem] max-phoneX:text-start z-10" v-html="description"></span>
 		</div>
 	</div>
 </template>

@@ -1,17 +1,19 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start overflow-hidden" v-if="content">
 
-		<div class="px-[7vw] py-[13vw] pb-[7vw] w-full">
-			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
-	
-				<div class="flex flex-col gap-16  max-md:pb-20">
-					<div class="flex flex-col gap-0">
-						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center max-md:text-[5.025rem]" v-html="first.title"></h1>
-						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="first.sub_title"></span>
+		<div class="px-[8.375rem] py-[11.7rem] pb-[6.3rem] w-full relative">
+			<Light1 class="absolute w-[39.125rem] left-[-8.75rem] bottom-[-17.5rem]"></Light1>
+
+			<div class="grid grid-cols-2 gap-14 max-phoneX:grid-cols-1">
+
+				<div class="flex flex-col gap-16 max-phoneX:pb-20 z-10">
+					<div class="flex flex-col gap-0 z">
+						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center max-phoneX:text-[5.025rem]" v-html="first.title"></h1>
+						<span class="text-white text-4xl font-normal leading-tight font-mont" v-html="first.sub_title"></span>
 					</div>
 
-					<ul class="flex flex-col gap-5 max-md:hidden">
-						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+					<ul class="flex flex-col gap-5 max-phoneX:hidden">
+						<li class="flex items-baseline gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
 							v-for="item in first.list" :key="item"
 						>
 							<span class="text-white text-2xl font-[Arial] font-normal">{{ item.title }}</span>
@@ -19,13 +21,13 @@
 					</ul>
 				</div>
 
-				<div class="flex justify-start">
+				<div class="flex justify-start z-10">
 					<div class="relative top-[-3.125rem]">
-						<img v-if="first.image_1" :src="first.image_1.url" alt="" class="animation-levitate-one w-[49.4375rem] relative select-none z-10" draggable="false" ref="waletImage">
+						<img v-if="first.image_1" :src="first.image_1.url" alt="" class=" w-[49.4375rem] relative select-none z-10" draggable="false" ref="waletImage">
 					</div>
 				</div>
 
-				<div class="hidden flex-col gap-16 max-md:flex">
+				<div class="hidden flex-col gap-16 max-phoneX:flex z-10">
 					<ul class="flex flex-col gap-5">
 						<li class="flex items-center gap-3 before:content-normal before:flex before:w-4 before:h-4 before:rounded-full before:bg-[var(--color-green1)]"
 							v-for="item in first.list" :key="item"
@@ -43,16 +45,18 @@
 			:list="paymentList"
 		></Supported>
 
-		<div class="px-[7vw] py-[13vw] pt-[9vw] flex flex-col gap-20 w-full">
-			<div class="grid grid-cols-[max-content_auto] gap-32 max-lg:grid-cols-1 max-lg:pb-[9.375rem] max-md:pb-0">
+		<div class="px-[8.375rem] py-[11.7rem] pt-[8.1rem] max-h-[62rem] max-phoneX:max-h-[none] flex flex-col gap-20 w-full relative">
+			<Light2 class="absolute w-[78.75rem] right-0 top-[-25rem]"></Light2>
+
+			<div class="grid grid-cols-[max-content_auto] gap-32 max-lg:grid-cols-1 max-lg:pb-[9.375rem] max-phoneX:pb-0 z-20">
 				<div class="flex flex-col gap-0">
-					<h1 class="text-[5.625rem] font-mont font-bold text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center leading-none max-md:text-[5.025rem]" v-html="two.title"></h1>
-					<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="two.sub_title"></span>
+					<h1 class="text-[5.625rem] font-mont font-bold text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center leading-none max-phoneX:text-[5.025rem]" v-html="two.title"></h1>
+					<span class="text-white text-4xl font-normal leading-tight font-mont" v-html="two.sub_title"></span>
 				</div>
 
-				<div class="mt-10 max-md:hidden">
-					<ul class="flex flex-col gap-5 max-md:hidden">
-						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+				<div class="mt-10 max-phoneX:hidden">
+					<ul class="flex flex-col gap-5 max-phoneX:hidden">
+						<li class="flex items-baseline gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
 							v-for="item in two.list" :key="item"
 						>
 							<span class="text-white text-2xl font-[Arial] font-normal">{{ item.title }}</span>
@@ -61,21 +65,19 @@
 				</div>
 			</div>
 
-			<div class="flex py-[9.375rem] pb-[5.625rem]">
-				<div class="relative max-md:hidden w-full mt-[-3.125rem]">
-					<img v-if="two.image_1" :src="two.image_1.url" alt="" class="animation-levitate-one w-[65.6875rem] relative select-none z-10" draggable="false">
-					<img v-if="two.image_2" :src="two.image_2.url" alt="" class="animation-levitate-two w-[35rem] absolute select-none top-[-18.75rem] left-[-7vw] z-10" draggable="false">
-					<img v-if="two.image_3" :src="two.image_3.url" alt="" class="animation-levitate-three w-[35rem] absolute select-none top-[0.625rem] right-[-7vw] z-10" draggable="false">
+			<div class="flex py-[9.375rem] pb-[5.625rem] z-10">
+				<div class="relative max-phoneX:hidden w-full mt-[-28.125rem]">
+					<img v-if="two.image_1" :src="two.image_1.url" alt="" class=" min-w-[calc(100%_+_14vw)] left-[-6.3rem] relative select-none z-10" draggable="false">
 				</div>
 
-				<div class="hidden relative max-md:flex w-full mt-[-3.125rem]">
-					<img v-if="two.image_mobile" :src="two.image_mobile.url" alt="" class="animation-levitate-one right-[7vw] min-w-[calc(100%_+_14vw)] relative select-none z-10" draggable="false">
+				<div class="hidden relative max-phoneX:flex w-full mt-[-3.125rem]">
+					<img v-if="two.image_mobile" :src="two.image_mobile.url" alt="" class=" right-[6.3rem] min-w-[calc(100%_+_14vw)] relative select-none z-10" draggable="false">
 				</div>
 			</div>
 
-			<div class="hidden mt-10 max-md:flex">
+			<div class="hidden mt-10 max-phoneX:flex z-10">
 				<ul class="flex flex-col gap-5">
-					<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+					<li class="flex items-baseline gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
 						v-for="item in two.list" :key="item"
 					>
 						<span class="text-white text-2xl font-[Arial] font-normal">{{ item.title }}</span>
@@ -84,17 +86,17 @@
 			</div>
 		</div>
 		
-		<div class="px-[7vw] py-[13vw] pb-0 w-full">
-			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
+		<div class="px-[8.375rem] py-[11.7rem] pb-0 w-full">
+			<div class="grid grid-cols-2 gap-14 max-phoneX:grid-cols-1">
 	
-				<div class="flex flex-col gap-16  max-md:pb-20">
+				<div class="flex flex-col gap-16  max-phoneX:pb-20">
 					<div class="flex flex-col gap-0">
-						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center max-md:text-[5.025rem]" v-html="three.title"></h1>
-						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="three.sub_title"></span>
+						<h1 class="text-[5.625rem] font-mont font-bold leading-normal text-transparent bg-clip-text bg-gradient-casheer-WalletAndCard-text-center max-phoneX:text-[5.025rem]" v-html="three.title"></h1>
+						<span class="text-white text-4xl font-normal leading-tight font-mont" v-html="three.sub_title"></span>
 					</div>
 
-					<ul class="flex flex-col gap-5 max-md:hidden">
-						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+					<ul class="flex flex-col gap-5 max-phoneX:hidden">
+						<li class="flex items-baseline gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
 							v-for="item in three.list" :key="item"
 						>
 							<span class="text-white text-2xl font-[Arial] font-normal">{{ item.title }}</span>
@@ -104,15 +106,15 @@
 
 				<div class="flex justify-center">
 					<div class="relative">
-						<img v-if="three.image_1" :src="three.image_1.url" alt="" class="animation-levitate-one w-[21.875rem] relative select-none z-10" draggable="false" ref="waletImage">
-						<img v-if="three.image_2" :src="three.image_2.url" alt="" class="animation-levitate-two w-[18.5rem] absolute select-none bottom-0 left-[11.75rem]" draggable="false" ref="waletImage">
+						<img v-if="three.image_1" :src="three.image_1.url" alt="" class=" w-[21.875rem] relative select-none z-10" draggable="false" ref="waletImage">
+						<img v-if="three.image_2" :src="three.image_2.url" alt="" class="w-[18.5rem] absolute select-none bottom-0 left-[11.75rem]" draggable="false" ref="waletImage">
 						<img v-if="three.image_3" :src="three.image_3.url" alt="" class="animation-levitate-three w-[17.5rem] absolute select-none z-10 top-[13.125rem] left-[-6.875rem]" draggable="false" ref="waletImage">
 					</div>	
 				</div>
 
-				<div class="hidden flex-col gap-16 max-md:flex">
+				<div class="hidden flex-col gap-16 max-phoneX:flex">
 					<ul class="flex flex-col gap-5">
-						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+						<li class="flex items-baseline gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
 							v-for="item in three.list" :key="item"
 						>
 							<span class="text-white text-2xl font-[Arial] font-semibold">{{ item.title }}</span>
@@ -123,10 +125,10 @@
 			</div>
 		</div>
 
-		<div class="px-[7vw] py-[13vw] w-full">
-			<div class="grid grid-cols-2 gap-14 max-md:grid-cols-1">
+		<div class="px-[8.375rem] py-[11.7rem] w-full">
+			<div class="grid grid-cols-2 gap-14 max-phoneX:grid-cols-1">
 	
-				<div class="flex flex-col gap-16 order-1 max-md:order-none ">
+				<div class="flex flex-col gap-16 order-1 max-phoneX:order-none ">
 					<div class="flex flex-col gap-0">
 						<h1 class="text-4xl font-mont font-bold leading-normal text-white" v-html="last.title"></h1>
 						
@@ -134,8 +136,8 @@
 					</div>
 
 					<div class="flex flex-col gap-16">
-						<ul class="flex flex-col gap-5 max-md:hidden">
-							<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+						<ul class="flex flex-col gap-5 max-phoneX:hidden">
+							<li class="flex items-baseline gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
 								v-for="item in last.list" :key="item"
 							>
 								<span class="text-white text-2xl font-[Arial] font-normal">{{ item.title }}</span>
@@ -146,15 +148,16 @@
 					</div>
 				</div>
 
-				<div class="flex justify-start max-md:order-1">
-					<div class="relative top-[-3.125rem]">
-						<img v-if="last.image_1" :src="last.image_1.url" alt="" class="animation-levitate-one w-[49.4375rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
+				<div class="flex justify-start max-phoneX:order-1">
+					<div class="relative">
+						<Light3 class="absolute w-[28.125rem] blur-[7.6875rem] left-[3.125rem] top-[-16.25rem] max-phoneX:top-[-23.125rem]"></Light3>
+						<img v-if="last.image_1" :src="last.image_1.url" alt="" class=" w-[49.4375rem] relative select-none z-10 animate-pulse" draggable="false" ref="waletImage">
 					</div>	
 				</div>
 
-				<div class="hidden flex-col gap-16 max-md:flex">
+				<div class="hidden flex-col gap-16 max-phoneX:flex">
 					<ul class="flex flex-col gap-5">
-						<li class="flex items-center gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
+						<li class="flex items-baseline gap-3 before:content-normal before:flex before:min-w-[1rem] before:min-h-[1rem] before:rounded-full before:bg-[var(--color-green1)]"
 							v-for="item in last.list" :key="item"
 						>
 							<span class="text-white text-2xl font-[Arial] font-semibold">{{ item.title }}</span>
@@ -171,6 +174,10 @@
 </template>
 
 <script setup lang="ts">
+import Light1 from "./Assets/Light1.vue";
+import Light2 from "./Assets/Light2.vue";
+import Light3 from "./Assets/Light3.vue";
+
 import Supported from './Supported.vue';
 import PageDataStateInterface from "../../Store/Modules/PageData/StateInterface";
 import { computed, onMounted, ref } from "vue";

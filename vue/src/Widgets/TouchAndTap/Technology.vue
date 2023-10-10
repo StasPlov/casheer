@@ -1,11 +1,11 @@
 <template>
-	<div class="bg-[var(--color-black1)] relative overflow-hidden">
-		<div class="flex max-md:flex-col-reverse">
-			<img v-if="image" :src="image.url" alt="" class="w-full select-none -z-0" draggable="false">
+	<div class="bg-[var(--color-black1)] relative overflow-hidden z-10">
+		<div class="flex max-phoneX:flex-col-reverse">
+			<img v-if="image" :src="image.url" alt="" class="w-full select-none -z-0 brightness-90" draggable="false">
 
-			<div class="flex items-center justify-center absolute right-[7vw] top-28 max-md:top-0 max-md:relative max-md:right-0 max-md:justify-start max-md:px-[7vw] max-md:py-[2vw]">
+			<div class="flex items-center justify-center absolute right-[6.3rem] top-8 max-phoneX:top-0 max-phoneX:relative max-phoneX:right-0 max-phoneX:justify-start max-phoneX:px-[8.375rem] max-phoneX:py-[1.8rem]">
 				<div class="flex flex-col gap-4">
-					<span class="text-white text-5xl font-mont font-bold leading-tight text-right max-md:text-start" v-html="title"></span>
+					<span class="text-white text-5xl font-mont font-bold leading-tight text-right max-phoneX:text-start" v-html="title"></span>
 				</div>
 			</div>
 		</div>

@@ -11,6 +11,9 @@
 	<?php echo wp_print_footer_scripts(); ?>
 </head>
 <body <?php body_class(); ?>>
+	<div hidden id="ninjaForm1">
+		<?php echo do_shortcode("[ninja_form id=2]"); ?>
+	</div>
 	<div 
 		id="app"
 		data-ajax-url="<?php echo admin_url('admin-ajax.php'); ?>"

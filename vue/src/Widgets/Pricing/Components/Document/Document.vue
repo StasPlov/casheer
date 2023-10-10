@@ -7,12 +7,12 @@
 			</div>
 			
 
-			<ul class="grid grid-cols-2 grid-flow-row gap-5 justify-between max-md:grid-cols-1">
+			<ul class="grid grid-cols-2 grid-flow-row gap-5 justify-between max-phoneX:grid-cols-1">
 				<li v-for="item in list" :key="item">
 					<div class="flex gap-4">
-						<div class="w-[1.875rem] h-[1.875rem]">
-							<CheckTryIcon v-if="item.is_active" class="w-[inherit]"></CheckTryIcon>
-							<CheckNoneIcon v-else class="w-[inherit]"></CheckNoneIcon>
+						<div class="min-w-[1.875rem] min-h-[1.875rem] max-w-[1.875rem] max-h-[1.875rem]">
+							<CheckTryIcon v-if="item.is_active" class="w-full h-full"></CheckTryIcon>
+							<CheckNoneIcon v-else class="w-full h-full"></CheckNoneIcon>
 						</div>
 
 						<span class="text-[var(--color-black1)] text-xl font-[Arial] font-normal" v-html="item.description"></span>

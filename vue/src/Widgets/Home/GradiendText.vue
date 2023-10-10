@@ -1,7 +1,7 @@
 <template>
-	<div class="flex flex-col w-full max-md:min-h-0 bg-[var(--color-black1)] relative justify-center items-start">
-		<div class="px-[7vw] py-[7vw]">
-			<span class="text-6xl font-bold font-mont leading-tight text-transparent bg-clip-text bg-gradient-casheer-to-b anim-bg-grident" v-html="pageDataText"></span>
+	<div class="flex flex-col w-full max-phoneX:min-h-0 bg-[var(--color-black1)] relative justify-center items-start">
+		<div class="px-[8.375rem] py-[14.375rem] pt-[14.375rem] max-phoneX:pt-[6.8125rem] max-phoneX:pb-[5.3125rem] max-phoneX:px-[1.125rem]">
+			<span class="text-6xl font-bold font-mont leading-tight text-transparent bg-clip-text bg-gradient-casheer-to-b anim-bg-grident rtl:font-normal" v-html="pageDataText"></span>
 		</div>
 	</div>
 </template>

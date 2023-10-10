@@ -1,10 +1,10 @@
 <template>
-	<div class="w-full bg-[var(--color-black1)] relative pb-28">
-		<div class="py-9">
-			<h2 class="text-white text-center font-mont text-4xl font-bold" v-html="title"></h2>			
+	<div class="w-full bg-[var(--color-black1)] relative pb-28 max-phoneX:pb-[11rem]">
+		<div class="py-9 max-phoneX:py-[9.37rem]">
+			<h2 class="text-white text-center font-mont text-4xl font-bold max-phoneX:text-[3.75rem]" v-html="title"></h2>			
 		</div>
 
-		<div class="flex flex-col gap-5 bg-white py-16 w-full">
+		<div class="flex flex-col gap-5 bg-white w-full">
 			<Carousel
 				:items-to-show="countItemsToShow" 
 				:wrap-around="true" 
@@ -15,10 +15,10 @@
 			>
 				<Slide v-for="item in list" :key="item">
 					<a :href="item.link" v-if="item.link">
-						<img :src="item.image.url" alt="" draggable="false" class="select-none">
+						<img :src="item.image.url" alt="" draggable="false" class="select-none w-[16rem] p-10">
 					</a>
 
-					<img v-else :src="item.image.url" alt="" draggable="false" class="select-none">
+					<img v-else :src="item.image.url" alt="" draggable="false" class="select-none w-[16rem] p-10">
 				</Slide>
 			</Carousel>	
 		</div>

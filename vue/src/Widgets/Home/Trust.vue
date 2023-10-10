@@ -1,11 +1,11 @@
 <template>
 	<div class="w-full bg-white relative">
-		<div class="px-[7vw] py-[9vw] flex flex-col gap-32">
+		<div class="px-[8.375rem] pt-[3.5rem] pb-[6.125rem] flex flex-col gap-32 max-phoneX:pt-[6.625rem]">
 
-			<div class="flex flex-col gap-5">
-				<h2 class="text-black text-center font-mont text-3xl font-bold" v-html="paymentMethodsTitle"></h2>
+			<div class="flex flex-col gap-5 max-phoneX:gap-[7.375rem] max-phoneX:items-center max-phoneX:justify-center">
+				<h2 class="text-black text-center font-mont text-3xl font-bold rtl:font-normal max-phoneX:text-[2.44rem]" v-html="paymentMethodsTitle"></h2>
 
-				<Carousel 
+				<Carousel class="max-phoneX:hidden"
 					:items-to-show="countItemsToShow" 
 					:wrap-around="true" 
 					:transition="300"
@@ -14,16 +14,22 @@
 					:autoplay="5000"
 				>
 					<Slide v-for="item in paymentMethodsList" :key="item">
-						<img :src="item.image.url" alt="" draggable="false" class="select-none">
+						<img :src="item.image.url" alt="" draggable="false" class="w-[4.8125rem] select-none">
 					</Slide>
 				</Carousel>
+
+				<ul class="hidden max-phoneX:grid grid-cols-2 gap-[6.375rem]">
+					<li v-for="item in paymentMethodsList" :key="item">
+						<img :src="item.image.url" alt="" draggable="false" class="w-[4.8125rem] select-none max-phoneX:w-[7rem]">
+					</li>
+				</ul>
 			</div>
 
-			<div class="flex flex-col gap-24">
+			<div class="flex flex-col gap-24 max-phoneX:gap-[12.6rem]">
 				<div class="flex flex-col gap-8">
 					<div class="flex flex-col gap-4">
-						<h2 class="text-black text-center font-mont text-5xl font-bold" v-html="title"></h2>
-						<span class="text-black text-2xl font-normal font-[Arial] text-center" v-html="subTitle"></span>
+						<h2 class="text-black text-center font-mont text-5xl font-bold rtl:font-normal" v-html="title"></h2>
+						<span class="text-black text-2xl font-normal font-[Arial] text-center rtl:font-normal max-phoneX:max-w-[26.75rem] max-phoneX:self-center" v-html="subTitle"></span>
 					</div>
 
 					<ul class="flex gap-8 justify-center">

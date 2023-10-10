@@ -42,19 +42,15 @@ interface PropsInterface {
 
 const props = withDefaults(defineProps<PropsInterface>(), {
 	pageId: 692, 
-	ajaxUrl: 'http://casheer.loc/wp-admin/admin-ajax.php',
+	ajaxUrl: '',
 	pageName: 'home', // "привет-мир" is home page
 	pageTemplate: 'index.php', // empty string is Home page
 	postType: '',
 	formHtml: ''
 });
 
-/* 
-	тут будет определяться какой шаблон(страницу) отрисовывать
-	сюда ее нужно просто добавить, id странциы из wp и шаблон который ей соотвествует
-*/
-
-/* const routesTemplate = {
+/* prod */
+const routesTemplate = {
 	'index.php': Home,
 	'template-about.php': About,
 	'template-invoice.php': Invoice,
@@ -85,10 +81,10 @@ onMounted(() => {
 	store.commit('pageInfo/setPageTemplate', props.pageTemplate);
 	store.commit('pageInfo/setPostType', props.postType);
 	store.commit('pageInfo/setFormHtml', props.formHtml);
-}); */
+});
 
 /* dev vue  */
-const routes = ref({ // for page name
+/* const routes = ref({ // for page name
 	'': {
 		template: Home,
 		id: 692,
@@ -165,51 +161,21 @@ onMounted(() => {
 		store.commit('pageInfo/setPostType', props.postType);
 		store.commit('pageInfo/setFormHtml', props.formHtml);
 		isInit.value = true;
-	}
+	} 
 });
-console.log(currentPage.value);
+console.log(currentPage.value); */
 /* dev vue end  */
 </script>
 
 <style>
-@media (min-width: 320px) {
-    html {
-       font-size: 9px!important;
-    }
-}
-@media (min-width: 390px) {
-    html {
-       font-size: 10px!important;
-    }
-}
-@media (min-width: 425px) {
+@media (max-width: 425px) {
 	html {
-       font-size: 10px!important;
+       font-size: calc(10.6666 * 1px + (11.62 - 10.6666) * (100vw - 390 * 1px) / (425 - 390))!important;
     }
 }
-@media (min-width: 640px) {
-    html {
-       font-size: 10px!important;
-    }
-}
-@media (min-width: 768px) {
-    html {
-       font-size: 12px!important;
-    }
-}
-@media (min-width: 1024px) {
-    html {
-       font-size: 14px!important;
-    }
-}
-@media (min-width: 1280px) {
-    html {
-       font-size: 15px!important;
-    }
-}
-@media (min-width: 1536px) {
-    html {
-       font-size: 16px!important;
+@media (min-width: 426px) {
+	html {
+       font-size: calc(16 * 1px + (21.3 - 16) * (100vw - 1440 * 1px) / (1920 - 1440))!important;
     }
 }
 
@@ -281,13 +247,13 @@ p:not(:last-child) { /* Каждый эелмент кроме послежен�
 	transform: translateY(-10px);
 }
 
-.animation-levitate-one {
+. {
 	animation: levitate-animation 2s ease-in-out infinite alternate;
 	transform-origin: center;
 	transform: translate3d(0, 0, 0);
 }
 
-.animation-levitate-two {
+.{
 	animation: levitate-animation 2.2s ease-in-out infinite alternate;
 	transform-origin: center;
 	transform: translate3d(0, 0, 0);

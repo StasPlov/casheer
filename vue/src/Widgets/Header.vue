@@ -1,8 +1,8 @@
 <template>
 	<header class="flex justify-between bg-[var(--color-black1)] sticky top-0 z-50">
-		<div class="min-h-[5.6875rem] w-full flex justify-between px-[4vw]">
+		<div class="min-h-[5.6875rem] w-full flex justify-between px-[3.6rem]">
 			<a href="/" class="self-center">
-				<img :src="logo.url" v-if="logo" alt="" class=" max-w-[12.5rem] object-contain max-phoneX:max-w-[9.125rem]" draggable="false">
+				<img :src="logo.url" v-if="logo" alt="" class="w-[12.9375rem] object-contain max-phoneX:max-w-[8.8125rem]" draggable="false">
 			</a>
 
 			<div class="flex items-center justify-end">
@@ -69,7 +69,7 @@
 		<Teleport to="body">
 		<Transition name="fade-top">
 			<div class="fixed bg-black/70 w-full h-[calc(100%_-_5.6875rem)] bottom-0 z-50" v-if="menuIsOpen">
-				<div class="w-full h-full flex items-center justify-center gap-28 px-[7vw] py-[10vw] max-md:items-start max-md:flex-col max-md:justify-start" v-click-outside="clickOutside">
+				<div class="w-full h-full flex items-center justify-center gap-28 px-[8.375rem] py-[9rem] max-phoneX:px-[4.675rem] max-phoneX:items-start max-phoneX:flex-col max-phoneX:justify-start" v-click-outside="clickOutside">
 					<ul class="flex flex-col gap-8"  v-if="menu" v-click-outside="clickOutside">
 						<TransitionGroup name="popup">
 						<li v-for="item in menu" :key="item" class="transition duration-500 hover:translate-x-3 group">

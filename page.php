@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <main>
+  <main style="min-height: 100vh;">
     <section>
       <h1><?php the_title(); ?></h1>
       <?php if (have_posts()): while (have_posts()) : the_post(); ?>
@@ -11,7 +11,7 @@
       <?php endwhile; ?>
       <?php else: ?>
         <article>
-          <h2><?php _e('Sorry, nothing to display.', 'wp-blank'); ?></h2>
+          <h2><?php _e('Sorry, nothing to  display.', 'wp-blank'); ?></h2>
         </article>
       <?php endif; ?>
     </section>

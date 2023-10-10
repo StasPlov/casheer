@@ -1,9 +1,9 @@
 <template>
-	<div class="bg-[var(--color-black1)]">
+	<div class="bg-[var(--color-black1)]" v-if="dataHeader">
 		<Light1 class="absolute left-0 select-none max-w-full" draggable="false"></Light1>
 		<Light2 class="absolute right-0 select-none max-w-full" draggable="false"></Light2>
 
-		<div class="px-[7vw] py-[12vw] pb-[5vw] flex flex-col items-start gap-10">
+		<div class="px-[8.375rem] py-[10.8rem] pb-[4.5rem] flex flex-col items-start gap-10">
 
 			<div class="flex flex-col items-start gap-4 z-10">
 				

@@ -1,11 +1,13 @@
 <template>
     <Header></Header>
 	<Content></Content>
+	<Questions></Questions>
 </template>
 
 <script setup lang="ts">
 import Header from "../Widgets/Support/Header.vue";
 import Content from "../Widgets/Support/Content.vue";
+import Questions from "../Widgets/Support/Questions.vue";
 import { useStore } from "vuex";
 import { computed, ref, watch } from "vue";
 import { RootStateInterface } from "../Store";

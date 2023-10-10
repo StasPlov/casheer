@@ -1,10 +1,10 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)] flex items-center relative">
-		<img v-if="background" :src="background.url" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-4.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain z-10" draggable="false">
+		<img v-if="background" :src="background.url" alt="" class="absolute w-full left-0 animate-pulse select-none max-phoneX:bottom-[-4.5rem] max-phoneX:left-[-11.875rem] max-phoneX:min-w-[200%] max-phoneX:object-contain z-10" draggable="false">
 		
-		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
+		<div class="grid grid-cols-2 gap-10 px-[8.375rem] py-[13.5rem] pt-[4.5rem] pr-0 w-full max-phoneX:grid-cols-1 max-phoneX:pr-[6.3rem] max-phoneX:pb-[27rem]">
 
-			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
+			<div class="flex flex-col justify-center gap-12 z-10 max-phoneX:order-1">
 				<div class="flex flex-col gap-9">
 					<h1 class="font-mont text-white text-7xl font-bold" v-html="title"></h1>
 
@@ -17,7 +17,7 @@
 					<img v-if="logo" :src="logo.url" alt="" class="select-none" draggable="false">
 
 					<a :href="button.link?.url ?? ''" v-if="button && button?.is_active">
-						<Button class="border-[var(--color-green1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-16 !py-1">
+						<Button class="!bg-transparent btn relative hover:scale-105 duration-500 !px-12 !py-4">
 							<span class="text-white text-base font-bold font-[Arial]">{{ button.text }}</span>
 						</Button>
 					</a>
@@ -26,7 +26,7 @@
 
 			<div class="flex justify-center z-10">
 				<div class="relative h-full">
-					<img v-if="image" :src="image.url" alt="" class="animation-levitate-one w-[28.25rem] select-none" draggable="false" ref="animElement">
+					<img v-if="image" :src="image.url" alt="" class=" w-[28.25rem] select-none" draggable="false" ref="animElement">
 				</div>
 			</div>
 			
@@ -87,3 +87,19 @@ function animateIn() {
 	);
 }
 </script>
+
+<style scoped>
+.btn::before {
+	content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    border: 5px solid transparent;
+    background: radial-gradient(var(--color-green1), transparent) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+}
+</style>

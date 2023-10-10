@@ -1,9 +1,15 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)]">
-		<div class="px-[7vw] py-24">
+		<div class="px-[8.375rem] py-24 flex flex-col gap-20">
 			<h2 class="text-white text-center font-mont text-4xl font-bold" v-html="title"></h2>			
 			
-			<div class="flex flex-col py-16 w-full">
+			<ul class="flex gap-24 self-center">
+				<li v-for="item in methodList" :key="item">
+					<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class="select-none">
+				</li>
+			</ul>
+
+			<!-- <div class="flex flex-col py-16 w-full">
 				<Carousel
 					:items-to-show="countItemsToShow"
 					:snapAlign="'start'"
@@ -15,7 +21,7 @@
 						<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class="select-none">
 					</Slide>
 				</Carousel>	
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>

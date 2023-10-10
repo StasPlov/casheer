@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-[var(--color-black1)]">
-        <div class="px-[7vw] pb-[11vw] flex flex-col gap-14">
+        <div class="px-[8.375rem] pb-[9.9rem] flex flex-col gap-14 max-phoneX:px-[1.125rem]">
             <div>
 				<!-- image place -->
                 <h2 class="text-transparent text-4xl font-mont font-semibold bg-clip-text bg-gradient-casheer-title-to-b" v-html="title"></h2>

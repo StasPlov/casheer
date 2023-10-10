@@ -1,11 +1,17 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)]">
-		<SimpleSlider ref="planeCarousel" v-if="list.length && !listIsLoading">
-			<div v-for="(item, index) in list" :key="item" ref="itemsListAnim" class="scale-75">
-				<Plan @click="slideTo(index)" :item="item"></Plan>
-			</div>
-		</SimpleSlider>
+		<Slider ref="planeCarousel" v-if="itemCount && !listIsLoading" class="mx-[4.75rem] max-phoneX:mx-[0.125rem] max-lg:mx-[8.75rem]"
+			:slider-class="`flex gap-[4.75rem] max-lg:gap-[8.75rem]`" :elementViewCount="countItemsToShow"
+		>
+			<Plan v-for="item in list" :key="item" :item="item"></Plan>
+		</Slider>
 
+		<!-- <ul v-if="itemCount <= 3">
+			<li v-for="(item, index) in list" :key="item" ref="itemsListAnim">
+				<Plan @click="slideTo(index)" :item="item"></Plan>
+			</li>
+		</ul> -->
+		
 		<!-- <Carousel
 			ref="planeCarousel"
 			v-if="list.length && !listIsLoading"
@@ -30,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import SimpleSlider from "@/Ui/SimpleSlider.vue";
+import Slider from "@/Ui/Slider.vue";
 import LoadSpiner from "@/Components/LoadSpiner.vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
@@ -58,30 +64,20 @@ let itemsListAnim = ref([]);
 const listIsLoading = computed(() => (store.state.plane as StateInterface).planeListIsLoading);
 
 const isEvenList = computed(() => props.list.length % 2 === 0); // Четное ли кол-во элэментов
-const isMobile = computed(() => curentRectWidth.value < 425);
-const isTablet = computed(() => curentRectWidth.value < 768);
-const isTabletBig = computed(() => curentRectWidth.value < 1024);
-const isMonitBig = computed(() => curentRectWidth.value < 1840);
+const isMobile = computed(() => curentRectWidth.value <= 425);
+const isTablet = computed(() => curentRectWidth.value <= 768);
+const isTabletBig = computed(() => curentRectWidth.value <= 1024);
+const isMonitBig = computed(() => curentRectWidth.value <= 1840);
+const itemCount = computed(() => props?.list?.length ?? 0);
+
 // return (!isEvenList.value && curentSlide.value === 0) ? 1 : 2;
 const countItemsToShow = computed(() => {
-	if(isMobile.value) {
+	if(isTabletBig.value && !isMobile.value) {
+		return 2;
+	}
+
+	if(isMobile.value && isTabletBig.value) {
 		return 1;
-	}
-
-	if(isTablet.value) {
-		return 1;
-	}
-
-	if(isTabletBig.value) {
-		return 3;
-	}
-
-	if(isMonitBig.value) {
-		return 3;
-	}
-
-	if(props.list.length <= 2) {
-		return props.list.length;
 	}
 
 	return 3;
@@ -143,14 +139,14 @@ function animateItemList() {
 }
 
 .carousel__track {
-	/* margin-left: 7vw; */
+	/* margin-left: 6.3rem; */
 }
 
 .carousel__slide {
 	/* display: flex;
 	justify-content: start; */
 	/* padding: 0.3125rem;
-	margin-right: 7vw; */
+	margin-right: 6.3rem; */
 }
 
 /* .carousel__slide--prev {

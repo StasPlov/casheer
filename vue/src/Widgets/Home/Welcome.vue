@@ -1,25 +1,25 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)] rounded-[2.875rem] max-phoneX:overflow-hidden" v-if="dataWelcome">
-		<div class="px-[7vw] py-[7vw] max-phoneX:py-[15vw] flex flex-col max-phoneX:gap-12">
+		<div class="px-[8.375rem] py-[6.3rem] max-phoneX:py-[13.5rem] max-phoneX:px-[1.125rem] flex flex-col max-phoneX:gap-12">
 			
 			<div class="hidden max-phoneX:flex justify-center">
-				<img v-if="image" :src="image.url" alt="" draggable="false" class="animation-levitate-two w-[17.125rem] select-none">
+				<img v-if="image" :src="image.url" alt="" draggable="false" class="w-[24.125rem] shadow select-none">
 			</div>
 			
 			<div class="flex flex-col gap-4 items-start">
-				<h2 class="font-mont text-[3.375rem] text-white font-semibold leading-tight select-none" v-html="title"></h2>
+				<h2 class="font-mont text-[3.375rem] text-white font-semibold leading-tight select-none rtl:font-normal max-phoneX:w-min max-phoneX:text-[3.75rem]" v-html="title"></h2>
 
 				<a :href="button.link?.url ?? ''" v-if="button.is_active">
-					<Button class="!bg-transparent btn relative !py-4 hover:scale-105 duration-500">
-						<span class="text-white text-base font-[Arial] font-semibold">{{ button.text }}</span>
+					<Button class="!bg-transparent btn relative !py-4 hover:scale-105 duration-500 rtl:!px-20 max-phoneX:!px-[2rem]">
+						<span class="text-white text-base font-[Arial] font-semibold rtl:font-normal max-phoneX:text-[1.5rem]">{{ button.text }}</span>
 					</Button>
 				</a>
 			</div>
 			
 			<div class="flex justify-center">
 				<div class="relative max-phoneX:flex max-phoneX:justify-end top-[-1.625rem]">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" draggable="false" class="animation-levitate-one w-[61.8125rem] select-none max-phoneX:min-w-[250%] max-phoneX:mr-[-6.6875rem] shadow">
-					<img v-if="image" :src="image.url" alt="" draggable="false" class="animation-levitate-two w-[16.125rem] select-none absolute bottom-0 left-16 max-phoneX:hidden shadow">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" draggable="false" class="w-[61.8125rem] select-none max-phoneX:min-w-[250%] max-phoneX:mr-[-6.6875rem] shadow">
+					<img v-if="image" :src="image.url" alt="" draggable="false" class="w-[16.125rem] select-none absolute bottom-0 left-16 max-phoneX:hidden shadow">
 				</div>
 			</div>
 

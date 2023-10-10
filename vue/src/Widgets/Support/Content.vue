@@ -1,6 +1,6 @@
 <template>
-	<div class="bg-[var(--color-black1)] min-h-screen">
-		<div class="px-[7vw]">
+	<div class="bg-[var(--color-black1)] min-h-screen" v-if="list">
+		<div class="px-[8.375rem]">
 			<ul class="flex flex-col gap-20">
 				<li v-for="item in contentList" :key="item" class="z-10">
 					<Item

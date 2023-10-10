@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)]">
-        <div class="px-[25vw] py-[4vw] z-10  flex flex-col gap-12">
+        <div class="px-[22.5rem] py-[3.6rem] z-10  flex flex-col gap-12">
 
             <div class=" flex flex-col gap-12">
 				<div class="flex flex-col gap-4">

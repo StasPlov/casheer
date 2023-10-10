@@ -13,15 +13,19 @@
 
 	<div class="percent">
 		<div class="percent__wrapper">
-			<svg width="40" height="40" viewBox="0 0 40 40">
+			<svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="absolute w-[0.625rem]">
+				<path d="M2 15.8633L8 8.8365L2 1.80971" stroke="white" stroke-width="2.89231" stroke-linecap="round"/>
+			</svg>
+
+			<svg viewBox="0 0 150 150" class="rotate-[99deg]">
 				<clipPath id="text-mask">
-					<circle cx="70" cy="70" r="70" ></circle>
+					<circle cx="70" cy="70" r="60"></circle>
 				</clipPath>
 
 				<slot name="circle-center"></slot>
 
-				<circle cx="70" cy="70" r="70" ></circle>
-				<circle cx="70" cy="70" r="70" :style="`stroke-dashoffset: calc(440 - (440 * ${percent}) / 100); --color-svg-circle-button: ${colorCode};`"></circle>
+				<circle cx="70" cy="70" r="60" ></circle>
+				<circle cx="70" cy="70" r="60" :style="`stroke-dashoffset: calc(440 - (440 * ${percent}) / 100); --color-svg-circle-button: ${colorCode};`"></circle>
 			</svg>
 		</div>
 	</div>
@@ -48,12 +52,11 @@ const percent = ref(80);
 	display: flex;
 	justify-content: center;
 	position: relative;
-	width: 9.375rem;
+	width: 3.375rem;
 	height: 3.8125rem;
 }
 
 svg {
-	transform: scale(0.4);
 	cursor: pointer;
 }
 
@@ -62,7 +65,7 @@ svg clipPath circle {
 	height: 100%;
 	fill: none;
 	stroke: #e9e9e9;
-	stroke-width: 10;
+	stroke-width: 16;
 	stroke-linecap: round;
 	transform: translate(5px, 5px);
 }
@@ -71,13 +74,13 @@ svg circle {
 	height: 100%;
 	fill: none;
 	stroke: #e9e9e9;
-	stroke-width: 10;
+	stroke-width: 16;
 	stroke-linecap: round;
 	transform: translate(5px, 5px);
 
 	stroke-dasharray: 440;
 	stroke-dashoffset: 440;
-	stroke: var('--color-svg-circle-button'); /* colof for style var */
+	stroke: var(--color-svg-circle-button); /* colof for style var */
 	transition-duration: 500ms;
 }
 
@@ -86,7 +89,7 @@ svg circle:first-child {
 	height: 100%;
 	fill: none;
 	stroke: #e9e9e9;
-	stroke-width: 10;
+	stroke-width: 16;
 	stroke-linecap: round;
 	transform: translate(5px, 5px);
 }

@@ -1,5 +1,5 @@
 <template>
-	<div class="grid grid-cols-2 gap-16 max-md:grid-cols-1">
+	<div class="grid grid-cols-2 gap-16 max-phoneX:grid-cols-1 z-10">
 		<div class="flex flex-col gap-5">
 			<h2 class="text-[var(--color-arctic1)] text-4xl font-normal font-[Arial]" v-html="title"></h2>
 			<span class="text-white text-sm font-normal font-[Arial]" v-html="description"></span>
@@ -17,8 +17,8 @@
 						<div class="flex justify-between items-center gap-2">
 							<span class="text-white text-2xl font-[Arial] font-normal leading-normal" v-html="item.item.title"></span>
 							
-							<OpenButton v-if="!item.isActive"></OpenButton>
-							<CloseButton v-else></CloseButton>
+							<OpenButton v-if="!item.isActive" class="min-w-[2.0625rem] max-w-[2.0625rem]"></OpenButton>
+							<CloseButton v-else class="min-w-[2.0625rem] max-w-[2.0625rem]"></CloseButton>
 						</div>
 					</template>
 					

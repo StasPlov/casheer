@@ -1,7 +1,7 @@
 <template>
 	<div class="bg-[var(--color-black1)]" v-if="condition">
 		<div class="bg-white w-full rounded-[2.25rem]">
-			<div class="px-[7vw] py-12 flex flex-col gap-24">
+			<div class="px-[8.375rem] py-12 flex flex-col gap-24 max-phoneX:px-[1.125rem]">
 				<div class="flex flex-col gap-14">
 					<div class="flex flex-col gap-7">
 						<h2 class="text-transparent text-4xl font-mont font-semibold bg-clip-text bg-gradient-casheer-title-to-b leading-tight" v-html="condition.title"></h2>
@@ -22,7 +22,7 @@
 				</div>
 				
 
-				<ul class="grid grid-cols-2 grid-flow-row gap-8 max-md:grid-cols-1">
+				<ul class="grid grid-cols-2 grid-flow-row gap-8 max-phoneX:grid-cols-1">
 					<li v-for="item in documtensList" :key="item" class="z-10">
 						<ConditionDocument
 							:item="item"

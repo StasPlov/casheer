@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<component :is="sliderTag" :class="sliderClass" ref="slider" class="flex overflow-hidden overflow-x-auto slider_ py-3 px-[7vw]"
+		<component :is="sliderTag" ref="slider" class="flex overflow-hidden overflow-x-auto slider_ py-3 px-[8.375rem]" :class="sliderClass"
 			@mousedown="mousedown"
 			@mouseleave="mouseleave"
 			@mousemove="mousemove"
@@ -12,25 +12,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 
-const props = defineProps({
-	/**	
-	 * @description HTML тег слайдера
-	 */
-	sliderTag: {
-		type: String,
-		default: 'div',
-		require: false,
-	},
-	/**	
-	 * @description CSS Классы слайдера
-	 */
-	sliderClass: {
-		type: String,
-		default: '',
-		require: false,
-	}
+interface PropsInterface {
+	sliderTag: string
+	sliderClass: string
+}
+
+const props = withDefaults(defineProps<PropsInterface>(), {
+	sliderTag: 'div',
+	sliderClass: ''
 });
 
 const slider = ref(null);
@@ -38,6 +29,7 @@ let isDown = ref(false);
 let startX = ref(0);
 let scrollLeft = ref(0);
 let walk = ref(0);
+const itemsCount = computed(() => (slider as HTMLElement)?.children?.length ?? 0);
 
 function mousedown(e: MouseEvent) {
 	isDown.value = true;

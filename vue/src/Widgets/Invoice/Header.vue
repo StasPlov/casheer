@@ -1,12 +1,12 @@
 <template>
 	<div class="w-full bg-[var(--color-black1)] flex items-center relative overflow-hidden" v-if="data">
-		<img v-if="background" :src="background.url" alt="" class="absolute w-full left-0 animate-pulse select-none max-md:bottom-[-2.5rem] max-md:left-[-11.875rem] max-md:min-w-[200%] max-md:object-contain" draggable="false">
+		<img v-if="background" :src="background.url" alt="" class="absolute w-full left-0 top-[-6.875rem] animate-pulse select-none max-phoneX:top-[54rem] max-phoneX:left-[-19rem] max-phoneX:min-w-[200%] max-phoneX:object-contain" draggable="false">
 
-		<div class="grid grid-cols-2 gap-10 px-[7vw] py-[15vw] pt-[5vw] pr-0 rtl:pr-[7vw] rtl:pl-0 w-full max-md:grid-cols-1 max-md:pr-[7vw] max-md:pb-[30vw]">
+		<div class="grid grid-cols-[repeat(2,_auto)] gap-10 px-[8.375rem] max-phoneX:px-[1.125rem] py-[13.5rem] max-phoneX:pb-[12rem] pt-[4.5rem] pr-0 rtl:pr-[6.3rem] rtl:pl-0 w-full max-phoneX:grid-cols-1 max-phoneX:pr-[6.3rem]">
 
-			<div class="flex flex-col justify-center gap-28 z-10 max-md:order-1">
+			<div class="flex flex-col justify-center gap-12 z-10 max-phoneX:order-1">
 				<div class="flex flex-col gap-9">
-					<h1 class="font-mont text-white text-7xl font-bold" v-html="title"></h1>
+					<h1 class="font-mont text-white text-7xl font-bold rtl:font-normal" v-html="title"></h1>
 
 					<div class="text-5xl max-phoneX:text-3xl">
 						<span class="text-white text-4xl font-normal leading-tight font-[Arial]" v-html="description"></span>
@@ -17,7 +17,7 @@
 					<img v-if="logo" :src="logo.url" alt="" class="select-none" draggable="false">
 
 					<a :href="button.link?.url ?? ''" v-if="button && button?.is_active">
-						<Button class="border-[var(--color-violet1)] border-solid border-[5px] bg-transparent !rounded-[6.25rem] !px-12 !py-1">
+						<Button class="!bg-transparent btn relative hover:scale-105 duration-500 !px-12 !py-4">
 							<span class="text-white text-base font-bold font-[Arial]">{{ button.text }}</span>
 						</Button>
 					</a>
@@ -25,14 +25,14 @@
 			</div>
 
 			<div class="flex justify-end z-10">
-				<div class="relative max-md:hidden">
-					<img v-if="image" :src="image.url" alt="" class="animation-levitate-one w-[40rem] select-none" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="animation-levitate-two w-[15.4375rem] absolute left-[-0.875rem] rtl:left-auto rtl:right-[-0.875rem] top-[10.25rem] select-none" draggable="false" ref="waletImage2">
+				<div class="relative max-phoneX:hidden">
+					<img v-if="image" :src="image.url" alt="" class="h-[35.625rem] select-none" draggable="false" ref="waletImage">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="top-[7.5rem] w-[15.4375rem] absolute right-[21.5rem]  rtl:left-[24rem] rtl:right-[-4.875rem] rtl:top-[6rem] select-none" draggable="false" ref="waletImage2">
 				</div>
 
-				<div class="relative hidden max-md:block max-md:max-h-[41.5rem]">
-					<img v-if="imageMobile" :src="imageMobile.url" alt="" class="animation-levitate-one w-[40rem] select-none max-md:mt-[-9.25rem] max-md:ml-[-7vw] max-md:min-w-[130%]" draggable="false" ref="waletImage">
-					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="animation-levitate-two w-[15.4375rem] absolute left-[20.125rem] top-[16.25rem] select-none" draggable="false" ref="waletImage2">
+				<div class="relative hidden max-phoneX:block max-phoneX:max-h-[41.5rem]">
+					<img v-if="imageMobile" :src="imageMobile.url" alt="" class="w-[40rem] select-none max-phoneX:mt-[-9.25rem] max-phoneX:ml-[-6.3rem] max-phoneX:min-w-[130%]" draggable="false" ref="waletImage">
+					<img v-if="imageTwo" :src="imageTwo.url" alt="" class="rtl:left-auto rtl:top-[13.25rem] rtl:w-[20.4375rem] rtl:right-[16.125rem] w-[15.4375rem] absolute left-[20.125rem] top-[16.25rem] select-none" draggable="false" ref="waletImage2">
 				</div>	
 			</div>
 
@@ -124,3 +124,19 @@ function animateWalet2() {
 	);
 }
 </script>
+
+<style scoped>
+.btn::before {
+	content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    border: 5px solid transparent;
+    background: radial-gradient(var(--color-violet1), transparent) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+}
+</style>

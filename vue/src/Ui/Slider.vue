@@ -17,82 +17,79 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, Ref, ref } from 'vue';
-import Mathf from '@/Service/Mathf';
+import { computed, onMounted, Ref, ref, watch } from 'vue';
+import Mathf from './../Service/Mathf';
 
-const props = defineProps({
+export interface PropsInterface {
+
 	/**	
 	 * @description Количество видимых элeментов в окне
 	 */
-	elementViewCount: {
-		type: Number,
-		default: 0,
-		require: false,
-	},
+	elementViewCount: number;
+
 	/**	
 	 * @description HTML тег слайдера
 	 */
-	sliderTag: {
-		type: String,
-		default: 'div',
-		require: false,
-	},
+	sliderTag: string;
+
 	/**	
 	 * @description CSS Классы слайдера
 	 */
-	sliderClass: {
-		type: String,
-		default: '',
-		require: false,
-	},
+	sliderClass: string;
+
 	/**	
 	 * @description Количество прокручиваемых элементов за один слайд
 	 */
-	slideCountElement: {
-		type: Number,
-		default: 0,
-		require: false,
-	},
+	slideCountElement: number;
+
 	/**	
 	 * @description Начальный индекс/номер слайда
 	 */
-	startSlideIndex: {
-		type: Number,
-		default: 0,
-		require: false,
-	},
+	startSlideIndex: number;
+
 	/**	
 	 * @description Бесконечный скролл или нет
 	 */
-	infinityScroll: { // !!!!!!! доделать
-		type: Boolean,
-		default: false,
-		require: false,
-	},
+	infinityScroll: boolean;
+
 	/**	
 	 * @description Cвободный скролл или нет (отменяте slideCountElement)
 	 */
-	freeScroll: {
-		type: Boolean,
-		default: false,
-		require: false,
-	},
+	freeScroll: boolean;
+
 	/**	
 	 * @description Не выходить за последние элементы в слайдере
 	 */
-	checkBounding: {
-		type: Boolean,
-		default: true,
-		require: false,
-	},
+	checkBounding: boolean;
+
 	/**	
 	 * @description Авто выравнивание по заверщению скролла
 	 */
-	autoAlignment: { // !!!!!! доделать 
-		type: Boolean,
-		default: true,
-		require: false,
-	},
+	autoAlignment: boolean;
+
+	/**	
+	 * @description Авто прокрутка
+	 */
+	autoPlay: boolean;
+
+	/**	
+	 * @description Скорость авто прокрутки
+	 */
+	autoPlaySpeed: number;
+}
+
+const props = withDefaults(defineProps<PropsInterface>(), {	
+	elementViewCount: 0,
+	sliderTag: 'div',
+	sliderClass: '',
+	slideCountElement: 1,
+	startSlideIndex: 0,
+	infinityScroll: false, // !!!!!!! доделать
+	freeScroll: false,
+	checkBounding: true,
+	autoAlignment: false, // !!!!!!! доделать
+	autoScroll: false,
+	autoScrollSpeed: 1 as number
 });
 
 const emit = defineEmits([]);
@@ -113,29 +110,17 @@ let minimumVelocityY = ref(7)
 let slideChangeSpeed = ref(300) // ms
 let animationFrame = ref(0);
 
+let isInit = ref(false);
 const moveVelocityDirectionX = computed(() => Math.sign(moveVelocityX.value));
-const slider: Ref<HTMLElement> = ref(null);
-const sliderParent: Ref<HTMLElement> = ref(null);
+const slider = ref<HTMLElement>(null);
+const sliderParent = ref<HTMLElement>(null);
 const sliderParentOffset = computed(() => movePositionX);
-const elements: Ref<Array<HTMLElement>> = computed(() => Array.from(slider.value.children) as Array<HTMLElement> ?? []);
+const elements = computed<Array<HTMLElement>>(() => (Array.from(slider.value.children) as Array<HTMLElement>) ?? []);
 const sliderWidth = computed(() => {
-	const lastElement: HTMLElement = elements.value[elements.value.length - 1];
+	const lastElement = elements.value[elements.value.length - 1] as HTMLElement;
 	return lastElement.offsetLeft + lastElement.offsetWidth;
 });
 
-/* elementCount: {
-	get() {
-		let countElement = this.slideCountElement ?? 0;
-		if(countElement <= 0) {
-			countElement = this.elementViewCount ?? 0;
-
-			if(countElement <= 0) {
-				countElement = this.elements.length;
-			}
-		}
-		return  countElement;
-	}
-}, */
 const slidePostitionList = computed(() => { // return static slide postition
 	let countElement: number = props.slideCountElement ?? 0;
 	if(countElement <= 0) {
@@ -196,19 +181,58 @@ const sliderOutDistance = computed(() => {
 	return result;
 });
 
-onMounted(() => {
-	slider.value.addEventListener('transitionend', () => {
-		emit('selectSlide', slideDistanceMinIndex.value);
-	});
-	init();
+
+watch(props, () => {
+	isInit.value = false;
+
+	if(!isInit.value && elements.value.length) {
+		slider.value.addEventListener('transitionend', () => {
+			emit('selectSlide', slideDistanceMinIndex.value);
+		});
+		init();
+		isInit.value = true;
+	}
+}, { flush: 'post' });
+
+document.addEventListener('resize', () => {
+	isInit.value = false;
+
+	if(!isInit.value && elements.value.length) {
+		slider.value.addEventListener('transitionend', () => {
+			emit('selectSlide', slideDistanceMinIndex.value);
+		});
+		init();
+		isInit.value = true;
+	}
 });
+
+onMounted(() => {
+	if(!isInit.value && elements.value.length) {
+		slider.value.addEventListener('transitionend', () => {
+			emit('selectSlide', slideDistanceMinIndex.value);
+		});
+		init();
+		isInit.value = true;
+	}
+});
+/* watch(slider.value, () => {
+	if(!isInit.value && elements.value.length) {
+		slider.value.addEventListener('transitionend', () => {
+			emit('selectSlide', slideDistanceMinIndex.value);
+		});
+		init();
+		isInit.value = true;
+	}
+}); */
 
 function init() {
 	const stylesParent: CSSStyleDeclaration = window.getComputedStyle(slider.value, null);
 	const elementCount: number = elements.value.length;
 
 	if(Number.isInteger(props.startSlideIndex)) {
-		const index: number = Mathf.clamp(props.startSlideIndex, 0, elements.value.length - 1);
+		const index: number = Mathf.clamp(props.startSlideIndex, 0, elements.value.length);
+		console.log(elements.value);
+		
 		movePositionX.value = -elements.value[index].offsetLeft;
 		translateTo(movePositionX.value);
 	}
@@ -218,9 +242,9 @@ function init() {
 			//iterator.addEventListener("click", this.scrollTo);
 			const stylesElement: CSSStyleDeclaration = window.getComputedStyle(element, null);
 
-			let marginSum: number = 0;
-			let gapSumm: number = 0;
-			let sum: number = 0;
+			let marginSum = 0;
+			let gapSumm = 0;
+			let sum = 0;
 
 			if(!isNaN(parseFloat(stylesParent.rowGap))) {
 				gapSumm += parseFloat(stylesParent.rowGap);
@@ -232,13 +256,13 @@ function init() {
 
 			sum += gapSumm + marginSum;
 			
-			const result: number = (sum / props.elementViewCount) * (props.elementViewCount - 1);
-			const definition: string = (result) ? ` - ${result}px` : '';
-
+			const result = (sum / props.elementViewCount) * (props.elementViewCount - 1);
+			const definition = (result) ? ` - ${result}px` : '';
+			
 			if(props.elementViewCount) {
 				element.style.minWidth = `calc(100%/${props.elementViewCount}${definition})`;
 			}
-		} 
+		}
 	}	
 }
 
@@ -343,4 +367,18 @@ function freeLoop() {
 	movePositionX.value = toPostition;
 	translateTo(movePositionX.value, true);
 }
+
+
+/* watch(isMove, () => {
+	if(!isMove.value) {
+		autoPlay();
+	}
+});
+
+let autoPlayAnimationFrame = ref(null);
+function autoPlay() {
+	movePositionX.value += props.autoScrollSpeed; 
+	translateTo(movePositionX.value);
+	autoPlayAnimationFrame.value = requestAnimationFrame(autoPlay);
+} */
 </script>

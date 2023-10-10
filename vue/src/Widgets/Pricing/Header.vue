@@ -1,14 +1,15 @@
 <template>
 	<div class="flex flex-col w-full bg-[var(--color-black1)] relative justify-center items-start">
-		<img v-if="background" :src="background?.url" alt="" class="absolute w-full max-phoneX:hidden animate-pulse select-none z-0" draggable="false">
+		<img v-if="background" :src="background?.url" alt="" class="absolute w-full animate-pulse select-none z-0 top-[-5.2rem] max-phoneX:top-[7rem] max-phoneX:min-w-[200%] max-phoneX:left-[-30rem]" draggable="false">
 
-		<div class="flex flex-col gap-28 px-[7vw] py-[10vw] max-phoneX:justify-between max-phoneX:h-full max-phoneX:pt-[25vh] max-phoneX:pb-[5vh] z-10">
-			<div class="flex flex-col gap-16">
-                <h1 class="font-mont text-white text-7xl font-bold leading-tight select-none" v-html="title"></h1>
+		<div class="flex flex-col gap-28 px-[8.375rem] py-[9rem] pt-[4rem] max-phoneX:justify-between max-phoneX:h-full max-phoneX:px-[1.125rem] max-phoneX:pt-[10.1875rem] max-phoneX:pb-[5vh] z-10">
+			<div class="flex flex-col gap-16 max-phoneX:gap-[6.25rem]">
+                <h1 class="font-mont text-white text-7xl font-bold leading-tight select-none max-phoneX:text-[3.75rem]" v-html="title"></h1>
 
-                <hr class="max-w-[70%] max-phoneX:max-w-full">
-
-				<span class="text-white text-3xl font-normal leading-tight select-none" v-html="description"></span>
+				<div class="flex flex-col gap-16 max-phoneX:flex-col-reverse">
+					<hr class="max-w-[50%] max-phoneX:max-w-full">
+					<span class="text-white text-3xl font-normal leading-tight select-none" v-html="description"></span>
+				</div>
             </div>
 		</div>
 

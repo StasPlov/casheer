@@ -1,11 +1,17 @@
 <template>
-	<div class="w-full bg-[var(--color-black1)] relative">
-		<div class="flex flex-col px-[7vw]">
+	<div class="w-full bg-transparent relative">
+		<div class="flex flex-col gap-8 px-[8.375rem] z-10">
 			<div class="py-9">
 				<h2 class="text-white text-center font-mont text-4xl font-bold" v-html="title"></h2>			
 			</div>
 
-			<div class="flex flex-col gap-5 py-16 w-full">
+			<ul class="flex self-center gap-24 max-sm:grid max-sm:grid-cols-2">
+				<li v-for="item in list" :key="item">
+					<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class="select-none">
+				</li>
+			</ul>
+
+			<!-- <div class="flex flex-col gap-5 py-16 w-full">
 				<Carousel
 					:items-to-show="countItemsToShow" 
 					:wrap-around="true" 
@@ -17,7 +23,7 @@
 						<img v-if="item.image" :src="item.image.url" alt="" draggable="false" class="select-none">
 					</Slide>
 				</Carousel>	
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>

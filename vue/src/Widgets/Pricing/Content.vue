@@ -4,7 +4,7 @@
         <Light2 class="absolute select-none animate-pulse z-0 rtl:left-0 max-w-full" draggable="false"></Light2>
         <Light3 class="absolute select-none right-0 animate-pulse z-0 max-w-full" draggable="false"></Light3>
 
-        <div class="pb-[10vw]">
+        <div class="pb-[9rem]">
             <div class="flex flex-col gap-11">
 				<Title
 					:title="title"
@@ -24,9 +24,9 @@
 </template>
 
 <script setup lang="ts">
-import Light1 from './Assets/Light1.vue'
-import Light2 from './Assets/Light2.vue'
-import Light3 from './Assets/Light3.vue'
+import Light1 from './Assets/Light1.vue';
+import Light2 from './Assets/Light2.vue';
+import Light3 from './Assets/Light3.vue';
 
 import Title from './Components/Title.vue'
 import Interface from './Components/Interface.vue'

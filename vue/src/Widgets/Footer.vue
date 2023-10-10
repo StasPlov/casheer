@@ -1,27 +1,28 @@
 <template>
-	<footer class="flex flex-col bg-[var(--color-black1)] overflow-hidden" v-if="data">
+	<footer class="flex flex-col bg-[var(--color-black1)] overflow-hidden" v-if="data" :style="`--form-send-icon-url: url(${sendIcon});`">
 		<slot>
-			<div class="px-[7vw] py-[2vw] pb-[3vw] max-phoneX:pt-[5vw] border-t-[3px] border-white flex flex-col gap-16 items-center">
-				<div class="flex flex-col gap-7">
-					<h2 class="text-white text-3xl font-bold font-mont text-center max-phoneX:text-[26px]" v-html="contactData.title"></h2>
+			<div class="px-[8.375rem] py-[1.8rem] pb-[2.7rem] max-phoneX:px-0 border-t-[3px] max-phoneX:mx-[1.88rem] border-white flex flex-col gap-16 items-center">
+				<div class="flex flex-col gap-7 max-phoneX:gap-12">
+					<h2 class="text-white text-3xl font-bold font-mont text-center max-phoneX:text-[26px] rtl:font-normal" v-html="contactData.title"></h2>
 				
 					<Button class="gap-5">
-						<img :src="iconCollIcon" alt="" class="h-5">
-						<span class="text-base text-white font-semibold font-[Arial] tracking-wide max-phoneX:text-[10px]" v-html="contactData.phone"></span>
+						<a :href="`tel:${contactData.phone}`" class="flex gap-5 max-phoneX:py-[1.1875rem] max-phoneX:px-[1.1875rem] max-phoneX:pl-[1rem]">
+							<img :src="iconCollIcon" alt="" class="h-5 max-phoneX:h-[1.96rem]">
+							<span class="text-base text-white font-semibold font-[Arial] tracking-wide max-phoneX:text-[1.5rem]" v-html="contactData.phone"></span>
+						</a>
 					</Button>
 				</div>
 				
 
 				<div class="flex flex-col gap-7 items-center w-full">
-					<h3 class="text-xl text-white font-normal font-[Arial] max-phoneX:text-[13px]" v-html="contactData.input_title"></h3>
-
+					<h3 class="text-xl text-white font-normal font-[Arial] max-phoneX:text-[1.5rem]" v-html="contactData.input_title"></h3>
 					<div ref="ninjaForm" class="max-w-[48.125rem] w-full relative"></div>
 				</div>
 			</div>
 
-			<div class="px-[7vw] py-[2vw] pb-[4vw] max-phoneX:py-[5vw] border-t-[3px] border-white w-full flex flex-col gap-20">
+			<div class="px-[8.375rem] py-[1.8rem] pb-[3.6rem] max-phoneX:py-[4.5rem] max-phoneX:w-auto max-phoneX:px-0 max-phoneX:mx-[1.88rem] border-t-[3px] border-white w-full flex flex-col gap-20">
 				<div class="flex flex-col gap-8">
-					<a href="/">
+					<a href="/" class="max-phoneX:self-center">
 						<img v-if="logo" :src="logo.url" alt="" class="w-[10rem] select-none" draggable="false">
 					</a>
 
@@ -92,6 +93,8 @@ const contactData = computed<{
 	phone: string,
 }>(() => (store.state.footer as StateInterface).data?.contact_us);
 
+const sendIcon = computed(() => SendIcon);
+
 const socialList = computed(() => data.value?.social ?? []);
 const menuList = computed(() => data.value?.menu ?? []);
 const info = computed(() => data.value?.info);
@@ -126,63 +129,106 @@ onMounted(() => {
 
 <style>
 input.ninja-forms-field[type='email'] {
-	border: 3px solid white;
-	max-width: 48.125rem;
+	height: 3.4375rem!important;
+	border: 3px solid white!important;
+	max-width: 48.125rem!important;
 	border-radius: 6.25rem!important;
-	padding-top: 0.8rem;
-    padding-bottom: 0.9rem;
-	padding-left: 2rem;
-	padding-right: 6.875rem;
+	padding-top: 0.8rem!important;
+    padding-bottom: 0.9rem!important;
+	padding-left: 2rem!important;
+	padding-right: 6.875rem!important;
 	color: var(--color-silver1);
-	font-size: 1rem;
-    line-height: 1.75rem;
-	font-family: Arial;
-	background: transparent;
+	font-size: 1rem!important;
+    line-height: 1.75rem!important;
+	font-family: Arial!important;
+	background: transparent!important;
 }
 
 html[dir="rtl"] input.ninja-forms-field[type='email'] {
-	padding-right: 2rem;
-	padding-left: 6.875rem;
+	padding-right: 2rem!important;
+	padding-left: 6.875rem!important;
 }
 
 input.ninja-forms-field[type='submit'] {
-	width: 1.875rem;
-	height: 1.875rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: var(--color-violet1);
-	color: white;
-	height: auto;
-	padding: 0.625rem;
-	padding-left: 1.25rem;
-	padding-right: 1.25rem;
-	border-radius: 1.875rem;
-	transition: 500ms;
+	/* width: 1.875rem!important; */
+	height: 1.875rem!important;
+	display: flex!important;
+	align-items: center!important;
+	justify-content: center!important;
+	background: var(--color-violet1)!important;
+	color: white!important;
+	height: auto!important;
+	padding: 0.525rem!important;
+	padding-left: 1.25rem!important;
+	padding-right: 1.25rem!important;
+	border-radius: 1.875rem!important;
+	transition: 500ms!important;
+	font-size: 1rem!important;
 }
 
 input.ninja-forms-field[type='submit']:hover {
-	filter: brightness(115%);
+	filter: brightness(115%)!important;
 }
 
+.nf-error.field-wrap .nf-field-element:after {
+	background: #e80000!important;
+    color: #fff!important;
+    font-family: 'FontAwesome'!important;
+    font-size: 1.25rem!important;
+    content: "\f12a"!important;
+    position: absolute!important;
+    top: 0.25rem!important;
+    right: -2.75rem!important;
+    bottom: 1px!important;
+    height: 2.5rem!important;
+    width: 2.5rem!important;
+    line-height: 3.125rem!important;
+    text-align: center;
+    transition: all .5s;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 
+	background: #e80000;
+    color: #fff;
+    font-family: FontAwesome;
+    font-size: 20px;
+    content: "\f1d8";
+    position: absolute;
+    top: 1px;
+    right: -65px;
+    bottom: 1px;
+    height: 40px;
+    width: 40px;
+    line-height: 50px;
+    text-align: center;
+    transition: all .5s;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+*/
+
 .nf-form-fields-required {
-	display: none;
+	display: none!important;
 }
 
 .nf-field-container.submit-container {
-	position: absolute;
-    margin: 0;
-    right: 0.625rem;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    height: 3.75rem;
-	max-height: 3.75rem;
+	position: absolute!important;
+    margin: 0!important;
+    right: 0.7625rem!important;
+	top: 0.7625rem!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: end!important;
 }
 
 html[dir="rtl"] .nf-field-container.submit-container {
-	right: auto;
-	left: -0.75rem
+	right: auto!important;
+	left: 0.75rem!important;
 }
 
 .nf-field-container.email-container {
@@ -190,7 +236,11 @@ html[dir="rtl"] .nf-field-container.submit-container {
 }
 
 .nf-response-msg {
-    text-align: center;
-    color: white;
+    text-align: center!important;
+    color: white!important;
+}
+
+.nf-field-label {
+	display: none!important;
 }
 </style>

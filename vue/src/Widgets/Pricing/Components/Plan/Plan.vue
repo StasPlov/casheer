@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-white rounded-[2.5rem] z-10 text-center">
+	<div class="bg-white rounded-[2.5rem] z-10 text-center w-full">
         <div class="px-[3.25rem] py-[4.9375rem] pb-[2.9375rem] flex flex-col gap-12 rtl:[direction:rtl]">
             <div class="flex flex-col gap-5">
                 <h2 class="text-[var(--color-black1)] text-4xl font-bold font-mont" v-html="item.title"></h2>
@@ -11,8 +11,8 @@
             <ul class="flex flex-col gap-2">
                 <li v-for="item_ in item.list" :key="item_">
                     <div class="flex gap-3">
-                        <CheckTryIcon v-if="item_.is_active" class="w-[1.875rem] h-[1.875rem]"></CheckTryIcon>
-                        <CheckNoneIcon v-else class="w-[1.875rem] h-[1.875rem]"></CheckNoneIcon>
+                        <CheckTryIcon v-if="item_.is_active" class="min-w-[1.875rem] min-h-[1.875rem] max-w-[1.875rem] max-h-[1.875rem]"></CheckTryIcon>
+                        <CheckNoneIcon v-else class="min-w-[1.875rem] min-h-[1.875rem] max-w-[1.875rem] max-h-[1.875rem]"></CheckNoneIcon>
 
                         <span class="text-[var(--color-black1)] text-xl font-[Arial] text-start" v-html="item_.description"></span>
                     </div>

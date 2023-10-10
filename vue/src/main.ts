@@ -21,24 +21,3 @@ if(appElement !== null) {
 		delete appElement.dataset[dataKey];
 	});
 }
-
-/* 
-initVueInstance('[home-page]', Home);
-function initVueInstance(selector: string, template: any) {
-    document.querySelectorAll(selector).forEach(element => {
-        if (element) {
-            const app = createApp(template, { ...(element as HTMLElement).dataset })
-				.use(store)
-				.directive('click-outside', clickOutside);
-			app.mount(selector);
-			
-			const dataset = (element as HTMLElement).dataset
-
-			Object.keys(dataset).forEach(dataKey => { // remove datatset atribute after get props
-				delete dataset[dataKey];
-			});
-        } else {
-            console.warn('element does not have an ID and will not be used as Vue instance element', element)
-        }
-    })
-} */

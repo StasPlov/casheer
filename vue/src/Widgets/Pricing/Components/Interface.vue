@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full">
-        <div class="px-[7vw] pb-24 flex gap-9 max-md:flex-col max-md:items-start justify-center items-center">
-            <div class="flex flex-col gap-3 z-10">
+        <div class="px-[8.375rem] pb-24 flex gap-9 max-phoneX:flex-col max-phoneX:items-start justify-center items-center max-phoneX:px-[1.125rem]">
+            <div class="flex flex-col gap-3 z-20">
                 <span class="text-white text-xl font-[Arial] text-center select-none" v-html="productTitle"></span>
 
                 <Select

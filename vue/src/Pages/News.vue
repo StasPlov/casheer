@@ -1,18 +1,22 @@
 <template>
-	<div class="bg-[var(--color-black1)] min-h-screen">
-		<div class="px-[7vw] py-[5vw] flex flex-col gap-11 max-phoneX:gap-11">
+	<div class="bg-[var(--color-black1)] min-h-screen relative" v-if="pageInfo">
+		<Light1 class="absolute top-0 left-0 animate-pulse"></Light1>
+		<Light2 class="absolute top-0 left-0 animate-pulse"></Light2>
+		<Light3 class="absolute bottom-[-26.75rem] right-0 animate-pulse"></Light3>
+
+		<div class="px-[8.375rem] py-[4.5rem] flex flex-col gap-11 max-phoneX:gap-11">
 
 			<div class="flex flex-col gap-14 max-phoneX:gap-11" v-show="newsList">
-				<div class="grid grid-cols-[auto_23.125rem] gap-6 w-full max-md:grid-cols-1 max-md:gap-11">
+				<div class="grid grid-cols-[auto_23.125rem] gap-6 w-full max-phoneX:grid-cols-1 max-phoneX:gap-11">
 					<div>
-						<NewsItem
+						<NewsItem class="image-max"
 							:item="newsFirst"
 						></NewsItem>
 					</div>
 
-					<div class="flex flex-col gap-10 max-phoneX:gap-11 text-[13px] relative pl-6 max-md:!p-0 max-md:!pt-11
+					<div class="flex flex-col gap-10 max-phoneX:gap-11 text-[13px] relative pl-6 max-phoneX:!p-0 max-phoneX:!pt-11
 						before:content-normal before:w-[3px] before:absolute before:bg-white before:rounded-lg before:h-[92%] before:left-0
-						max-md:before:h-[3px] max-md:before:top-0 max-md:before:w-full
+						max-phoneX:before:h-[3px] max-phoneX:before:top-0 max-phoneX:before:w-full
 						rtl:pl-[unset] rtl:pr-6 rtl:before:left-auto rtl:before:right-0
 					">
 						<NewsItem 
@@ -25,7 +29,7 @@
 					</div>
 				</div>
 
-				<ul class="grid grid-cols-3 grid-flow-row gap-10 gap-y-14 max-md:grid-cols-2 max-phoneX:flex max-phoneX:flex-col max-phoneX:gap-11 relative pt-14
+				<ul class="grid grid-cols-3 grid-flow-row gap-10 gap-y-14 max-phoneX:grid-cols-2 max-phoneX:flex max-phoneX:flex-col max-phoneX:gap-11 relative pt-14
 					before:content-normal before:h-[3px] before:absolute before:bg-white before:rounded-lg before:w-full before:left-0
 				">
 					<TransitionGroup>
@@ -38,7 +42,7 @@
 				</ul>
 			</div>
 
-			<Button class="bg-transparent self-center !p-0" v-if="button.is_active" @click="loadMore" :class="{ 'opacity-20':isMaxPostLoad}">
+			<Button class="bg-transparent self-center !p-0 z-10" v-if="button?.is_active" @click="loadMore" :class="{ 'opacity-20':isMaxPostLoad}">
 				<span class="text-white text-3xl font-bold font-mont underline text-center">{{ button.text }}</span>
 			</Button>
 		</div>
@@ -46,6 +50,10 @@
 </template>
 
 <script setup lang="ts">
+import Light1 from "@/Widgets/News/Assets/Light1.vue";
+import Light2 from "@/Widgets/News/Assets/Light2.vue";
+import Light3 from "@/Widgets/News/Assets/Light3.vue";
+
 import Button from "@/Ui/Button.vue";
 import { computed, onMounted, ref, watch, watchEffect } from "vue";
 import NewsItem from "@/Widgets/News/News.vue";
@@ -145,3 +153,10 @@ function animateItemList() {
 	});
 }
 </script>
+
+<style>
+.image-max .news-image {
+	max-height: none;
+    height: auto;
+}
+</style>
